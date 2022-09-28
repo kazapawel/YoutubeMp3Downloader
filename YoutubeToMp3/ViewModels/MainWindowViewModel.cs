@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using YoutubeExplode;
@@ -8,9 +9,28 @@ namespace YoutubeToMp3
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private bool isDownloading;
+
         public string YoutubeUrl { get; set; }
-        public string FilePath { get; set; } = @"C:\Users\Public\Desktop\ytdownloads\";
+        public string FilePath { get; set; } 
+
+        /// <summary>
+        /// Flag to make information about downloading visible.
+        /// </summary>
+        public bool IsDownloading
+        {
+            get => isDownloading;
+            set
+            {
+                if(isDownloading!=value)
+                {
+                    isDownloading = value;
+                    OnPropertyChanged(nameof(IsDownloading));
+                }
+            }
+        }
         public ICommand DownloadCommand { get; set; }
+
 
         public MainWindowViewModel()
         {
@@ -19,21 +39,22 @@ namespace YoutubeToMp3
 
         public async Task DownloadVideo()
         {
-            var dir = Directory.GetCurrentDirectory();
-            //Directory.SetCurrentDirectory(@"C:\Users\Public\Desktop\ytdownloads\");
-            //dir = Directory.GetCurrentDirectory();
+            // Sets download directory
+            var userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            
             var youtubeClient = new YoutubeClient();
-
-            // Videos data
             var videos = await youtubeClient.Videos.GetAsync(YoutubeUrl);
-
             var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(YoutubeUrl);
-            var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            var stream = await youtubeClient.Videos.Streams.GetAsync(streamInfo);
+            var streamInfo = streamManifest.GetVideoStreams().GetWithHighestBitrate();
+
+            //Sets flag
+            IsDownloading = true;
 
             // Download stream
-            //await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, FilePath);
-            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, $"video.{streamInfo.Container}");
+            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{videos.Title}.{streamInfo.Container}");
+
+            //
+            IsDownloading = false;
         }
     }
 }

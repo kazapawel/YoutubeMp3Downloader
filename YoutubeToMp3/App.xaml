@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:YoutubeToMp3"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            
+            <!-- Converters -->
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
