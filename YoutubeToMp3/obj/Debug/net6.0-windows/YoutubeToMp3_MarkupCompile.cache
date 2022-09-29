@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\App.xaml
-11407045341
+3-736097673
 
-8-506193670
+15-1767132054
 1981337135816
-MainWindow.xaml;
+Controls\MainControl.xaml;Controls\VideoInfoControl.xaml;MainWindow.xaml;
 
 False
 

@@ -2,9 +2,9 @@
 {
     public class DownloadMovieCommand : CommandBase
     {
-        private readonly MainWindowViewModel mainWindowViewModel;
+        private readonly MainViewModel mainWindowViewModel;
 
-        public DownloadMovieCommand(MainWindowViewModel vm)
+        public DownloadMovieCommand(MainViewModel vm)
         {
             mainWindowViewModel = vm;
         }

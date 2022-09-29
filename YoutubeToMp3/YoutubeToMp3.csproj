@@ -11,4 +11,9 @@
     <PackageReference Include="YoutubeExplode.Converter" Version="6.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Styles\" />
+  </ItemGroup>
+
 </Project>
