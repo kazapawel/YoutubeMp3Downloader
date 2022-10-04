@@ -1,27 +1,26 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using YoutubeExplode;
-using YoutubeExplode.Videos.Streams;
 
 namespace YoutubeToMp3
 {
     public class MainViewModel : BaseViewModel
     {
         #region PRIVATE FIELDS
-
         private bool isDownloading;
+        private string statusMessage;
 
         #endregion
 
         #region PUBLIC PROPERTIES
+     
         private string title;
         private string duration;
         private string thumbnail;
         private string url;
         private bool gettingInfo;
 
+        public string UserDirectory { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -118,12 +117,28 @@ namespace YoutubeToMp3
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string StatusMessage
+        {
+            get => statusMessage;
+            set
+            {
+                if(statusMessage!=value)
+                {
+                    statusMessage = value;
+                    OnPropertyChanged(nameof(StatusMessage));
+                }
+            }
+        }
+
         #endregion
 
         #region COMMANDS
 
-        public ICommand DownloadCommand { get; set; }
-        public ICommand GetInfoAsyncCommand { get; set; }
+        public ICommandAsync DownloadCommandAsync { get; set; }
+        public ICommand DownloadVideoClassCommandAsync { get; set; }
 
         #endregion
 
@@ -131,8 +146,11 @@ namespace YoutubeToMp3
 
         public MainViewModel()
         {
-            DownloadCommand = new DownloadMovieCommand(this);
-            GetInfoAsyncCommand = new GetInfoAsyncCommand(this);
+            // Sets download directory
+            UserDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+            //Class commands
+            DownloadVideoClassCommandAsync = new DownloadVideoCommandAsync(this, new YoutubeDownloader());
         }
 
         #endregion
@@ -140,14 +158,14 @@ namespace YoutubeToMp3
         public async Task GetInfoAsync()
         {
             // new youtube client 
-            var youtubeClient = new YoutubeClient();
+            //var youtubeClient = new YoutubeClient();
 
             // flag
             GettingInfo = true;
 
             // Gets info about movie
-            var videos = await youtubeClient.Videos.GetAsync(Url);
-            ;
+            //var videos = await youtubeClient.Videos.GetAsync(Url);
+            
             //SongsListObservable = await Task.Run(() => AddItems(tracksPaths));
             // Sets info properties
             //Title = await Task.Run(() => videos.Title);
@@ -160,9 +178,6 @@ namespace YoutubeToMp3
         public async Task DownloadVideo()
         {
             // https://www.youtube.com/watch?v=Tqk0Cwt9NzI
-
-            // Sets download directory
-            var userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             //
             //var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(YoutubeUrl);

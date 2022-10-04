@@ -6,16 +6,28 @@ namespace YoutubeToMp3
 {
     public abstract class CommandBaseAsync : ICommand
     {
+        private bool _isExecuting;
+        public bool IsExecuting
+        {
+            get => _isExecuting;
+            set
+            {
+                _isExecuting = value;
+                CanExecuteChanged?.Invoke(this, new EventArgs());
+            }
+        }
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return !IsExecuting;
         }
 
         public async void Execute(object parameter)
         {
+            IsExecuting = true;
             await ExecuteAsync(parameter);
+            IsExecuting = false;
         }
 
         protected abstract Task ExecuteAsync(object parameter);

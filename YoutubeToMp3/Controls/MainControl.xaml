@@ -19,6 +19,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
@@ -29,7 +31,7 @@
                  Width="500"
                  Padding="1"
                  Margin="5"
-                 Text="{Binding VideoViewModel.Url, Mode=OneWayToSource}"
+                 Text="{Binding Url, Mode=OneWayToSource}"
                  TextChanged="urlTextBox_TextChanged"
                  />
 
@@ -49,7 +51,7 @@
                 <Image 
                    Width="200"
                    Height="200"               
-                   Source="{Binding VideoViewModel.Thumbnail}"
+                   Source="{Binding Thumbnail}"
                    />
             </Border>
 
@@ -70,14 +72,14 @@
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal">
                     <TextBlock Text="Title: "/>
-                    <TextBlock Text="{Binding VideoViewModel.Title}"/>
+                    <TextBlock Text="{Binding Title}"/>
                 </StackPanel>
 
                 <!-- DURATION -->
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal">
                     <TextBlock Text="Duration: "/>
-                    <TextBlock Text="{Binding VideoViewModel.Duration}"/>
+                    <TextBlock Text="{Binding Duration}"/>
                 </StackPanel>
 
             </Grid>
@@ -85,7 +87,7 @@
 
         <!-- DOWNLOAD BUTTON -->
         <Button Grid.Row="2"
-                Command="{Binding DownloadCommand}"
+                Command="{Binding DownloadCommandAsync}"
                 Content="Click me"
                 Width="70"
                 Height="22"
@@ -93,9 +95,21 @@
                 />
 
         <TextBlock Grid.Row="3"
-                   Text="Downloading..."
+                   Text="{Binding StatusMessage}"
                    FontSize="16"
-                   Visibility="{Binding IsDownloading, Converter={StaticResource BoolToVisibilityConverter}}"
                    />
+
+        <TextBlock Grid.Row="4"
+                   Text="{Binding ErrorMessage}"
+                   FontSize="16"              
+                   />
+
+        <Button Grid.Row="5"
+                Command="{Binding DownloadVideoClassCommandAsync}"
+                Content="VERSION 2"
+                Width="70"
+                Height="22"
+                Padding="1"
+                />
     </Grid>
 </UserControl>

@@ -20,7 +20,6 @@ namespace YoutubeToMp3
     /// </summary>
     public partial class MainControl : UserControl
     {
-
         public ICommand TextChangedCommand
         {
             get { return (ICommand)GetValue(TextChangedCommandProperty); }
@@ -37,9 +36,16 @@ namespace YoutubeToMp3
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void urlTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextChangedCommand?.Execute(null);
         }
+
+
     }
 }
