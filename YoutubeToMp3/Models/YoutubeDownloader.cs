@@ -16,14 +16,27 @@ namespace YoutubeToMp3
 
             
             var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(url);
-            var info = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            var streamInfo = streamManifest.GetVideoStreams().GetWithHighestBitrate();
+            var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
+            //var streamInfo = streamManifest.GetVideoStreams().GetWithHighestBitrate();
 
             //Replaces all '/' and '\' with - to prevent path error
             var title = string.Concat(videos.Title.Select(x => x != '/' ? x : '-'));
 
             //Downloads video
-            await youtubeClient.Videos.Streams.DownloadAsync(info, @$"{userDirectory}\{title}.{info.Container}");
+            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}video.{streamInfo.Container}");
+        }
+
+        public async Task DownloadAudioAsync(string url, string userDirectory)
+        {
+            var youtubeClient = new YoutubeClient();
+            var videos = await youtubeClient.Videos.GetAsync(url);
+            var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(url);
+            var streamInfo = streamManifest.GetAudioStreams().GetWithHighestBitrate();
+
+            //Replaces all '/' and '\' with - to prevent path error
+            var title = string.Concat(videos.Title.Select(x => x != '/' ? x : '-'));
+
+            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}audio.{streamInfo.Container}");
         }
     }
 }

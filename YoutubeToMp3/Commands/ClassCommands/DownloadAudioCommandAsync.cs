@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace YoutubeToMp3
 {
-    public class DownloadVideoCommandAsync : CommandBaseAsync
+    public class DownloadAudioCommandAsync : CommandBaseAsync
     {
         private readonly MainViewModel _viewModel;
         private readonly IYoutubeDownloader _youtubeDownloader;
 
-        public DownloadVideoCommandAsync(MainViewModel vm, IYoutubeDownloader yt)
+        public DownloadAudioCommandAsync(MainViewModel vm, IYoutubeDownloader yt)
         {
             _viewModel = vm;
             _youtubeDownloader = yt;
@@ -16,10 +19,10 @@ namespace YoutubeToMp3
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            _viewModel.StatusMessage = "Downloading video...";
+            _viewModel.StatusMessage = "Downloading audio...";
             try
             {
-                await _youtubeDownloader.DownloadVideoAsync(_viewModel.Url, _viewModel.UserDirectory);
+                await _youtubeDownloader.DownloadAudioAsync(_viewModel.Url, _viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";
 
             }

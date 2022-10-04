@@ -87,8 +87,8 @@
 
         <!-- DOWNLOAD BUTTON -->
         <Button Grid.Row="2"
-                Command="{Binding DownloadCommandAsync}"
-                Content="Click me"
+                Command="{Binding DownloadVideoCommandAsync}"
+                Content="VIDEO"
                 Width="70"
                 Height="22"
                 Padding="1"
@@ -105,8 +105,8 @@
                    />
 
         <Button Grid.Row="5"
-                Command="{Binding DownloadVideoClassCommandAsync}"
-                Content="VERSION 2"
+                Command="{Binding DownloadAudioCommandAsync}"
+                Content="AUDIO"
                 Width="70"
                 Height="22"
                 Padding="1"
