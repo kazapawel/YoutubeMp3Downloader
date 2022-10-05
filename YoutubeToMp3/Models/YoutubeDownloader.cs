@@ -16,7 +16,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Downloads video with audio from given path.
         /// </summary>
-        public async Task DownloadVideoAsync(string url, string userDirectory)
+        public async Task DownloadVideoAsync(string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
             var streamInfo = StreamData.StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
@@ -27,7 +27,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Downloads audio from given path.
         /// </summary>
-        public async Task DownloadAudioAsync(string url, string userDirectory)
+        public async Task DownloadAudioAsync(string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
             var streamInfo = StreamData.StreamManifest.GetAudioStreams().Where(stream => stream is AudioOnlyStreamInfo).GetWithHighestBitrate();
@@ -43,10 +43,10 @@ namespace YoutubeToMp3
             // Collection of problematic characters
             var problems = new HashSet<char>
             {
-                '/','?',':'
+                '/','?',':','#','%','&','{','}','<','>','*','$','!','@','+','`','|','='
             };
 
-            return string.Concat(title.Select(x => problems.Contains(x) ? '-' : x));
+            return string.Concat(title.Select(x => problems.Contains(x) ? '_' : x));
         }
     }
 }

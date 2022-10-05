@@ -14,18 +14,11 @@ namespace YoutubeToMp3
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            //if(string.IsNullOrEmpty(_viewModel.Url))
-            //{
-            //    _viewModel.StatusMessage = null;
-            //    return;
-            //}
-
-            var data = new StreamData();
             _viewModel.StatusMessage = "Getting info...";
             try
             {
                 var builder = new StreamDataBuilder();
-                data = await builder.GetStreamData(_viewModel.Url);
+                var data = await builder.GetStreamData(_viewModel.Url);
                 _viewModel.SetNewModel(data);
                 _viewModel.StatusMessage = "Data loaded";
             }

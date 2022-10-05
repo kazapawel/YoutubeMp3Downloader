@@ -22,7 +22,7 @@ namespace YoutubeToMp3
             _viewModel.StatusMessage = "Downloading audio...";
             try
             {
-                await _youtubeDownloader.DownloadAudioAsync(_viewModel.Url, _viewModel.UserDirectory);
+                await _youtubeDownloader.DownloadAudioAsync(_viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";
             }
             catch (Exception ex)

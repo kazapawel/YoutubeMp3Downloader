@@ -57,11 +57,11 @@
                     BorderBrush="Red"
                     BorderThickness="1"
                     Margin="5"
-                    Width="150"
-                    Height="150">
+                    Width="200"
+                    Height="200">
                 <Image
-                   Width="150"
-                   Height="150"               
+                   Width="2000"
+                   Height="200"               
                    Source="{Binding Thumbnail}"
                    
                    />

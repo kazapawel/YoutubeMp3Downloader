@@ -90,6 +90,9 @@ namespace YoutubeToMp3
 
         #region CONSTRUCTOR
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public MainViewModel(IYoutubeDownloader yt)
         {
             youtubeDownloader = yt;
@@ -110,6 +113,5 @@ namespace YoutubeToMp3
             OnPropertyChanged(nameof(UploadDate));
             OnPropertyChanged(nameof(Thumbnail));
         }
-
     }
 }

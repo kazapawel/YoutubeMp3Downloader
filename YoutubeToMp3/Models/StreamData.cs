@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using YoutubeExplode.Videos.Streams;
 
 namespace YoutubeToMp3
@@ -9,7 +10,7 @@ namespace YoutubeToMp3
         public string Author => Videos?.Author.ToString();
         public TimeSpan? Duration => Videos?.Duration;
         public DateTimeOffset? UploadDate => Videos?.UploadDate;
-        public string Thumbnail => Videos?.Thumbnails[0].Url;
+        public string Thumbnail => Videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url;
 
         /// <summary>
         /// Metadata associated with a YouTube video.
@@ -20,5 +21,6 @@ namespace YoutubeToMp3
         /// Contains information about available media streams on a YouTube video.
         /// </summary>
         public StreamManifest StreamManifest { get; set; }
+
     }
 }
