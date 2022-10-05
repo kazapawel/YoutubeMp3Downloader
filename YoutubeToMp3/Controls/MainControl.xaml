@@ -93,7 +93,7 @@
                     <TextBlock Text="{Binding Title}"/>
                 </StackPanel>
 
-                <!-- TITLE -->
+                <!-- AUTHOR -->
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal">
                     <TextBlock Text="Author: "/>
@@ -107,11 +107,11 @@
                     <TextBlock Text="{Binding Duration}"/>
                 </StackPanel>
 
-                <!-- SOMETHING -->
+                <!-- UPLOAD DATE -->
                 <StackPanel Grid.Row="3"
                             Orientation="Horizontal">
-                    <TextBlock Text="Something: "/>
-                    <TextBlock Text="{Binding}"/>
+                    <TextBlock Text="Uploaded: "/>
+                    <TextBlock Text="{Binding UploadDate}"/>
                 </StackPanel>
 
             </Grid>

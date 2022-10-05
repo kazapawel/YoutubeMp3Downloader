@@ -12,6 +12,6 @@
     
     <local:MainControl
         DataContext="{Binding MainViewModel}"
-        TextChangedCommand="{Binding GetInfoAsyncCommand}"/>
+        TextChangedCommand="{Binding GetInfoCommandAsync}"/>
     
 </Window>

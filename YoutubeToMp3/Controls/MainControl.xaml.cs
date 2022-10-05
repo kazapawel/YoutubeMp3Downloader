@@ -43,6 +43,7 @@ namespace YoutubeToMp3
         /// <param name="e"></param>
         private void urlTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            FocusManager.SetFocusedElement(this.Parent, null);
             TextChangedCommand?.Execute(null);
         }
 

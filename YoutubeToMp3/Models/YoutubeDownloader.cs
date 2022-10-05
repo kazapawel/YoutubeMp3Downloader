@@ -9,61 +9,44 @@ namespace YoutubeToMp3
     public class YoutubeDownloader : IYoutubeDownloader
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public StreamData StreamData { get; set; }
+
+        /// <summary>
         /// Downloads video with audio from given path.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="userDirectory"></param>
-        /// <returns></returns>
         public async Task DownloadVideoAsync(string url, string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
-
-            // Gets info about movie
-            var videos = await youtubeClient.Videos.GetAsync(url);
-
-            
-            var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(url);
-            var streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            //var streamInfo = streamManifest.GetVideoStreams().GetWithHighestBitrate();
-
-            // Replaces all '/' and '\' with - to prevent path error
-            var title = string.Concat(videos.Title.Select(x => x != '/' ? x : '-'));
-
-            // Downloads video
+            var streamInfo = StreamData.StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
+            var title = FixTitle(StreamData.Videos.Title);
             await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}video.{streamInfo.Container}");
         }
 
         /// <summary>
         /// Downloads audio from given path.
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="userDirectory"></param>
-        /// <returns></returns>
         public async Task DownloadAudioAsync(string url, string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
-            var videos = await youtubeClient.Videos.GetAsync(url);
-            var streamManifest = await youtubeClient.Videos.Streams.GetManifestAsync(url);
-            var streamInfo = streamManifest.GetAudioStreams().GetWithHighestBitrate();
-
-            // Collection of problematic characters
-            var problems = new HashSet<char>
-            {
-                '/','?'
-            };
-
-            // Replaces all problematic characters with '-'
-            var title = string.Concat(videos.Title.Select(x => problems.Contains(x) ? '-' : x));
-
+            var streamInfo = StreamData.StreamManifest.GetAudioStreams().Where(stream => stream is AudioOnlyStreamInfo).GetWithHighestBitrate();
+            var title = FixTitle(StreamData.Videos.Title);
             await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}audio.{streamInfo.Container}");
         }
 
-        public async Task GetInfoAsync(string url)
+        /// <summary>
+        /// Replaces all problematic characters with '-'
+        /// </summary>
+        private string FixTitle(string title)
         {
-            var youtubeClient = new YoutubeClient();
+            // Collection of problematic characters
+            var problems = new HashSet<char>
+            {
+                '/','?',':'
+            };
 
-            // Gets info about movie
-            var videos = await youtubeClient.Videos.GetAsync(url);
+            return string.Concat(title.Select(x => problems.Contains(x) ? '-' : x));
         }
     }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace YoutubeToMp3
 {
     public interface IYoutubeDownloader
     {
-        Task GetInfoAsync(string url);
+        StreamData StreamData { get; set; }
         Task DownloadVideoAsync(string url, string userDirectory);
         Task DownloadAudioAsync(string url, string userDirectory);
     }

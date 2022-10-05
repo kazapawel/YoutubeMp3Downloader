@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace YoutubeToMp3
@@ -8,65 +7,44 @@ namespace YoutubeToMp3
     {
         #region PRIVATE FIELDS
 
+        private StreamData streamDataModel;
+        private IYoutubeDownloader youtubeDownloader;
+        private string url;
         private string statusMessage;
 
         #endregion
 
         #region PUBLIC PROPERTIES
 
-        private string title;
-        private string duration;
-        private string thumbnail;
-        private string url;
-
-        public string UserDirectory { get; set; }
         /// <summary>
-        /// 
+        /// Path where downloaded files are stored.
         /// </summary>
-        public string Title
-        {
-            get => title;
-            set
-            {
-                if (title != value)
-                {
-                    title = value;
-                    OnPropertyChanged(nameof(Title));
-                }
-            }
-        }
+        public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         /// <summary>
         /// 
         /// </summary>
-        public string Duration
-        {
-            get => duration;
-            set
-            {
-                if (duration != value)
-                {
-                    duration = value;
-                    OnPropertyChanged(nameof(Duration));
-                }
-            }
-        }
+        public string Title => streamDataModel?.Title;
 
         /// <summary>
         /// 
         /// </summary>
-        public string Thumbnail
-        {
-            get => thumbnail;
-            set
-            {
-                if (thumbnail != value)
-                {
-                    thumbnail = value;
-                    OnPropertyChanged(nameof(Thumbnail));
-                }
-            }
-        }
+        public string Duration => streamDataModel?.Duration.ToString();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Author => streamDataModel?.Author;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string UploadDate => streamDataModel?.UploadDate.ToString();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Thumbnail => streamDataModel?.Thumbnail;
 
         /// <summary>
         /// 
@@ -104,24 +82,34 @@ namespace YoutubeToMp3
 
         #region COMMANDS
 
-        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this, new YoutubeDownloader());
-        public ICommand DownloadAudioCommandAsync { get; set; }
+        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this, youtubeDownloader);
+        public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this, youtubeDownloader);
+        public ICommand GetInfoCommandAsync => new GetInfoCommandAsync(this);
 
         #endregion
 
         #region CONSTRUCTOR
 
-        public MainViewModel()
+        public MainViewModel(IYoutubeDownloader yt)
         {
-            // Sets download directory
-            UserDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            //Class commands
-            //DownloadVideoCommandAsync = new DownloadVideoCommandAsync(this, new YoutubeDownloader());
-            DownloadAudioCommandAsync = new DownloadAudioCommandAsync(this, new YoutubeDownloader());
+            youtubeDownloader = yt;
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetNewModel(StreamData model)
+        {
+            streamDataModel = model;
+            youtubeDownloader.StreamData = streamDataModel;
+            OnPropertyChanged(nameof(Title));
+            OnPropertyChanged(nameof(Author));
+            OnPropertyChanged(nameof(Duration));
+            OnPropertyChanged(nameof(UploadDate));
+            OnPropertyChanged(nameof(Thumbnail));
+        }
 
     }
 }
