@@ -14,6 +14,14 @@ namespace YoutubeToMp3
         public StreamData StreamData { get; set; }
 
         /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public YoutubeDownloader(StreamData streamData)
+        {
+            StreamData = streamData;
+        }
+
+        /// <summary>
         /// Downloads video with audio from given path.
         /// </summary>
         public async Task DownloadVideoAsync(string userDirectory)

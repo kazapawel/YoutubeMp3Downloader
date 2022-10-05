@@ -19,7 +19,7 @@ namespace YoutubeToMp3
             {
                 var builder = new StreamDataBuilder();
                 var data = await builder.GetStreamData(_viewModel.Url);
-                _viewModel.SetNewModel(data);
+                _viewModel.StreamData = data;
                 _viewModel.StatusMessage = "Data loaded";
             }
             catch (Exception ex)

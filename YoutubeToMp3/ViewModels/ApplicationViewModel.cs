@@ -6,7 +6,7 @@
 
         public ApplicationViewModel()
         {
-            MainViewModel = new MainViewModel(new YoutubeDownloader());
+            MainViewModel = new MainViewModel();
         }
     }
 }

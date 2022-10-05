@@ -6,12 +6,10 @@ namespace YoutubeToMp3
     public class DownloadVideoCommandAsync : CommandBaseAsync
     {
         private readonly MainViewModel _viewModel;
-        private readonly IYoutubeDownloader _youtubeDownloader;
 
-        public DownloadVideoCommandAsync(MainViewModel vm, IYoutubeDownloader yt)
+        public DownloadVideoCommandAsync(MainViewModel vm)
         {
             _viewModel = vm;
-            _youtubeDownloader = yt;
         }
 
         protected override async Task ExecuteAsync(object parameter)
@@ -19,7 +17,8 @@ namespace YoutubeToMp3
             _viewModel.StatusMessage = "Downloading video...";
             try
             {
-                await _youtubeDownloader.DownloadVideoAsync(_viewModel.UserDirectory);
+                var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamData);
+                await youtubeDownloader.DownloadVideoAsync(_viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";
             }
             catch (Exception ex)
