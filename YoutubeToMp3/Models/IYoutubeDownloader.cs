@@ -8,6 +8,7 @@ namespace YoutubeToMp3
 {
     public interface IYoutubeDownloader
     {
+        Task GetInfoAsync(string url);
         Task DownloadVideoAsync(string url, string userDirectory);
         Task DownloadAudioAsync(string url, string userDirectory);
     }

@@ -104,7 +104,7 @@ namespace YoutubeToMp3
 
         #region COMMANDS
 
-        public ICommand DownloadVideoCommandAsync { get; set; }
+        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this, new YoutubeDownloader());
         public ICommand DownloadAudioCommandAsync { get; set; }
 
         #endregion
@@ -117,7 +117,7 @@ namespace YoutubeToMp3
             UserDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
             //Class commands
-            DownloadVideoCommandAsync = new DownloadVideoCommandAsync(this, new YoutubeDownloader());
+            //DownloadVideoCommandAsync = new DownloadVideoCommandAsync(this, new YoutubeDownloader());
             DownloadAudioCommandAsync = new DownloadAudioCommandAsync(this, new YoutubeDownloader());
         }
 

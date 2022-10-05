@@ -14,56 +14,74 @@
             <!-- URL textblock -->
             <RowDefinition Height="*"/>
 
-            <!-- Movie info -->
+            <!-- INFO -->
+            <RowDefinition Height="auto"/>
+            
+            <!-- DOWNLOAD buttons -->
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            
+            <!-- STATUS message-->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
+        <!--#region URL -->
         <!-- URL textbox-->
         <TextBox Grid.Row="0"
                  x:Name="urlTextBox"
-                 Height="25"
+                 Height="30"
+                 FontSize="18"
                  Width="500"
-                 Padding="1"
+                 Padding="2"
                  Margin="5"
                  Text="{Binding Url, Mode=OneWayToSource}"
                  TextChanged="urlTextBox_TextChanged"
                  />
 
+        <!--#endregion-->
+        
+        <!--#region INFO -->
         <!-- INFO -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                
+                <!-- thumbnail -->
+                <ColumnDefinition Width="auto"/>
+                
+                <!-- info -->
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- THUMBNAIL -->
             <Border Grid.Column="0"
+                    BorderBrush="Red"
                     BorderThickness="1"
-                    BorderBrush="Black"
-                    Width="200"
-                    Height="200">
-                <Image 
-                   Width="200"
-                   Height="200"               
+                    Margin="5"
+                    Width="150"
+                    Height="150">
+                <Image
+                   Width="150"
+                   Height="150"               
                    Source="{Binding Thumbnail}"
+                   
                    />
             </Border>
+                
 
-
-            <!-- info -->
+                <!-- INFO -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                    <!-- property name -->
+                    <!-- Title -->
                     <RowDefinition Height="*"/>
 
-                    <!-- property value-->
+                    <!-- Author -->
+                    <RowDefinition Height="*"/>
+                    
+                    <!-- Duration -->
+                    <RowDefinition Height="*"/>
+                    
+                    <!-- Something -->
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
@@ -71,22 +89,45 @@
                 <!-- TITLE -->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal">
-                    <TextBlock Text="Title: "/>
+                    <TextBlock Text="Title: " />
                     <TextBlock Text="{Binding Title}"/>
                 </StackPanel>
 
-                <!-- DURATION -->
+                <!-- TITLE -->
                 <StackPanel Grid.Row="1"
+                            Orientation="Horizontal">
+                    <TextBlock Text="Author: "/>
+                    <TextBlock Text="{Binding Author}"/>
+                </StackPanel>
+
+                <!-- DURATION -->
+                <StackPanel Grid.Row="2"
                             Orientation="Horizontal">
                     <TextBlock Text="Duration: "/>
                     <TextBlock Text="{Binding Duration}"/>
                 </StackPanel>
 
+                <!-- SOMETHING -->
+                <StackPanel Grid.Row="3"
+                            Orientation="Horizontal">
+                    <TextBlock Text="Something: "/>
+                    <TextBlock Text="{Binding}"/>
+                </StackPanel>
+
             </Grid>
         </Grid>
+<!--#endregion-->
+        
+        <!--#region DOWNLOAD BUTTONS -->
 
-        <!-- DOWNLOAD BUTTON -->
-        <Button Grid.Row="2"
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- DOWNLOAD video button -->
+            <Button Grid.Column="0"
                 Command="{Binding DownloadVideoCommandAsync}"
                 Content="VIDEO"
                 Width="70"
@@ -94,22 +135,32 @@
                 Padding="1"
                 />
 
-        <TextBlock Grid.Row="3"
-                   Text="{Binding StatusMessage}"
-                   FontSize="16"
-                   />
-
-        <TextBlock Grid.Row="4"
-                   Text="{Binding ErrorMessage}"
-                   FontSize="16"              
-                   />
-
-        <Button Grid.Row="5"
+            <!-- DOWNLOAD audio button -->
+            <Button Grid.Column="1"
                 Command="{Binding DownloadAudioCommandAsync}"
                 Content="AUDIO"
                 Width="70"
                 Height="22"
                 Padding="1"
                 />
+            
+        </Grid>
+        
+        
+        
+
+        <!--#endregion-->
+        
+        <!--#region STATUS -->
+        
+        <TextBlock Grid.Row="3"
+                   Text="{Binding StatusMessage}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   />
+        
+        <!--#endregion-->
+        
     </Grid>
 </UserControl>
