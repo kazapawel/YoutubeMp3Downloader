@@ -46,11 +46,11 @@
             <Image Grid.Column="0" 
                    x:Name="buttonImage"
                    Source="pack://application:,,,/Images/modern_www.png"                               
-                               Width="40"
-                               Height="40" 
+                               Width="38"
+                               Height="38" 
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
-                   Margin="5"/>
+                   Margin="10,5,5,5"/>
 
             <!-- TEXTBOX -->
             <TextBox Grid.Column="1"
@@ -97,8 +97,9 @@
             <Border Grid.Column="0"
                     BorderBrush="{StaticResource FgOrangeBrush}"
                     BorderThickness="0"
-                    Margin="10"
-                    Width="270"
+                    Background="Black"
+                    Margin="10,10,5,10"
+                    Width="266"
                     Height="200"
                     >
                 <Image
@@ -130,30 +131,49 @@
                 <!-- TITLE -->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal">
-                    <TextBlock Text="Title: " 
-                               Foreground="White"/>
-                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Style="{StaticResource BasicTextblock}"
+                               Text="Title: " 
+                               Margin="5"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}"
+                               Text="{Binding Title}"
+                               />
                 </StackPanel>
 
                 <!-- AUTHOR -->
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal">
-                    <TextBlock Text="Author: "/>
-                    <TextBlock Text="{Binding Author}"/>
+                    <TextBlock Text="Author: "
+                               Style="{StaticResource BasicTextblock}"
+                               Margin="5"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}" 
+                               Text="{Binding Author}"
+                               />
                 </StackPanel>
 
                 <!-- DURATION -->
                 <StackPanel Grid.Row="2"
                             Orientation="Horizontal">
-                    <TextBlock Text="Duration: "/>
-                    <TextBlock Text="{Binding Duration}"/>
+                    <TextBlock Style="{StaticResource BasicTextblock}" 
+                               Text="Duration: "
+                               Margin="5"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}" 
+                               Text="{Binding Duration}"
+                               />
                 </StackPanel>
 
                 <!-- UPLOAD DATE -->
                 <StackPanel Grid.Row="3"
                             Orientation="Horizontal">
-                    <TextBlock Text="Uploaded: "/>
-                    <TextBlock Text="{Binding UploadDate}"/>
+                    <TextBlock Style="{StaticResource BasicTextblock}" 
+                               Text="Uploaded: "
+                               Margin="5"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}"
+                               Text="{Binding UploadDate}"
+                               />
                 </StackPanel>
 
             </Grid>

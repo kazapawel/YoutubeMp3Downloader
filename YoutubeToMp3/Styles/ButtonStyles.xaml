@@ -145,8 +145,8 @@
 
                         <Image x:Name="buttonImage"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"                               
-                               Width="25"
-                               Height="25" 
+                               Width="28"
+                               Height="28" 
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
