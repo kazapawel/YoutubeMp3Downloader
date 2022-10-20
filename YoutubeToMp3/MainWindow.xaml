@@ -4,14 +4,80 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YoutubeToMp3"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" 
+        Height="450"
+        Width="800"
+        Style="{StaticResource MainWindowModernStyle}"
+        WindowStartupLocation="CenterScreen">
+
     <Window.DataContext>
         <local:ApplicationViewModel/>
     </Window.DataContext>
     
-    <local:MainControl
-        DataContext="{Binding MainViewModel}"
-        TextChangedCommand="{Binding GetInfoCommandAsync}"/>
-    
+    <Grid>
+
+        <!--#region MAIN GRID DEFINITIONS -->
+        <Grid.RowDefinitions>
+
+            <!-- Title bar-->
+            <RowDefinition Height="35"/>
+
+            <!-- Main control -->
+            <RowDefinition Height="auto"/>
+
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region  TITLE BAR -->
+        <!-- TITLE BAR -->
+        <Grid Grid.Row="0" 
+             >
+
+            <Grid.ColumnDefinitions>
+
+                <!-- Image -->
+                <ColumnDefinition Width="auto"/>
+
+                <!-- Header -->
+                <ColumnDefinition Width="*"/>
+
+                <!-- Minimize button -->
+                <ColumnDefinition Width="auto"/>
+
+                <!-- Close button -->
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Minimize button-->
+            <Button Grid.Column="2"
+                    Style="{StaticResource ButtonImageStyle}"
+                    Background="{StaticResource BackgroundDarkSimpleMainBrush}"
+                    Tag="pack://application:,,,/Images/minimize_modern.png"
+                    Click="MinimizeButton_Click"
+                    />
+
+            <Button Grid.Column="3"
+                    Background="Red"
+                    Style="{StaticResource ButtonImageStyle}"
+                    Tag="pack://application:,,,/Images/close_modern.png"
+                    Click="CloseButton_Click"
+                    />
+
+        </Grid>
+
+        <!--#endregion-->
+
+        <!--#region MAIN CONTROL -->
+        <local:MainControl Grid.Row="1"
+                           DataContext="{Binding MainViewModel}"
+                           TextChangedCommand="{Binding GetInfoCommandAsync}"
+                           />
+
+        <!--#endregion-->
+
+    </Grid>
 </Window>

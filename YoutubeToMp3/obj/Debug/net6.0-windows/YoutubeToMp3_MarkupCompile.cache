@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\App.xaml
-3-736097673
+8-829982246
 
 22282116522
-1981337135816
-Controls\MainControl.xaml;Controls\VideoInfoControl.xaml;MainWindow.xaml;
+1991514783427
+Controls\MainControl.xaml;Controls\VideoInfoControl.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\Colors.xaml;Styles\TextblockStyles.xaml;Styles\TextboxStyles.xaml;Styles\WindowStyles.xaml;
 
 False
 

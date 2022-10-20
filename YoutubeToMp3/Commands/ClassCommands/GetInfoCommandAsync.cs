@@ -14,6 +14,10 @@ namespace YoutubeToMp3
 
         protected override async Task ExecuteAsync(object parameter)
         {
+            // this is going to be fixed by binding
+            var text = parameter.ToString();
+            _viewModel.Url = text;
+
             _viewModel.StatusMessage = "Getting info...";
             try
             {

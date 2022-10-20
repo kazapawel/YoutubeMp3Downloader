@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YoutubeToMp3"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             >
     <Grid>
 
         <!-- GRID definitions -->
@@ -25,18 +26,58 @@
 
         </Grid.RowDefinitions>
 
-        <!--#region URL -->
-        <!-- URL textbox-->
-        <TextBox Grid.Row="0"
-                 x:Name="urlTextBox"
-                 Height="30"
-                 FontSize="18"
-                 Width="500"
-                 Padding="2"
-                 Margin="5"
-                 Text="{Binding Url, Mode=OneWayToSource}"
-                 TextChanged="urlTextBox_TextChanged"
-                 />
+        <!--#region URL SECTION -->
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                
+                <!-- enter url -->
+                <ColumnDefinition Width="auto"/>
+
+                <!-- Textbox-->
+                <ColumnDefinition Width="*"/>
+                
+                <!-- Paste button -->
+                <ColumnDefinition Width="auto"/>
+                
+            </Grid.ColumnDefinitions>
+
+            <!-- Enter url textblock -->
+            <Image Grid.Column="0" 
+                   x:Name="buttonImage"
+                   Source="pack://application:,,,/Images/modern_www.png"                               
+                               Width="40"
+                               Height="40" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                   Margin="5"/>
+
+            <!-- TEXTBOX -->
+            <TextBox Grid.Column="1"
+                     x:Name="urlTextBox"
+                     Height="38"
+                     FontSize="18"             
+                     Padding="5"
+                     Margin="5,10,0,10"
+                     Text="{Binding Url, Mode=OneWayToSource}"
+                     TextChanged="urlTextBox_TextChanged"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Stretch"
+                     Background="{StaticResource BgLightBrush}"
+                     Foreground="White"
+                     BorderThickness="0"
+                     BorderBrush="{StaticResource FgOrangeBrush}"
+                     />
+
+
+
+            <Button Grid.Column="2"
+                    Style="{StaticResource ButtonPaste}"
+                    Tag="pack://application:,,,/Images/paste_modern.png"
+                    />
+
+        </Grid>
+        
 
         <!--#endregion-->
         
@@ -54,16 +95,16 @@
 
             <!-- THUMBNAIL -->
             <Border Grid.Column="0"
-                    BorderBrush="Red"
-                    BorderThickness="1"
-                    Margin="5"
-                    Width="200"
-                    Height="200">
+                    BorderBrush="{StaticResource FgOrangeBrush}"
+                    BorderThickness="0"
+                    Margin="10"
+                    Width="270"
+                    Height="200"
+                    >
                 <Image
-                   Width="2000"
-                   Height="200"               
+                                 
                    Source="{Binding Thumbnail}"
-                   
+                   HorizontalAlignment="Center"
                    />
             </Border>
                 
@@ -89,7 +130,8 @@
                 <!-- TITLE -->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal">
-                    <TextBlock Text="Title: " />
+                    <TextBlock Text="Title: " 
+                               Foreground="White"/>
                     <TextBlock Text="{Binding Title}"/>
                 </StackPanel>
 

@@ -8,11 +8,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\close_modern.png" />
+    <None Remove="Images\minimize_modern.png" />
+    <None Remove="Images\modern_www.png" />
+    <None Remove="Images\paste_modern.png" />
+    <None Remove="Images\Sweet\sweet_close.png" />
+    <None Remove="Images\Sweet\sweet_link.png" />
+    <None Remove="Images\Sweet\sweet_maximize.png" />
+    <None Remove="Images\Sweet\sweet_minimize.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="YoutubeExplode.Converter" Version="6.2.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
+    <Resource Include="Images\close_modern.png" />
+    <Resource Include="Images\minimize_modern.png" />
+    <Resource Include="Images\modern_www.png" />
+    <Resource Include="Images\paste_modern.png" />
+    <Resource Include="Images\Sweet\sweet_close.png" />
+    <Resource Include="Images\Sweet\sweet_link.png" />
+    <Resource Include="Images\Sweet\sweet_maximize.png" />
+    <Resource Include="Images\Sweet\sweet_minimize.png" />
   </ItemGroup>
 
 </Project>
