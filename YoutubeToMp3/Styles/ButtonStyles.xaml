@@ -20,7 +20,7 @@
     <Style TargetType="{x:Type Button}" x:Key="ButtonImageStyle" BasedOn="{StaticResource BaseEmptyButtonStyle}">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Opacity" Value="0.8"/>
-        <Setter Property="Height" Value="35"/>
+        <Setter Property="Height" Value="40"/>
         <Setter Property="Width" Value="45"/>
         <Setter Property="Background" Value="Red"/>
         <Setter Property="Template">
@@ -125,7 +125,7 @@
         </Setter>
     </Style>
 
-    <!-- Paste button style -->
+    <!-- PASTE button style -->
     <Style TargetType="{x:Type Button}" x:Key="ButtonPaste" BasedOn="{StaticResource BaseEmptyButtonStyle}">
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Opacity" Value="0.9"/>
@@ -234,6 +234,140 @@
         </Setter>
     </Style>
 
+
+    <!-- DOWNLOAD button style -->
+    <Style TargetType="{x:Type Button}" x:Key="ButtonDownload" BasedOn="{StaticResource BaseEmptyButtonStyle}">
+        <Setter Property="Margin" Value="5,15,5,5"/>
+        <Setter Property="Opacity" Value="0.9"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+
+                    <!-- Border main -->
+                    <Border x:Name="buttonBorder"                                                      
+                            Padding="4"
+                            Width="{TemplateBinding Width}"
+                            Height="{TemplateBinding Height}"
+                            Background="Transparent"
+                            BorderBrush="Bisque"
+                            BorderThickness="1"
+                            CornerRadius="7"
+                            Opacity="0.9">
+                        
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Width="60"
+                                       Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
+                                       Foreground="White"
+                                       FontSize="16"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       
+                                       />
+                            <Image Grid.Column="1" 
+                                   x:Name="buttonImage"
+                                   
+                               Source="pack://application:,,,/Images/download_modern.png"                           
+                               Width="40"
+                               Height="40" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               RenderOptions.BitmapScalingMode="HighQuality"
+                               RenderOptions.EdgeMode="Aliased"
+                               RenderTransformOrigin=".5,.5"
+                               Opacity="0.8">
+
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1"/>
+                                        <RotateTransform x:Name="ImageRotate" Angle="0"/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
+
+                        </Grid>
+                        
+
+
+                    </Border>
+
+                    <!-- Triggers -->
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" 
+                                    TargetName="buttonBorder" 
+                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"/>
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+
+                        <!-- Animations -->
+                        <!--Mouse hover animation-->
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="buttonImage" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1.1" Duration="0:0:0:0.05" />
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1.1" Duration="0:0:0:0.05" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!--Mouse leave animation-->
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="buttonImage" Storyboard.TargetProperty="Opacity" To="0.8" Duration="0:0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1" Duration="0:0:0:0.1" />
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1" Duration="0:0:0:0.1" />
+                                    <DoubleAnimation Storyboard.TargetName="ImageRotate" Storyboard.TargetProperty="(RotateTransform.Angle)" To="0" Duration="0:0:0:0.1"/>
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Mouse click down-->
+                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1.2" Duration="0:0:0:0.05" />
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1.2" Duration="0:0:0:0.1" />
+
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Mouse click up -->
+                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleX)" To="1" Duration="0:0:0:0.05" />
+                                    <DoubleAnimation Storyboard.TargetName="ImageScale" Storyboard.TargetProperty="(ScaleTransform.ScaleY)" To="1" Duration="0:0:0:0.1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Mouse over background opacity -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" 
+                                    TargetName="buttonBorder" 
+                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"/>
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
 
 

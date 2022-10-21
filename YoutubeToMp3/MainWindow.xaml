@@ -7,8 +7,10 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450"
-        Width="800"
+        MinHeight="440"
+        MaxHeight="440"
+        MinWidth="800"
+        MaxWidth="800"
         Style="{StaticResource MainWindowModernStyle}"
         WindowStartupLocation="CenterScreen">
 
@@ -22,7 +24,7 @@
         <Grid.RowDefinitions>
 
             <!-- Title bar-->
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="40"/>
 
             <!-- Main control -->
             <RowDefinition Height="auto"/>

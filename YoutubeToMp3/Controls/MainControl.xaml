@@ -12,53 +12,58 @@
         <!-- GRID definitions -->
         <Grid.RowDefinitions>
 
-            <!-- URL textblock -->
+            <!-- 0 URL icon/textblock/icon -->
             <RowDefinition Height="*"/>
 
-            <!-- INFO -->
+            <!-- 1 Thumbnail and info -->
             <RowDefinition Height="auto"/>
             
-            <!-- DOWNLOAD buttons -->
+            <!-- 2 Info -->
             <RowDefinition Height="*"/>
-            
-            <!-- STATUS message-->
+
+            <!-- 3 Download video button -->
+            <RowDefinition Height="auto"/>
+
+            <!-- 4 Download audio button -->
+            <RowDefinition Height="auto"/>
+
+            <!-- 5 STATUS message-->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
         <!--#region URL SECTION -->
-
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                
-                <!-- enter url -->
+
+                <!-- 0 Icon -->
                 <ColumnDefinition Width="auto"/>
 
-                <!-- Textbox-->
+                <!-- 1 Textbox-->
                 <ColumnDefinition Width="*"/>
-                
-                <!-- Paste button -->
+
+                <!-- 2 Paste button -->
                 <ColumnDefinition Width="auto"/>
-                
+
             </Grid.ColumnDefinitions>
 
-            <!-- Enter url textblock -->
+            <!-- ICON www -->
             <Image Grid.Column="0" 
-                   x:Name="buttonImage"
                    Source="pack://application:,,,/Images/modern_www.png"                               
-                               Width="38"
-                               Height="38" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                   Margin="10,5,5,5"/>
+                   Width="38"
+                   Height="38" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="10,-8,5,5"
+                   />
 
-            <!-- TEXTBOX -->
+            <!-- URL textbox -->
             <TextBox Grid.Column="1"
                      x:Name="urlTextBox"
                      Height="38"
                      FontSize="18"             
                      Padding="5"
-                     Margin="5,10,0,10"
+                     Margin="5,0,0,10"
                      Text="{Binding Url, Mode=OneWayToSource}"
                      TextChanged="urlTextBox_TextChanged"
                      VerticalAlignment="Center"
@@ -68,17 +73,14 @@
                      BorderThickness="0"
                      BorderBrush="{StaticResource FgOrangeBrush}"
                      />
-
-
-
+            
+            <!-- PASTE button -->
             <Button Grid.Column="2"
                     Style="{StaticResource ButtonPaste}"
-                    Tag="pack://application:,,,/Images/paste_modern.png"
+                    Tag="pack://application:,,,/Images/paste_modern_color.png"
                     />
 
         </Grid>
-        
-
         <!--#endregion-->
         
         <!--#region INFO -->
@@ -86,10 +88,10 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 
-                <!-- thumbnail -->
+                <!-- 0 Thumbnail -->
                 <ColumnDefinition Width="auto"/>
                 
-                <!-- info -->
+                <!-- 1 Info grid -->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -98,32 +100,38 @@
                     BorderBrush="{StaticResource FgOrangeBrush}"
                     BorderThickness="0"
                     Background="Black"
-                    Margin="10,10,5,10"
+                    Margin="20,10,10,10"
                     Width="266"
-                    Height="200"
-                    >
-                <Image
+                    Height="200">
+
+                <Image Source="pack://application:,,,/Images/youtube_modern_100.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Width="100"
+                       Height="100"
+                       />
+                <!--<Image
                                  
                    Source="{Binding Thumbnail}"
                    HorizontalAlignment="Center"
-                   />
+                    VerticalAlignment="Center"
+                   />-->
             </Border>
                 
-
-                <!-- INFO -->
+            <!-- INFO -->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                    <!-- Title -->
+                    <!-- 0 Title -->
                     <RowDefinition Height="*"/>
 
-                    <!-- Author -->
+                    <!-- 1 Author -->
                     <RowDefinition Height="*"/>
                     
-                    <!-- Duration -->
+                    <!-- 2 Duration -->
                     <RowDefinition Height="*"/>
                     
-                    <!-- Something -->
+                    <!-- 3 Something -->
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
@@ -132,8 +140,7 @@
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal">
                     <TextBlock Style="{StaticResource BasicTextblock}"
-                               Text="Title: " 
-                               Margin="5"
+                               Text="Title: "
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
                                Text="{Binding Title}"
@@ -145,7 +152,7 @@
                             Orientation="Horizontal">
                     <TextBlock Text="Author: "
                                Style="{StaticResource BasicTextblock}"
-                               Margin="5"
+                               Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
                                Text="{Binding Author}"
@@ -157,7 +164,7 @@
                             Orientation="Horizontal">
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Duration: "
-                               Margin="5"
+                               Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
                                Text="{Binding Duration}"
@@ -169,7 +176,7 @@
                             Orientation="Horizontal">
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Uploaded: "
-                               Margin="5"
+                               Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
                                Text="{Binding UploadDate}"
@@ -178,34 +185,28 @@
 
             </Grid>
         </Grid>
-<!--#endregion-->
+        <!--#endregion-->
         
         <!--#region DOWNLOAD BUTTONS -->
-
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- DOWNLOAD video button -->
+            <!-- DOWNLOAD VIDEO button -->
             <Button Grid.Column="0"
-                Command="{Binding DownloadVideoCommandAsync}"
-                Content="VIDEO"
-                Width="70"
-                Height="22"
-                Padding="1"
-                />
+                    Style="{StaticResource ButtonDownload}"
+                    Tag="VIDEO"
+                    Command="{Binding DownloadVideoCommandAsync}"
+                    />
 
-            <!-- DOWNLOAD audio button -->
+            <!-- DOWNLOAD AUDIO button -->
             <Button Grid.Column="1"
-                Command="{Binding DownloadAudioCommandAsync}"
-                Content="AUDIO"
-                Width="70"
-                Height="22"
-                Padding="1"
-                />
-            
+                    Style="{StaticResource ButtonDownload}"
+                    Tag="AUDIO"
+                    Command="{Binding DownloadAudioCommandAsync}"
+                    />
         </Grid>
         
         
@@ -216,9 +217,11 @@
         <!--#region STATUS -->
         
         <TextBlock Grid.Row="3"
+                   Margin="10,10,10,0"
                    Text="{Binding StatusMessage}"
+                   Style="{StaticResource BasicTextblock}"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
+                   
                    FontSize="20"
                    />
         

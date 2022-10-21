@@ -38,6 +38,8 @@ namespace YoutubeToMp3
         public async Task DownloadAudioAsync(string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
+
+            // excepption if null
             var streamInfo = StreamData.StreamManifest.GetAudioStreams().Where(stream => stream is AudioOnlyStreamInfo).GetWithHighestBitrate();
             var title = FixTitle(StreamData.Videos.Title);
             await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}audio.{streamInfo.Container}");
