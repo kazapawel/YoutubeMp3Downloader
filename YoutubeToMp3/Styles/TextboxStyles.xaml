@@ -1,7 +1,19 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    
-    
-    
+    <Style TargetType="{x:Type TextBox}" x:Key="EnterUrlTextBoxStyle">
+        <Setter Property="Height" Value="38"/>
+        <Setter Property="Margin" Value="5,0,0,10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="{StaticResource FgOrangeBrush}"/>
+        <Setter Property="FontFamily" Value="/Fonts/OpenSans-Regular.ttf #Open Sans"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Foreground" Value="#eeeeee"/>
+        <Setter Property="Background" Value="{StaticResource BgLightBrush}"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+
 </ResourceDictionary>

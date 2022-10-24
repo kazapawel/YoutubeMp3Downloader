@@ -12,7 +12,10 @@
 
                 <!-- Textblocks styles -->
                 <ResourceDictionary Source="Styles/TextblockStyles.xaml"/>
-                
+
+                <!-- Textboxes styles -->
+                <ResourceDictionary Source="Styles/TextboxStyles.xaml"/>
+
                 <!-- Window styles -->
                 <ResourceDictionary Source="Styles/WindowStyles.xaml"/>
 

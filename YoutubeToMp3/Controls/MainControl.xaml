@@ -60,18 +60,9 @@
             <!-- URL textbox -->
             <TextBox Grid.Column="1"
                      x:Name="urlTextBox"
-                     Height="38"
-                     FontSize="18"             
-                     Padding="5"
-                     Margin="5,0,0,10"
+                     Style="{StaticResource EnterUrlTextBoxStyle}"
                      Text="{Binding Url, Mode=OneWayToSource}"
                      TextChanged="urlTextBox_TextChanged"
-                     VerticalAlignment="Center"
-                     HorizontalAlignment="Stretch"
-                     Background="{StaticResource BgLightBrush}"
-                     Foreground="White"
-                     BorderThickness="0"
-                     BorderBrush="{StaticResource FgOrangeBrush}"
                      />
             
             <!-- PASTE button -->
@@ -197,14 +188,14 @@
             <!-- DOWNLOAD VIDEO button -->
             <Button Grid.Column="0"
                     Style="{StaticResource ButtonDownload}"
-                    Tag="VIDEO"
+                    Tag=""
                     Command="{Binding DownloadVideoCommandAsync}"
                     />
 
             <!-- DOWNLOAD AUDIO button -->
             <Button Grid.Column="1"
                     Style="{StaticResource ButtonDownload}"
-                    Tag="AUDIO"
+                    Tag=""
                     Command="{Binding DownloadAudioCommandAsync}"
                     />
         </Grid>

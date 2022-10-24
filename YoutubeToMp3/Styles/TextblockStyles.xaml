@@ -1,30 +1,23 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="{x:Type TextBlock}">
-        <Setter Property="FontFamily" Value="Comic Sans MS"/>
-
+    <!-- Default font -->
+    <Style TargetType="{x:Type TextBlock}" x:Key="OpenSansRegular">
+        <Setter Property="FontFamily" Value="/Fonts/OpenSans-Regular.ttf #Open Sans"/>
     </Style>
 
-        <!-- DEFAULT ORANGE textblock style-->
-    <Style TargetType="{x:Type TextBlock}" x:Key="BasicTextblock">
-        <!--BasedOn="{StaticResource NunitoSansRegular}">-->
-        <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}"/>
+    <!-- Default ORANGE textblock style-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="BasicTextblock" BasedOn="{StaticResource OpenSansRegular}">
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Foreground" Value="{StaticResource FgOrangeBrush}"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="Miriam Fixed"/>
     </Style>
 
-    <!-- DEFAULT White textblock style-->
-    <Style TargetType="{x:Type TextBlock}" x:Key="WhiteTextblock">
-        <!--BasedOn="{StaticResource NunitoSansRegular}">-->
-        <Setter Property="Foreground" Value="{StaticResource ForegroundMainBrush}"/>
+    <!-- Default WHITE textblock style-->
+    <Style TargetType="{x:Type TextBlock}" x:Key="WhiteTextblock" BasedOn="{StaticResource OpenSansRegular}">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-       
-        <Setter Property="FontFamily" Value="Miriam Fixed"/>
     </Style>
 
 </ResourceDictionary>

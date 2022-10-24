@@ -8,6 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\OpenSans-Bold.ttf" />
+    <None Remove="Fonts\OpenSans-Italic.ttf" />
+    <None Remove="Fonts\OpenSans-Regular.ttf" />
     <None Remove="Images\close_modern.png" />
     <None Remove="Images\download_modern.png" />
     <None Remove="Images\minimize_modern.png" />
@@ -29,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\OpenSans-Bold.ttf" />
+    <Resource Include="Fonts\OpenSans-Italic.ttf" />
+    <Resource Include="Fonts\OpenSans-Regular.ttf" />
     <Resource Include="Images\close_modern.png" />
     <Resource Include="Images\download_modern.png" />
     <Resource Include="Images\minimize_modern.png" />

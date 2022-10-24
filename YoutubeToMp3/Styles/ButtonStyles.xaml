@@ -253,7 +253,7 @@
                             Height="{TemplateBinding Height}"
                             Background="Transparent"
                             BorderBrush="Bisque"
-                            BorderThickness="1"
+                            BorderThickness="0"
                             CornerRadius="7"
                             Opacity="0.9">
                         
