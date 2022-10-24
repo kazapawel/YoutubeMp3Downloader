@@ -68,6 +68,7 @@ namespace YoutubeToMp3
             if (execute == null) throw new ArgumentNullException(nameof(execute));
             else
                 _execute = execute;
+
             _canExecute = canExecute;
         }
 

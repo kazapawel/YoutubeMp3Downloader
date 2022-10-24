@@ -102,6 +102,8 @@ namespace YoutubeToMp3
         public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
         public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this);
         public ICommand GetInfoCommandAsync => new GetInfoCommandAsync(this);
+        public ICommand ClearUrlCommand => new ClearUrlCommand(this);
+        public ICommand PasteClipboardCommand => new PasteClipboardCommand(this);
 
         #endregion
 

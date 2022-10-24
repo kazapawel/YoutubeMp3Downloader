@@ -16,6 +16,14 @@ namespace YoutubeToMp3
         {
             // this is going to be fixed by binding
             var text = parameter.ToString();
+
+            // if textbox was cleared
+            if(string.IsNullOrEmpty(text))
+            {
+                _viewModel.StatusMessage = string.Empty;
+                return;
+            }
+
             _viewModel.Url = text;
 
             _viewModel.StatusMessage = "Getting info...";
