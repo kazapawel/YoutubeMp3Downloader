@@ -15,7 +15,7 @@
             <Setter.Value>
                 <WindowChrome UseAeroCaptionButtons="True"
                               GlassFrameThickness="0"
-                              CornerRadius="13"
+                              CornerRadius="20"
                               CaptionHeight="40"
                               ResizeBorderThickness="9"
                               RenderOptions.EdgeMode="Unspecified"           

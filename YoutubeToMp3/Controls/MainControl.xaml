@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              >
+    
     <Grid>
 
         <!-- GRID definitions -->
@@ -33,7 +34,8 @@
         </Grid.RowDefinitions>
 
         <!--#region URL SECTION -->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0"
+              Margin="0">
             <Grid.ColumnDefinitions>
 
                 <!-- 0 Icon -->
@@ -53,11 +55,11 @@
             <!-- ICON www -->
             <Image Grid.Column="0" 
                    Source="pack://application:,,,/Images/modern_www.png"                               
-                   Width="38"
-                   Height="38" 
+                   Width="34"
+                   Height="34" 
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Margin="10,-8,5,5"
+                   Margin="10,-6,5,5"
                    />
 
             <!-- URL textbox -->
@@ -67,18 +69,7 @@
                      Text="{Binding Url, Mode=TwoWay}"
                      TextChanged="urlTextBox_TextChanged"
                      />
-            
-            <!-- X button -->
-            <Button Grid.Column="2"
-                    Style="{StaticResource XButtonStyle}"
-                    Tag="pack://application:,,,/Images/clear_modern.png"
-                    Margin="0,0,0,10"
-                    Command="{Binding ClearUrlCommand}"
-                    Height="38"
-                    
-                    
-                    />
-            
+
             <!-- PASTE button -->
             <Button Grid.Column="3"
                     Style="{StaticResource ButtonPaste}"
@@ -94,57 +85,52 @@
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 
-                <!-- 0 Thumbnail -->
+                 <!--0 Thumbnail--> 
                 <ColumnDefinition Width="auto"/>
                 
-                <!-- 1 Info grid -->
+                 <!--1 Info grid--> 
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- THUMBNAIL -->
+             <!--THUMBNAIL--> 
             <Border Grid.Column="0"
                     BorderBrush="{StaticResource FgOrangeBrush}"
                     BorderThickness="0"
                     Background="Black"
-                    Margin="20,10,10,10"
-                    Width="266"
-                    Height="200">
+                    Margin="50,0,10,10"
+                    Width="320"
+                    Height="240">
 
-                <Image Source="pack://application:,,,/Images/youtube_modern_100.png"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Width="100"
-                       Height="100"
+                <Image Source="{Binding Thumbnail}"
+                       Style="{StaticResource ThumbnailStyle}"
                        />
-                <!--<Image
-                                 
-                   Source="{Binding Thumbnail}"
-                   HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                   />-->
             </Border>
                 
-            <!-- INFO -->
+             <!--INFO--> 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                    <!-- 0 Title -->
+                     <!--0 Title--> 
                     <RowDefinition Height="*"/>
 
-                    <!-- 1 Author -->
+                     <!--1 Author--> 
                     <RowDefinition Height="*"/>
                     
-                    <!-- 2 Duration -->
+                     <!--2 Duration--> 
                     <RowDefinition Height="*"/>
                     
-                    <!-- 3 Something -->
+                     <!--3 Upload date--> 
+                    <RowDefinition Height="*"/>
+
+                     <!--4 Status message--> 
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
 
-                <!-- TITLE -->
+                 <!--TITLE--> 
                 <StackPanel Grid.Row="0"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0">
                     <TextBlock Style="{StaticResource BasicTextblock}"
                                Text="Title: "
                                />
@@ -153,33 +139,36 @@
                                />
                 </StackPanel>
 
-                <!-- AUTHOR -->
+                 <!--AUTHOR--> 
                 <StackPanel Grid.Row="1"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0">
                     <TextBlock Text="Author: "
                                Style="{StaticResource BasicTextblock}"
-                               Margin="0"
+                               
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
                                Text="{Binding Author}"
                                />
                 </StackPanel>
 
-                <!-- DURATION -->
+                 <!--DURATION--> 
                 <StackPanel Grid.Row="2"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Margin="0,-0,0,0">
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Duration: "
-                               Margin="0"
+                               
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
                                Text="{Binding Duration}"
                                />
                 </StackPanel>
 
-                <!-- UPLOAD DATE -->
+                 <!--UPLOAD DATE--> 
                 <StackPanel Grid.Row="3"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                            Margin="0,0,0,0">
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Uploaded: "
                                Margin="0"
@@ -189,47 +178,48 @@
                                />
                 </StackPanel>
 
-            </Grid>
-        </Grid>
-        <!--#endregion-->
-        
-        <!--#region DOWNLOAD BUTTONS -->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <!--#region DOWNLOAD BUTTONS -->
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-            <!-- DOWNLOAD VIDEO button -->
-            <Button Grid.Column="0"
+                    <!-- DOWNLOAD VIDEO button -->
+                    <Button Grid.Column="0"
                     Style="{StaticResource ButtonDownload}"
-                    Tag=""
+                    Tag="Video"
                     Command="{Binding DownloadVideoCommandAsync}"
                     />
 
-            <!-- DOWNLOAD AUDIO button -->
-            <Button Grid.Column="1"
+                    <!-- DOWNLOAD AUDIO button -->
+                    <Button Grid.Column="1"
                     Style="{StaticResource ButtonDownload}"
-                    Tag=""
+                    Tag="Audio"
                     Command="{Binding DownloadAudioCommandAsync}"
                     />
-        </Grid>
-        
-        
-        
+                </Grid>
 
+
+
+
+                <!--#endregion-->
+
+            </Grid>
+        </Grid>
         <!--#endregion-->
-        
+              
         <!--#region STATUS -->
-        
-        <TextBlock Grid.Row="3"
-                   Margin="10,10,10,0"
+        <TextBlock Grid.Row="5"
+                   Foreground="Wheat"
                    Text="{Binding StatusMessage}"
                    Style="{StaticResource BasicTextblock}"
-                   HorizontalAlignment="Center"
-                   
-                   FontSize="20"
+                   HorizontalAlignment="Left"
+                   Margin="50,5,0,10"
+                   FontSize="16"
+                   TextTrimming="CharacterEllipsis"
                    />
+        
         
         <!--#endregion-->
         

@@ -15,6 +15,7 @@ namespace YoutubeToMp3
 
         #region PUBLIC PROPERTIES
 
+        #region Stream Data
         public StreamData StreamData
         {
             get => streamData;
@@ -58,10 +59,12 @@ namespace YoutubeToMp3
         /// </summary>
         public string UploadDate => StreamData?.UploadDate.ToString();
 
+        #endregion
+
         /// <summary>
         /// 
         /// </summary>
-        public string Thumbnail => StreamData?.Thumbnail;
+        public string Thumbnail => StreamData != null ? StreamData?.Thumbnail : "pack://application:,,,/Images/youtube_modern_100.png";
 
         /// <summary>
         /// 

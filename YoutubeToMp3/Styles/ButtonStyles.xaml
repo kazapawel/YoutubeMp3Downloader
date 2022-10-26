@@ -127,9 +127,9 @@
 
     <!-- PASTE button style -->
     <Style TargetType="{x:Type Button}" x:Key="ButtonPaste" BasedOn="{StaticResource BaseEmptyButtonStyle}">
-        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Margin" Value="0,-5,0,0"/>
         <Setter Property="Opacity" Value="0.9"/>
-        <Setter Property="Height" Value="35"/>
+        <Setter Property="Height" Value="34"/>
         <Setter Property="Width" Value="45"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
@@ -263,7 +263,8 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0"
-                                       Width="60"
+                                       Style="{StaticResource WhiteTextblock}"
+                                       Width="auto"
                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
                                        Foreground="White"
                                        FontSize="16"
@@ -432,13 +433,13 @@
         </Setter>
     </Style>
 
-    <!-- x button style -->
+    <!-- X button style -->
     <Style TargetType="{x:Type Button}" x:Key="XButtonStyle" BasedOn="{StaticResource BaseEmptyButtonStyle}">
         <Setter Property="Margin" Value="0"/>
-        
+        <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="40"/>
-        <Setter Property="Background" Value="{StaticResource BgLightBrush}"/>
+        <Setter Property="Width" Value="34"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -448,7 +449,7 @@
                             Padding="5"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
-                            Background="{StaticResource BgLightBrush}">
+                            Background="{TemplateBinding Background}">
 
                         <Image x:Name="buttonImage"
                                Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"                               
@@ -459,7 +460,7 @@
                                RenderOptions.BitmapScalingMode="HighQuality"
                                RenderOptions.EdgeMode="Aliased"
                                RenderTransformOrigin=".5,.5"
-                               Opacity="0.8">
+                               >
 
                             <Image.RenderTransform>
                                 <TransformGroup>
