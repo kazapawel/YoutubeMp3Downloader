@@ -18,6 +18,8 @@ namespace YoutubeToMp3
         {
             _viewModel.Url = null;
             _viewModel.StreamData = null;
+            _viewModel.StatusMessage = null;
+            _viewModel.IsUrlValid = false;
         }
     }
 }

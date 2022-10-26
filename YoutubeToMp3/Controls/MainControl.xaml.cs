@@ -47,7 +47,8 @@ namespace YoutubeToMp3
             var text = this.urlTextBox.Text;
             
             FocusManager.SetFocusedElement(this.Parent, null);
-            TextChangedCommand?.Execute(text);
+            if (!string.IsNullOrEmpty(text))
+                TextChangedCommand?.Execute(text);
         }
 
 

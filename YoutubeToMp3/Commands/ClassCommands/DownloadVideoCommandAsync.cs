@@ -12,6 +12,14 @@ namespace YoutubeToMp3
             _viewModel = vm;
         }
 
+        protected override bool Can(object parameter)
+        {
+            var x = !string.IsNullOrEmpty(_viewModel.Url);
+            //RaiseCanExecuteChanged();
+
+            return x;
+        }
+
         protected override async Task ExecuteAsync(object parameter)
         {
             _viewModel.StatusMessage = "Downloading video...";

@@ -3,6 +3,9 @@ using System.Windows.Input;
 
 namespace YoutubeToMp3
 {
+    /// <summary>
+    /// Base class for class commands.
+    /// </summary>
     public abstract class CommandBase : ICommand
     {
         public event EventHandler CanExecuteChanged;

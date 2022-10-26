@@ -10,6 +10,7 @@ namespace YoutubeToMp3
         private StreamData streamData;
         private string url;
         private string statusMessage;
+        private bool isUrlValid;
 
         #endregion
 
@@ -21,7 +22,7 @@ namespace YoutubeToMp3
             get => streamData;
             set
             {
-                if(streamData!=value)
+                if (streamData != value)
                 {
                     streamData = value;
                     OnPropertyChanged(nameof(StreamData));
@@ -94,6 +95,19 @@ namespace YoutubeToMp3
                 {
                     statusMessage = value;
                     OnPropertyChanged(nameof(StatusMessage));
+                }
+            }
+        }
+
+        public bool IsUrlValid
+        {
+            get => isUrlValid;
+            set
+            {
+                if (isUrlValid != value)
+                {
+                    isUrlValid = value;
+                    OnPropertyChanged(nameof(IsUrlValid));
                 }
             }
         }

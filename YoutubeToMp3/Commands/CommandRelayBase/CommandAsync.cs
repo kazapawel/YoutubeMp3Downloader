@@ -4,6 +4,9 @@ using System.Windows.Input;
 
 namespace YoutubeToMp3
 {
+    /// <summary>
+    /// Base class for relay async commands.
+    /// </summary>
     public class CommandAsync : ICommandAsync
     {
         #region PRIVATE FIELDS

@@ -19,10 +19,7 @@ namespace YoutubeToMp3
 
             // if textbox was cleared
             if(string.IsNullOrEmpty(text))
-            {
-                _viewModel.StatusMessage = string.Empty;
                 return;
-            }
 
             _viewModel.Url = text;
 
@@ -32,6 +29,7 @@ namespace YoutubeToMp3
                 var builder = new StreamDataBuilder();
                 var data = await builder.GetStreamData(_viewModel.Url);
                 _viewModel.StreamData = data;
+                _viewModel.IsUrlValid = true;
                 _viewModel.StatusMessage = "Data loaded";
             }
             catch (Exception ex)
