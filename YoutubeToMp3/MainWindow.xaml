@@ -7,10 +7,10 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MainWindow" 
-       
+        MinHeight="400"
         MaxHeight="400"
-        
-        MaxWidth="800"
+        MinWidth="750"
+        MaxWidth="750"
         Style="{StaticResource MainWindowModernStyle}"
         WindowStartupLocation="CenterScreen">
 

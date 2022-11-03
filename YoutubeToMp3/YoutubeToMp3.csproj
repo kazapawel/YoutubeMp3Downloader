@@ -17,6 +17,7 @@
     <None Remove="Images\clear2_modern.png" />
     <None Remove="Images\clear_modern.png" />
     <None Remove="Images\close_modern.png" />
+    <None Remove="Images\download2_modern.png" />
     <None Remove="Images\download_modern.png" />
     <None Remove="Images\minimize_modern.png" />
     <None Remove="Images\modern_www.png" />
@@ -46,6 +47,7 @@
     <Resource Include="Images\clear2_modern.png" />
     <Resource Include="Images\clear_modern.png" />
     <Resource Include="Images\close_modern.png" />
+    <Resource Include="Images\download2_modern.png" />
     <Resource Include="Images\download_modern.png" />
     <Resource Include="Images\minimize_modern.png" />
     <Resource Include="Images\modern_www.png" />

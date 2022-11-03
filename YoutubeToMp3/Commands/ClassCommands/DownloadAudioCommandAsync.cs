@@ -10,11 +10,7 @@ namespace YoutubeToMp3
         public DownloadAudioCommandAsync(MainViewModel vm)
         {
             _viewModel = vm;
-        }
-
-        protected override bool Can(object parameter)
-        {
-            return _viewModel.IsReady;
+            _viewModel.IsReadyChanged += OnIsReadyChanged;
         }
 
         protected override async Task ExecuteAsync(object parameter)
@@ -35,6 +31,11 @@ namespace YoutubeToMp3
             {
                 _viewModel.StatusMessage = ex.Message;
             }
+        }
+
+        public void OnIsReadyChanged(object sender, EventArgs e)
+        {
+            CanExec = _viewModel.IsReady;
         }
     }
 }

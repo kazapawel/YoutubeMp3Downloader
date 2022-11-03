@@ -111,6 +111,7 @@ namespace YoutubeToMp3
                 }
             }
         }
+
         private bool isReady;
         public bool IsReady
         {
@@ -121,9 +122,12 @@ namespace YoutubeToMp3
                 {
                     isReady = value;
                     OnPropertyChanged(nameof(IsReady));
+                    IsReadyChanged?.Invoke(this, new EventArgs());
                 }
             }
         }
+
+        public event EventHandler IsReadyChanged;
 
         #endregion
 
@@ -138,14 +142,6 @@ namespace YoutubeToMp3
         #endregion
 
         #region CONSTRUCTOR
-
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public MainViewModel()
-        {
-        }
-
 
         #endregion
     }

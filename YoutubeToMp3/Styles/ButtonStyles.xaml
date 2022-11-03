@@ -239,7 +239,7 @@
         <Setter Property="Margin" Value="5,15,5,5"/>
         <Setter Property="Opacity" Value="0.9"/>
         <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="120"/>
+        <Setter Property="Width" Value="100"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -247,15 +247,14 @@
 
                     <!-- Border main -->
                     <Border x:Name="buttonBorder"                                                      
-                            Padding="4"
+                            Padding="10,0,4,0"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
-                            Background="Transparent"
-                            BorderBrush="Bisque"
-                            BorderThickness="0"
-                            CornerRadius="7"
-                            Opacity="0.9">
-
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource ForegroundMainBrush}"
+                            BorderThickness="1"
+                            CornerRadius="4"
+                            Opacity="0.8">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
@@ -267,7 +266,7 @@
                                        Width="auto"
                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
                                        Foreground="White"
-                                       FontSize="16"
+                                       FontSize="18"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        
@@ -275,9 +274,9 @@
                             <Image Grid.Column="1" 
                                    x:Name="buttonImage"
                                    
-                               Source="pack://application:,,,/Images/download_modern.png"                           
-                               Width="40"
-                               Height="40" 
+                               Source="pack://application:,,,/Images/download2_modern.png"                           
+                               Width="34"
+                               Height="34" 
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
@@ -294,19 +293,20 @@
                             </Image>
 
                         </Grid>
-
-
-
                     </Border>
 
                     <!-- Triggers -->
                     <ControlTemplate.Triggers>
-
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" 
                                     TargetName="buttonBorder" 
                                     Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"/>
                             <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                        
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="DarkGray"/>
+                            <Setter Property="Foreground" Value="DeepPink"/>
                         </Trigger>
 
                         <!-- Animations -->

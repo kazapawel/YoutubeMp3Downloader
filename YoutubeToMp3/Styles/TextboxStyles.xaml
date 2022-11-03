@@ -9,7 +9,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundMainBrush}"/>
-        <Setter Property="FontFamily" Value="/Fonts/OpenSans-Regular.ttf #Open Sans"/>
+        <Setter Property="FontFamily" Value="/Fonts/Ubuntu/Ubuntu-Light.ttf #Ubuntu Light"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Foreground" Value="#eeeeee"/>
         <Setter Property="Background" Value="{StaticResource BgLightBrush}"/>
@@ -37,7 +37,7 @@
                                        IsHitTestVisible="False"
                                        VerticalAlignment="Center"
                                        FontSize="{TemplateBinding FontSize}"
-                                       FontFamily="/Fonts/Ubuntu/Ubuntu-Light.ttf #Ubuntu Light"
+                                       FontFamily="/Fonts/Ubuntu/Ubuntu-Italic.ttf #Ubuntu"
                                        Foreground="{TemplateBinding Foreground}"
                                        Padding="8,2,2,2"
                                        Opacity="0.5"

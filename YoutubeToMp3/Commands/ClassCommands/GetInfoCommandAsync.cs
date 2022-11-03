@@ -13,11 +13,6 @@ namespace YoutubeToMp3
             _viewModel = vm;
         }
 
-        protected override bool Can(object parameter)
-        {
-            return true;
-        }
-
         protected override async Task ExecuteAsync(object parameter)
         {
             // this is going to be fixed by binding
@@ -45,7 +40,7 @@ namespace YoutubeToMp3
                 _viewModel.IsUrlValid = true;
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = "Data loaded. Ready for download.";
-                CommandManager.InvalidateRequerySuggested();
+                
             }
             catch (Exception ex)
             {
