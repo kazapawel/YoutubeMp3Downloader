@@ -11,6 +11,9 @@
     <None Remove="Fonts\OpenSans-Bold.ttf" />
     <None Remove="Fonts\OpenSans-Italic.ttf" />
     <None Remove="Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Fonts\Ubuntu\Ubuntu-Italic.ttf" />
+    <None Remove="Fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <None Remove="Fonts\Ubuntu\Ubuntu-Regular.ttf" />
     <None Remove="Images\clear2_modern.png" />
     <None Remove="Images\clear_modern.png" />
     <None Remove="Images\close_modern.png" />
@@ -37,6 +40,9 @@
     <Resource Include="Fonts\OpenSans-Bold.ttf" />
     <Resource Include="Fonts\OpenSans-Italic.ttf" />
     <Resource Include="Fonts\OpenSans-Regular.ttf" />
+    <Resource Include="Fonts\Ubuntu\Ubuntu-Italic.ttf" />
+    <Resource Include="Fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Resource Include="Fonts\Ubuntu\Ubuntu-Regular.ttf" />
     <Resource Include="Images\clear2_modern.png" />
     <Resource Include="Images\clear_modern.png" />
     <Resource Include="Images\close_modern.png" />

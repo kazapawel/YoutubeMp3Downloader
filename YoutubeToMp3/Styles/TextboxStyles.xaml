@@ -37,7 +37,7 @@
                                        IsHitTestVisible="False"
                                        VerticalAlignment="Center"
                                        FontSize="{TemplateBinding FontSize}"
-                                       FontFamily="/Fonts/OpenSans-Italic.ttf #Open Sans"
+                                       FontFamily="/Fonts/Ubuntu/Ubuntu-Light.ttf #Ubuntu Light"
                                        Foreground="{TemplateBinding Foreground}"
                                        Padding="8,2,2,2"
                                        Opacity="0.5"

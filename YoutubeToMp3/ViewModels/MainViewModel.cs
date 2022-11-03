@@ -111,6 +111,19 @@ namespace YoutubeToMp3
                 }
             }
         }
+        private bool isReady;
+        public bool IsReady
+        {
+            get => isReady;
+            set
+            {
+                if(isReady!=value)
+                {
+                    isReady = value;
+                    OnPropertyChanged(nameof(IsReady));
+                }
+            }
+        }
 
         #endregion
 
@@ -132,6 +145,7 @@ namespace YoutubeToMp3
         public MainViewModel()
         {
         }
+
 
         #endregion
     }

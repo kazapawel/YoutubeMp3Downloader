@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace YoutubeToMp3
+﻿namespace YoutubeToMp3
 {
     public class ClearUrlCommand : CommandBase
     {
@@ -20,6 +14,7 @@ namespace YoutubeToMp3
             _viewModel.StreamData = null;
             _viewModel.StatusMessage = null;
             _viewModel.IsUrlValid = false;
+            _viewModel.IsReady = false;
         }
     }
 }

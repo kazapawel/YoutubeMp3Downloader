@@ -24,11 +24,7 @@ namespace YoutubeToMp3
 
         public bool CanExecute(object parameter)
         {
-            //System.Windows.Input.CommandManager.InvalidateRequerySuggested();
-            //var condition = CanExecuteAsync(parameter);
-            var x = Can(parameter);
-            var IsNotExecuting = !IsExecuting;
-            return IsNotExecuting;// && Can(parameter);// && (_canExecute?.Invoke() ?? true);
+            return !IsExecuting;
         }
 
         public async void Execute(object parameter)
@@ -36,17 +32,8 @@ namespace YoutubeToMp3
             IsExecuting = true;
             await ExecuteAsync(parameter);
             IsExecuting = false;
-            
-            //System.Windows.Input.CommandManager.InvalidateRequerySuggested();
         }
         protected abstract Task ExecuteAsync(object parameter);
-        protected virtual bool Can(object parameter)
-        {
-            return true;
-        }
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        }
+        protected abstract bool Can(object parameter);
     }
 }

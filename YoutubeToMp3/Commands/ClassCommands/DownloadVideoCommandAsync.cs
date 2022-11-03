@@ -14,17 +14,17 @@ namespace YoutubeToMp3
 
         protected override bool Can(object parameter)
         {
-            var x = !string.IsNullOrEmpty(_viewModel.Url);
-            //RaiseCanExecuteChanged();
-
-            return x;
+            return _viewModel.IsReady;
         }
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            _viewModel.StatusMessage = "Downloading video...";
+            if (_viewModel.StreamData is null)
+                return;
+
             try
             {
+                _viewModel.StatusMessage = "Downloading video...";
                 var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamData);
                 await youtubeDownloader.DownloadVideoAsync(_viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";

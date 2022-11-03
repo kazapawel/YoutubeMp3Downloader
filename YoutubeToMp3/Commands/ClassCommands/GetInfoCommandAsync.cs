@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace YoutubeToMp3
 {
@@ -12,6 +13,11 @@ namespace YoutubeToMp3
             _viewModel = vm;
         }
 
+        protected override bool Can(object parameter)
+        {
+            return true;
+        }
+
         protected override async Task ExecuteAsync(object parameter)
         {
             // this is going to be fixed by binding
@@ -19,10 +25,17 @@ namespace YoutubeToMp3
 
             // if textbox was cleared
             if(string.IsNullOrEmpty(text))
+            {
+                // this should be another viewmodel
+                _viewModel.Url = null;
+                _viewModel.StreamData = null;
+                _viewModel.StatusMessage = null;
+                _viewModel.IsUrlValid = false;
+                // and an event notification to clear data
                 return;
+            }
 
             _viewModel.Url = text;
-
             _viewModel.StatusMessage = "Getting info...";
             try
             {
@@ -30,7 +43,9 @@ namespace YoutubeToMp3
                 var data = await builder.GetStreamData(_viewModel.Url);
                 _viewModel.StreamData = data;
                 _viewModel.IsUrlValid = true;
-                _viewModel.StatusMessage = "Data loaded";
+                _viewModel.IsReady = true;
+                _viewModel.StatusMessage = "Data loaded. Ready for download.";
+                CommandManager.InvalidateRequerySuggested();
             }
             catch (Exception ex)
             {

@@ -12,14 +12,24 @@ namespace YoutubeToMp3
             _viewModel = vm;
         }
 
+        protected override bool Can(object parameter)
+        {
+            return _viewModel.IsReady;
+        }
+
         protected override async Task ExecuteAsync(object parameter)
         {
-            _viewModel.StatusMessage = "Downloading audio...";
+            if (_viewModel.StreamData is null)
+                return;
+
             try
             {
+                _viewModel.IsReady = false;
+                _viewModel.StatusMessage = "Downloading audio...";
                 var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamData);
                 await youtubeDownloader.DownloadAudioAsync(_viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";
+                _viewModel.IsReady = true;
             }
             catch (Exception ex)
             {
