@@ -192,7 +192,7 @@
                    Text="{Binding StatusMessage}"
                    Style="{StaticResource StatusTextblock}"
                    
-                   Margin="60,-4,0,5"
+                   Margin="50,-4,0,5"
                    
                    TextTrimming="CharacterEllipsis"
                    />
