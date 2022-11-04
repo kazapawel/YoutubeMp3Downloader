@@ -79,58 +79,59 @@
 
         </Grid>
         <!--#endregion-->
-        
+
         <!--#region INFO -->
         <!-- INFO -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                
-                 <!--0 Thumbnail--> 
+
+                <!--0 Thumbnail-->
                 <ColumnDefinition Width="auto"/>
-                
-                 <!--1 Info grid--> 
+
+                <!--1 Info grid-->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-             <!--THUMBNAIL--> 
+            <!--THUMBNAIL-->
             <Border Grid.Column="0"
                     BorderBrush="{StaticResource FgOrangeBrush}"
                     BorderThickness="0"
                     Background="Black"
                     Margin="50,0,10,10"
-                    Width="320"
-                    Height="240">
+                    Width="230"
+                    Height="170">
 
                 <Image Source="{Binding Thumbnail}"
                        Style="{StaticResource ThumbnailStyle}"
                        />
             </Border>
-                
-             <!--INFO--> 
+
+            <!--#region INFO REGION -->
+            <!--INFO-->
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                     <!--0 Title--> 
+                    <!--0 Title-->
                     <RowDefinition Height="*"/>
 
-                     <!--1 Author--> 
-                    <RowDefinition Height="*"/>
-                    
-                     <!--2 Duration--> 
-                    <RowDefinition Height="*"/>
-                    
-                     <!--3 Upload date--> 
+                    <!--1 Author-->
                     <RowDefinition Height="*"/>
 
-                     <!--4 Status message--> 
+                    <!--2 Duration-->
+                    <RowDefinition Height="*"/>
+
+                    <!--3 Upload date-->
+                    <RowDefinition Height="*"/>
+
+                    <!--4 Status message-->
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
 
-                 <!--TITLE--> 
+                <!--TITLE-->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal"
-                            Margin="0,0,0,0">
+                            >
                     <TextBlock Style="{StaticResource BasicTextblock}"
                                Text="Title: "
                                />
@@ -139,10 +140,10 @@
                                />
                 </StackPanel>
 
-                 <!--AUTHOR--> 
+                <!--AUTHOR-->
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal"
-                            Margin="0,0,0,0">
+                            >
                     <TextBlock Text="Author: "
                                Style="{StaticResource BasicTextblock}"
                                
@@ -152,10 +153,10 @@
                                />
                 </StackPanel>
 
-                 <!--DURATION--> 
+                <!--DURATION-->
                 <StackPanel Grid.Row="2"
                             Orientation="Horizontal"
-                            Margin="0,-0,0,0">
+                            >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Duration: "
                                
@@ -165,10 +166,10 @@
                                />
                 </StackPanel>
 
-                 <!--UPLOAD DATE--> 
+                <!--UPLOAD DATE-->
                 <StackPanel Grid.Row="3"
                             Orientation="Horizontal"
-                            Margin="0,0,0,0">
+                            >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Uploaded: "
                                Margin="0"
@@ -178,50 +179,54 @@
                                />
                 </StackPanel>
 
-                <!--#region DOWNLOAD BUTTONS -->
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <!-- DOWNLOAD VIDEO button -->
-                    <Button Grid.Column="0"
-                    Style="{StaticResource ButtonDownload}"
-                    Tag="Video"
-                    Command="{Binding DownloadVideoCommandAsync}"
-                    />
-
-                    <!-- DOWNLOAD AUDIO button -->
-                    <Button Grid.Column="1"
-                    Style="{StaticResource ButtonDownload}"
-                    Tag="Audio"
-                    Command="{Binding DownloadAudioCommandAsync}"
-                    />
-                </Grid>
-
-
-
-
-                <!--#endregion-->
 
             </Grid>
+            <!--#endregion-->
+
         </Grid>
         <!--#endregion-->
-              
+
         <!--#region STATUS -->
-        <TextBlock Grid.Row="5"
+        <TextBlock Grid.Row="3"
                    Foreground="Wheat"
                    Text="{Binding StatusMessage}"
-                   Style="{StaticResource BasicTextblock}"
-                   HorizontalAlignment="Left"
-                   Margin="50,5,0,10"
-                   FontSize="16"
+                   Style="{StaticResource StatusTextblock}"
+                   
+                   Margin="60,-4,0,5"
+                   
                    TextTrimming="CharacterEllipsis"
                    />
         
         
         <!--#endregion-->
-        
+
+        <!--#region DOWNLOAD BUTTONS -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- DOWNLOAD VIDEO button -->
+            <Button Grid.Column="0"
+                    Style="{StaticResource ButtonDownload}"
+                    Tag="Download Video"
+                    Command="{Binding DownloadVideoCommandAsync}"
+                    />
+
+            <!-- DOWNLOAD AUDIO button -->
+            <Button Grid.Column="1"
+                    Style="{StaticResource ButtonDownload}"
+                    Tag="Download Audio"
+                    Command="{Binding DownloadAudioCommandAsync}"
+                    />
+        </Grid>
+
+
+
+
+        <!--#endregion-->
+
+
     </Grid>
 </UserControl>

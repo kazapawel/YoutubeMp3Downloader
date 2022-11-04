@@ -8,11 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Fonts\Adventor\texgyreadventor-italic.otf" />
+    <None Remove="Fonts\Adventor\texgyreadventor-regular.otf" />
     <None Remove="Fonts\OpenSans-Bold.ttf" />
     <None Remove="Fonts\OpenSans-Italic.ttf" />
     <None Remove="Fonts\OpenSans-Regular.ttf" />
     <None Remove="Fonts\Ubuntu\Ubuntu-Italic.ttf" />
     <None Remove="Fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <None Remove="Fonts\Ubuntu\Ubuntu-Medium.ttf" />
     <None Remove="Fonts\Ubuntu\Ubuntu-Regular.ttf" />
     <None Remove="Images\clear2_modern.png" />
     <None Remove="Images\clear_modern.png" />
@@ -38,11 +41,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Adventor\texgyreadventor-italic.otf" />
+    <Resource Include="Fonts\Adventor\texgyreadventor-regular.otf" />
     <Resource Include="Fonts\OpenSans-Bold.ttf" />
     <Resource Include="Fonts\OpenSans-Italic.ttf" />
     <Resource Include="Fonts\OpenSans-Regular.ttf" />
     <Resource Include="Fonts\Ubuntu\Ubuntu-Italic.ttf" />
     <Resource Include="Fonts\Ubuntu\Ubuntu-Light.ttf" />
+    <Resource Include="Fonts\Ubuntu\Ubuntu-Medium.ttf" />
     <Resource Include="Fonts\Ubuntu\Ubuntu-Regular.ttf" />
     <Resource Include="Images\clear2_modern.png" />
     <Resource Include="Images\clear_modern.png" />

@@ -41,4 +41,19 @@
     <SolidColorBrush x:Key="BgLightBrush" Color="{StaticResource BgLightColor}"/>
     <!--#endregion-->
     
+    <!--#region LIGHT STYLE COLORS -->
+    
+    <!-- Main Background color-->
+    <Color x:Key="LSBackgroundMainColor">#fdfdfd</Color>
+    <SolidColorBrush x:Key="LSBackgroundMainBrush" Color="{StaticResource LSBackgroundMainColor}"/>
+
+    <!-- Secondary Background color-->
+    <Color x:Key="LSBackgroundSecondaryColor">#f0f0f0</Color>
+    <SolidColorBrush x:Key="LSBackgroundSecondaryBrush" Color="{StaticResource LSBackgroundSecondaryColor}"/>
+
+    <!-- Foreground color-->
+    <Color x:Key="LSForegroundColor">#646464</Color>
+    <SolidColorBrush x:Key="LSForegroundBrush" Color="{StaticResource LSForegroundColor}"/>
+
+    <!--#endregion-->
 </ResourceDictionary>

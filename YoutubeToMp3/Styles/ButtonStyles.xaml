@@ -238,23 +238,24 @@
     <Style TargetType="{x:Type Button}" x:Key="ButtonDownload" BasedOn="{StaticResource BaseEmptyButtonStyle}">
         <Setter Property="Margin" Value="5,15,5,5"/>
         <Setter Property="Opacity" Value="0.9"/>
-        <Setter Property="Height" Value="50"/>
-        <Setter Property="Width" Value="100"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="Width" Value="170"/>
+        <Setter Property="Background" Value="#f0cc41"/>
+        <Setter Property="Foreground" Value="#222222"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
 
                     <!-- Border main -->
                     <Border x:Name="buttonBorder"                                                      
-                            Padding="10,0,4,0"
+                            Padding="10,0,6,0"
                             Width="{TemplateBinding Width}"
                             Height="{TemplateBinding Height}"
                             Background="{TemplateBinding Background}"
-                            BorderBrush="{StaticResource ForegroundMainBrush}"
-                            BorderThickness="1"
+                            BorderBrush="#f0cc41"
+                            BorderThickness="0"
                             CornerRadius="4"
-                            Opacity="0.8">
+                            Opacity="0.9">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
@@ -262,12 +263,13 @@
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Grid.Column="0"
-                                       Style="{StaticResource WhiteTextblock}"
+                                       
+                                       Style="{StaticResource DownloadTextblock}"
                                        Width="auto"
                                        Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"
-                                       Foreground="White"
-                                       FontSize="18"
-                                       HorizontalAlignment="Center"
+                                       Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                       FontSize="16"
+                                       HorizontalAlignment="Right"
                                        VerticalAlignment="Center"
                                        
                                        />
@@ -275,8 +277,8 @@
                                    x:Name="buttonImage"
                                    
                                Source="pack://application:,,,/Images/download2_modern.png"                           
-                               Width="34"
-                               Height="34" 
+                               Width="22"
+                               Height="23" 
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
                                RenderOptions.BitmapScalingMode="HighQuality"
@@ -305,8 +307,9 @@
                         </Trigger>
                         
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="DarkGray"/>
-                            <Setter Property="Foreground" Value="DeepPink"/>
+                            <Setter Property="Background" Value="#7b6682"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
 
                         <!-- Animations -->

@@ -40,6 +40,7 @@ namespace YoutubeToMp3
             var youtubeClient = new YoutubeClient();
 
             // excepption if null
+            var iinfo = StreamData.StreamManifest.GetAudioStreams().ToArray();
             var streamInfo = StreamData.StreamManifest.GetAudioStreams().Where(stream => stream is AudioOnlyStreamInfo).GetWithHighestBitrate();
             var title = FixTitle(StreamData.Videos.Title);
             await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}audio.{streamInfo.Container}");
@@ -53,7 +54,7 @@ namespace YoutubeToMp3
             // Collection of problematic characters
             var problems = new HashSet<char>
             {
-                '/','?',':','#','%','&','{','}','<','>','*','$','!','@','+','`','|','='
+                '/','?',':','#','%','&','{','}','<','>','*','$','!','@','+','`','|','=','"'
             };
 
             return string.Concat(title.Select(x => problems.Contains(x) ? '_' : x));
