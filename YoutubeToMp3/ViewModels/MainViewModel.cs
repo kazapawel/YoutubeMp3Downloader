@@ -31,6 +31,8 @@ namespace YoutubeToMp3
                     OnPropertyChanged(nameof(Duration));
                     OnPropertyChanged(nameof(UploadDate));
                     OnPropertyChanged(nameof(Thumbnail));
+                    OnPropertyChanged(nameof(VideoSize));
+                    OnPropertyChanged(nameof(AudioSize));
                 }
             }
         }
@@ -60,13 +62,17 @@ namespace YoutubeToMp3
         /// </summary>
         public string UploadDate => StreamData?.UploadDate.ToString();
 
-        #endregion
+        
 
         /// <summary>
         /// 
         /// </summary>
         public string Thumbnail => StreamData != null ? StreamData?.Thumbnail : "pack://application:,,,/Images/youtube_modern_100.png";
 
+        public string VideoSize => StreamData != null ? StreamData.VideoSize : string.Empty;
+        public string AudioSize => StreamData != null ? StreamData.AudioSize : string.Empty;
+
+        #endregion
         /// <summary>
         /// 
         /// </summary>

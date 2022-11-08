@@ -98,7 +98,7 @@
                     BorderThickness="0"
                     Background="Black"
                     Margin="50,0,10,10"
-                    Width="230"
+                    Width="225"
                     Height="170">
 
                 <Image Source="{Binding Thumbnail}"
@@ -111,26 +111,30 @@
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                    <!--0 Title-->
-                    <RowDefinition Height="*"/>
+                    <!--0 Title -->
+                    <RowDefinition Height="auto"/>
 
-                    <!--1 Author-->
-                    <RowDefinition Height="*"/>
+                    <!--1 Author -->
+                    <RowDefinition Height="auto"/>
 
-                    <!--2 Duration-->
-                    <RowDefinition Height="*"/>
+                    <!--2 Duration -->
+                    <RowDefinition Height="auto"/>
 
-                    <!--3 Upload date-->
-                    <RowDefinition Height="*"/>
+                    <!--3 Upload date -->
+                    <RowDefinition Height="auto"/>
 
-                    <!--4 Status message-->
-                    <RowDefinition Height="*"/>
+                    <!--4 Video Size -->
+                    <RowDefinition Height="auto"/>
+                    
+                    <!--5 Audio Size -->
+                    <RowDefinition Height="auto"/>
 
                 </Grid.RowDefinitions>
 
                 <!--TITLE-->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal"
+                            Margin="5"
                             >
                     <TextBlock Style="{StaticResource BasicTextblock}"
                                Text="Title: "
@@ -140,9 +144,10 @@
                                />
                 </StackPanel>
 
-                <!--AUTHOR-->
+                <!-- AUTHOR -->
                 <StackPanel Grid.Row="1"
                             Orientation="Horizontal"
+                            Margin="5"
                             >
                     <TextBlock Text="Author: "
                                Style="{StaticResource BasicTextblock}"
@@ -153,9 +158,10 @@
                                />
                 </StackPanel>
 
-                <!--DURATION-->
+                <!-- DURATION -->
                 <StackPanel Grid.Row="2"
                             Orientation="Horizontal"
+                            Margin="5"                            
                             >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Duration: "
@@ -166,9 +172,10 @@
                                />
                 </StackPanel>
 
-                <!--UPLOAD DATE-->
+                <!-- UPLOAD DATE -->
                 <StackPanel Grid.Row="3"
                             Orientation="Horizontal"
+                            Margin="5"
                             >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
                                Text="Uploaded: "
@@ -176,6 +183,34 @@
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
                                Text="{Binding UploadDate}"
+                               />
+                </StackPanel>
+
+                <!-- SIZE Video -->
+                <StackPanel Grid.Row="4"
+                            Orientation="Horizontal"
+                            Margin="5"
+                            >
+                    <TextBlock Style="{StaticResource BasicTextblock}" 
+                               Text="Video Size: "
+                               Margin="0"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}"
+                               Text="{Binding VideoSize}"
+                               />
+                </StackPanel>
+
+                <!-- SIZE Audio -->
+                <StackPanel Grid.Row="5"
+                            Orientation="Horizontal"
+                            Margin="5"
+                            >
+                    <TextBlock Style="{StaticResource BasicTextblock}" 
+                               Text="Audio Size: "
+                               Margin="0"
+                               />
+                    <TextBlock Style="{StaticResource WhiteTextblock}"
+                               Text="{Binding AudioSize}"
                                />
                 </StackPanel>
 
@@ -190,10 +225,8 @@
         <TextBlock Grid.Row="3"
                    Foreground="Wheat"
                    Text="{Binding StatusMessage}"
-                   Style="{StaticResource StatusTextblock}"
-                   
-                   Margin="50,-4,0,5"
-                   
+                   Style="{StaticResource StatusTextblock}"    
+                   Margin="51,0,0,5"
                    TextTrimming="CharacterEllipsis"
                    />
         

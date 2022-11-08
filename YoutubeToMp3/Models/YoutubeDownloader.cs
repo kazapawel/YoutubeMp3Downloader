@@ -22,14 +22,13 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Downloads video with audio from given path.
+        /// For now it downloads muxed stream.
         /// </summary>
         public async Task DownloadVideoAsync(string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
-            var streamInfo = StreamData.StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            var title = FixTitle(StreamData.Videos.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}video.{streamInfo.Container}");
+            var title = FixTitle(StreamData.Title);
+            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{userDirectory}\{title}video.{StreamData.VideoHD.Container}");
         }
 
         /// <summary>
@@ -38,12 +37,8 @@ namespace YoutubeToMp3
         public async Task DownloadAudioAsync(string userDirectory)
         {
             var youtubeClient = new YoutubeClient();
-
-            // excepption if null
-            var iinfo = StreamData.StreamManifest.GetAudioStreams().ToArray();
-            var streamInfo = StreamData.StreamManifest.GetAudioStreams().Where(stream => stream is AudioOnlyStreamInfo).GetWithHighestBitrate();
-            var title = FixTitle(StreamData.Videos.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(streamInfo, @$"{userDirectory}\{title}audio.{streamInfo.Container}");
+            var title = FixTitle(StreamData.Title);
+            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{userDirectory}\{title}audio.{StreamData.AudioHD.Container}");
         }
 
         /// <summary>

@@ -1,16 +1,21 @@
 ﻿using System;
-using System.Linq;
 using YoutubeExplode.Videos.Streams;
 
 namespace YoutubeToMp3
 {
     public class StreamData
     {
-        public string Title => Videos?.Title;
-        public string Author => Videos?.Author.ToString();
-        public TimeSpan? Duration => Videos?.Duration;
-        public DateTimeOffset? UploadDate => Videos?.UploadDate;
-        public string Thumbnail => Videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url;
+        public string Title { get; set; }
+        public string Author { get; set; }
+        public TimeSpan? Duration { get; set; }
+        public DateTimeOffset? UploadDate { get; set;}
+        public string Thumbnail { get; set; }
+        public string VideoSize => VideoHD.Size.ToString();
+        public string AudioSize => AudioHD.Size.ToString();
+
+        public IStreamInfo VideoHD { get; set; }
+        public IStreamInfo AudioHD { get; set; }
+        public IStreamInfo MuxedHD { get; set; }
 
         /// <summary>
         /// Metadata associated with a YouTube video.

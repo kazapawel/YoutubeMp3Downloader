@@ -32,15 +32,20 @@ namespace YoutubeToMp3
 
             _viewModel.Url = text;
             _viewModel.StatusMessage = "Getting info...";
+
             try
             {
+                // Creates new builder to get the data
                 var builder = new StreamDataBuilder();
+
+                // Gets the stream data async
                 var data = await builder.GetStreamData(_viewModel.Url);
+
+                // Resfreshes viewmodel properties
                 _viewModel.StreamData = data;
                 _viewModel.IsUrlValid = true;
                 _viewModel.IsReady = true;
-                _viewModel.StatusMessage = "Data loaded. Ready for download.";
-                
+                _viewModel.StatusMessage = "Data loaded. Ready for download.";        
             }
             catch (Exception ex)
             {
