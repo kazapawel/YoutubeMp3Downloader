@@ -10,11 +10,15 @@ namespace YoutubeToMp3
         private StreamDataViewModel streamDataViewModel;
         private string url;
         private string statusMessage;
-        private bool isUrlValid;
+        private bool isReady;
 
         #endregion
 
         #region PUBLIC PROPERTIES
+
+        /// <summary>
+        /// Viewmodel representing stream data.
+        /// </summary>
         public StreamDataViewModel StreamDataViewModel
         {
             get => streamDataViewModel;
@@ -29,12 +33,7 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Path where downloaded files are stored.
-        /// </summary>
-        public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-        /// <summary>
-        /// 
+        /// Youtube url binded to textbox.
         /// </summary>
         public string Url
         {
@@ -50,7 +49,7 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// 
+        /// Information for the user about current action.
         /// </summary>
         public string StatusMessage
         {
@@ -65,20 +64,9 @@ namespace YoutubeToMp3
             }
         }
 
-        public bool IsUrlValid
-        {
-            get => isUrlValid;
-            set
-            {
-                if (isUrlValid != value)
-                {
-                    isUrlValid = value;
-                    OnPropertyChanged(nameof(IsUrlValid));
-                }
-            }
-        }
-
-        private bool isReady;
+        /// <summary>
+        /// Returns true if application is ready to download a stream.
+        /// </summary>
         public bool IsReady
         {
             get => isReady;
@@ -93,6 +81,9 @@ namespace YoutubeToMp3
             }
         }
 
+        /// <summary>
+        /// Occurs when state of readiness has changed.
+        /// </summary>
         public event EventHandler IsReadyChanged;
 
         #endregion

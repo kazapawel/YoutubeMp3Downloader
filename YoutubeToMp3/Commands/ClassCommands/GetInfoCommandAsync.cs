@@ -7,13 +7,17 @@ namespace YoutubeToMp3
     {
         private readonly MainViewModel _viewModel;
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="vm"></param>
         public GetInfoCommandAsync(MainViewModel vm)
         {
             _viewModel = vm;
         }
 
         /// <summary>
-        /// Gets video data and information about.
+        /// Gets stream data.
         /// </summary>
         /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)

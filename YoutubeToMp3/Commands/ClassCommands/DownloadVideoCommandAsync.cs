@@ -30,7 +30,7 @@ namespace YoutubeToMp3
                 _viewModel.IsReady = false;
                 _viewModel.StatusMessage = "Downloading video...";
                 var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamDataViewModel.Model);
-                await youtubeDownloader.DownloadVideoAsync(_viewModel.UserDirectory);
+                await youtubeDownloader.DownloadVideoAsync();
                 _viewModel.StatusMessage = "Success!";
                 _viewModel.IsReady = true;
             }

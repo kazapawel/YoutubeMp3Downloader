@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using YoutubeExplode;
@@ -14,6 +15,12 @@ namespace YoutubeToMp3
         public StreamData StreamData { get; set; }
 
         /// <summary>
+        /// Path where downloaded files are stored.
+        /// </summary>
+        public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
+
+        /// <summary>
         /// Default constructor.
         /// </summary>
         public YoutubeDownloader(StreamData streamData)
@@ -24,21 +31,21 @@ namespace YoutubeToMp3
         /// <summary>
         /// For now it downloads muxed stream.
         /// </summary>
-        public async Task DownloadVideoAsync(string userDirectory)
+        public async Task DownloadVideoAsync()
         {
             var youtubeClient = new YoutubeClient();
             var title = FixTitle(StreamData.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{userDirectory}\{title}video.{StreamData.VideoHD.Container}");
+            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{UserDirectory}\{title}video.{StreamData.VideoHD.Container}");
         }
 
         /// <summary>
         /// Downloads audio from given path.
         /// </summary>
-        public async Task DownloadAudioAsync(string userDirectory)
+        public async Task DownloadAudioAsync()
         {
             var youtubeClient = new YoutubeClient();
             var title = FixTitle(StreamData.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{userDirectory}\{title}audio.{StreamData.AudioHD.Container}");
+            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{UserDirectory}\{title}audio.{StreamData.AudioHD.Container}");
         }
 
         /// <summary>

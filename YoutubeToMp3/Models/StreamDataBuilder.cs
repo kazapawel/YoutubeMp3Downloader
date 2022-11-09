@@ -16,17 +16,11 @@ namespace YoutubeToMp3
         {
             var client = new YoutubeClient();
 
-            // this should probably be in try/catch
-
             // Metadata
             var Videos = await client.Videos.GetAsync(url);
 
             // Streams
             var StreamManifest = await client.Videos.Streams.GetManifestAsync(url);
-
-            var muxedHD = StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-            var videoHD = StreamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality();
-            var audioHD = StreamManifest.GetAudioOnlyStreams().GetWithHighestBitrate();
 
             // StreamData to return
             var info = new StreamData
@@ -36,9 +30,9 @@ namespace YoutubeToMp3
                 Duration = Videos?.Duration,
                 UploadDate = Videos?.UploadDate,
                 Thumbnail = Videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url,
-                AudioHD = audioHD,
-                VideoHD = videoHD,
-                MuxedHD = muxedHD,
+                AudioHD = StreamManifest.GetAudioOnlyStreams().GetWithHighestBitrate(),
+                VideoHD = StreamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality(),
+                MuxedHD = StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality(),
             };
 
             return info;

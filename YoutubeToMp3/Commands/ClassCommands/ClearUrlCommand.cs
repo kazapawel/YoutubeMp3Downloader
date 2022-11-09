@@ -4,13 +4,17 @@
     {
         private MainViewModel _viewModel;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="vm"></param>
         public ClearUrlCommand(MainViewModel vm)
         {
             _viewModel = vm;
         }
 
         /// <summary>
-        /// Erease all  and streams data.
+        /// Clears viewmodel properties.
         /// </summary>
         /// <param name="parameter"></param>
         public override void Execute(object parameter)
@@ -18,7 +22,6 @@
             _viewModel.Url = null;
             _viewModel.StreamDataViewModel = null;
             _viewModel.StatusMessage = null;
-            _viewModel.IsUrlValid = false;
             _viewModel.IsReady = false;
         }
     }
