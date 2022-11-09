@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using YoutubeExplode;
+using YoutubeExplode.Converter;
 using YoutubeExplode.Videos.Streams;
 
 namespace YoutubeToMp3
 {
     public class YoutubeDownloader : IYoutubeDownloader
     {
+        private YoutubeClient youtubeClient = new YoutubeClient();
+
         /// <summary>
         /// 
         /// </summary>
@@ -19,6 +23,12 @@ namespace YoutubeToMp3
         /// </summary>
         public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public string FfmpegPath => Path.Combine(UserDirectory, "ffmpeg.exe");
+
+        #region CONSTRUCTOR
 
         /// <summary>
         /// Default constructor.
@@ -28,14 +38,23 @@ namespace YoutubeToMp3
             StreamData = streamData;
         }
 
+        #endregion
+
         /// <summary>
         /// For now it downloads muxed stream.
         /// </summary>
         public async Task DownloadVideoAsync()
         {
-            var youtubeClient = new YoutubeClient();
             var title = FixTitle(StreamData.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{UserDirectory}\{title}video.{StreamData.VideoHD.Container}");
+            var downloadPath = @$"{UserDirectory}\{title}.mp4";
+            //await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{UserDirectory}\{title}video.{StreamData.VideoHD.Container}");
+            var infos = new IStreamInfo[]
+            {
+                StreamData.AudioHD,
+                StreamData.VideoHD
+            };
+            await youtubeClient.Videos.DownloadAsync(infos, new ConversionRequestBuilder(downloadPath).Build());
+
         }
 
         /// <summary>
@@ -43,9 +62,15 @@ namespace YoutubeToMp3
         /// </summary>
         public async Task DownloadAudioAsync()
         {
-            var youtubeClient = new YoutubeClient();
             var title = FixTitle(StreamData.Title);
-            await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{UserDirectory}\{title}audio.{StreamData.AudioHD.Container}");
+            var downloadPath = @$"{UserDirectory}\{title}.mp3";
+            //await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{UserDirectory}\{title}audio.{StreamData.AudioHD.Container}");
+            var infos = new IStreamInfo[]
+            {
+                StreamData.AudioHD
+            };
+
+            await youtubeClient.Videos.DownloadAsync(infos, new ConversionRequestBuilder(downloadPath).Build());
         }
 
         /// <summary>
