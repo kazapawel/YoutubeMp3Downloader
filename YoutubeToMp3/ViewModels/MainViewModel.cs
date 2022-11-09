@@ -7,7 +7,7 @@ namespace YoutubeToMp3
     {
         #region PRIVATE FIELDS
 
-        private StreamData streamData;
+        private StreamDataViewModel streamDataViewModel;
         private string url;
         private string statusMessage;
         private bool isUrlValid;
@@ -15,24 +15,15 @@ namespace YoutubeToMp3
         #endregion
 
         #region PUBLIC PROPERTIES
-
-        #region Stream Data
-        public StreamData StreamData
+        public StreamDataViewModel StreamDataViewModel
         {
-            get => streamData;
+            get => streamDataViewModel;
             set
             {
-                if (streamData != value)
+                if (streamDataViewModel != value)
                 {
-                    streamData = value;
-                    OnPropertyChanged(nameof(StreamData));
-                    OnPropertyChanged(nameof(Title));
-                    OnPropertyChanged(nameof(Author));
-                    OnPropertyChanged(nameof(Duration));
-                    OnPropertyChanged(nameof(UploadDate));
-                    OnPropertyChanged(nameof(Thumbnail));
-                    OnPropertyChanged(nameof(VideoSize));
-                    OnPropertyChanged(nameof(AudioSize));
+                    streamDataViewModel = value;
+                    OnPropertyChanged(nameof(StreamDataViewModel));
                 }
             }
         }
@@ -42,37 +33,6 @@ namespace YoutubeToMp3
         /// </summary>
         public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Title => StreamData?.Title;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Duration => StreamData?.Duration.ToString();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Author => StreamData?.Author;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string UploadDate => StreamData?.UploadDate.ToString();
-
-        
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Thumbnail => StreamData != null ? StreamData?.Thumbnail : "pack://application:,,,/Images/youtube_modern_100.png";
-
-        public string VideoSize => StreamData != null ? StreamData.VideoSize : string.Empty;
-        public string AudioSize => StreamData != null ? StreamData.AudioSize : string.Empty;
-
-        #endregion
         /// <summary>
         /// 
         /// </summary>

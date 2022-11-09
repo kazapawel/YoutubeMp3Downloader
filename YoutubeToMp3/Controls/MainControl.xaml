@@ -101,7 +101,7 @@
                     Width="225"
                     Height="170">
 
-                <Image Source="{Binding Thumbnail}"
+                <Image Source="{Binding StreamDataViewModel.Thumbnail}"
                        Style="{StaticResource ThumbnailStyle}"
                        />
             </Border>
@@ -140,7 +140,7 @@
                                Text="Title: "
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding Title}"
+                               Text="{Binding StreamDataViewModel.Title}"
                                />
                 </StackPanel>
 
@@ -154,7 +154,7 @@
                                
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
-                               Text="{Binding Author}"
+                               Text="{Binding StreamDataViewModel.Author}"
                                />
                 </StackPanel>
 
@@ -168,7 +168,7 @@
                                
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}" 
-                               Text="{Binding Duration}"
+                               Text="{Binding StreamDataViewModel.Duration}"
                                />
                 </StackPanel>
 
@@ -182,7 +182,7 @@
                                Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding UploadDate}"
+                               Text="{Binding StreamDataViewModel.UploadDate}"
                                />
                 </StackPanel>
 
@@ -196,7 +196,7 @@
                                Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding VideoSize}"
+                               Text="{Binding StreamDataViewModel.VideoSize}"
                                />
                 </StackPanel>
 
@@ -210,7 +210,7 @@
                                Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding AudioSize}"
+                               Text="{Binding StreamDataViewModel.AudioSize}"
                                />
                 </StackPanel>
 
@@ -259,7 +259,6 @@
 
 
         <!--#endregion-->
-
 
     </Grid>
 </UserControl>

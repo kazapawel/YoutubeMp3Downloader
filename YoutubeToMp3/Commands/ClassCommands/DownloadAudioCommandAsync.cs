@@ -15,14 +15,14 @@ namespace YoutubeToMp3
 
         protected override async Task ExecuteAsync(object parameter)
         {
-            if (_viewModel.StreamData is null)
+            if (_viewModel.StreamDataViewModel is null)
                 return;
 
             try
             {
                 _viewModel.IsReady = false;
                 _viewModel.StatusMessage = "Downloading audio...";
-                var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamData);
+                var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamDataViewModel.Model);
                 await youtubeDownloader.DownloadAudioAsync(_viewModel.UserDirectory);
                 _viewModel.StatusMessage = "Success!";
                 _viewModel.IsReady = true;

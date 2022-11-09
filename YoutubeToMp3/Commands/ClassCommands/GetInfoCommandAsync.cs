@@ -13,6 +13,11 @@ namespace YoutubeToMp3
             _viewModel = vm;
         }
 
+        /// <summary>
+        /// Gets video data and information about.
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
             // this is going to be fixed by binding
@@ -23,7 +28,7 @@ namespace YoutubeToMp3
             {
                 // this should be another viewmodel
                 _viewModel.Url = null;
-                _viewModel.StreamData = null;
+                _viewModel.StreamDataViewModel = null;
                 _viewModel.StatusMessage = null;
                 _viewModel.IsUrlValid = false;
                 // and an event notification to clear data
@@ -42,7 +47,7 @@ namespace YoutubeToMp3
                 var data = await builder.GetStreamData(_viewModel.Url);
 
                 // Resfreshes viewmodel properties
-                _viewModel.StreamData = data;
+                _viewModel.StreamDataViewModel = new StreamDataViewModel(data);
                 _viewModel.IsUrlValid = true;
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = "Data loaded. Ready for download.";        
