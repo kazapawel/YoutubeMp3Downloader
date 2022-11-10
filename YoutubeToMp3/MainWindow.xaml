@@ -9,8 +9,8 @@
         Title="MainWindow" 
         MinHeight="370"
         MaxHeight="370"
-        MinWidth="650"
-        MaxWidth="650"
+        MinWidth="652"
+        MaxWidth="652"
         Style="{StaticResource MainWindowModernStyle}"
         WindowStartupLocation="CenterScreen">
 

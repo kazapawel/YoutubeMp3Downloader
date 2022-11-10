@@ -36,7 +36,7 @@ namespace YoutubeToMp3
 
             // else updates properties
             _viewModel.Url = text;
-            _viewModel.StatusMessage = "Getting info...";
+            _viewModel.StatusMessage = new InfoMessage("Getting info...");
 
             // starts getting info
             try
@@ -47,11 +47,11 @@ namespace YoutubeToMp3
                 // Resfreshes viewmodel properties
                 _viewModel.StreamDataViewModel = new StreamDataViewModel(data);
                 _viewModel.IsReady = true;
-                _viewModel.StatusMessage = "Data loaded. Ready for download.";        
+                _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        
             }
             catch (Exception ex)
             {
-                _viewModel.StatusMessage = ex.Message;
+                _viewModel.StatusMessage = new ErrorMessage(ex.Message);
             }
         }
     }

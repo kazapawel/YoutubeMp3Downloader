@@ -9,7 +9,7 @@ namespace YoutubeToMp3
 
         private StreamDataViewModel streamDataViewModel;
         private string url;
-        private string statusMessage;
+        private UserMessage statusMessage;
         private bool isReady;
 
         #endregion
@@ -51,7 +51,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Information for the user about current action.
         /// </summary>
-        public string StatusMessage
+        public UserMessage StatusMessage
         {
             get => statusMessage;
             set

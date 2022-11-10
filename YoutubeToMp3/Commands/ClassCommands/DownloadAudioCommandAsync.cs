@@ -21,15 +21,15 @@ namespace YoutubeToMp3
             try
             {
                 _viewModel.IsReady = false;
-                _viewModel.StatusMessage = "Downloading audio...";
+                _viewModel.StatusMessage = new InfoMessage("Downloading audio...");
                 var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamDataViewModel.Model);
                 await youtubeDownloader.DownloadAudioAsync();
-                _viewModel.StatusMessage = "Success!";
+                _viewModel.StatusMessage = new SuccessMessage("Success!");
                 _viewModel.IsReady = true;
             }
             catch (Exception ex)
             {
-                _viewModel.StatusMessage = ex.Message;
+                _viewModel.StatusMessage = new ErrorMessage(ex.Message);
             }
         }
 

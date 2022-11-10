@@ -223,8 +223,8 @@
 
         <!--#region STATUS -->
         <TextBlock Grid.Row="3"
-                   Foreground="Wheat"
-                   Text="{Binding StatusMessage}"
+                   Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
+                   Text="{Binding StatusMessage.Message}"
                    Style="{StaticResource StatusTextblock}"    
                    Margin="51,0,0,5"
                    TextTrimming="CharacterEllipsis"

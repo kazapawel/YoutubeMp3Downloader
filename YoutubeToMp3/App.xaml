@@ -31,6 +31,7 @@
             
             <!-- Converters -->
             <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <local:MessageToBrushConverter x:Key="MessageToBrushConverter"/>
 
         </ResourceDictionary>
     </Application.Resources>
