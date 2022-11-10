@@ -26,7 +26,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// 
         /// </summary>
-        public string FfmpegPath => Path.Combine(UserDirectory, "ffmpeg.exe");
+        public string FfmpegPath => Path.Combine(Directory.GetCurrentDirectory(), "ffmpeg.exe");
 
         #region CONSTRUCTOR
 
@@ -41,27 +41,31 @@ namespace YoutubeToMp3
         #endregion
 
         /// <summary>
-        /// For now it downloads muxed stream.
+        /// Downloads 1080p video with sound or if 1080p is no available - highest quality.
         /// </summary>
         public async Task DownloadVideoAsync()
         {
+            if (!File.Exists(FfmpegPath))
+                throw new FfmpegFileException("Ffmmpeg.exe not found.");
+
             var title = FixTitle(StreamData.Title);
             var downloadPath = @$"{UserDirectory}\{title}.mp4";
-            //await youtubeClient.Videos.Streams.DownloadAsync(StreamData.MuxedHD, @$"{UserDirectory}\{title}video.{StreamData.VideoHD.Container}");
             var infos = new IStreamInfo[]
             {
                 StreamData.AudioHD,
                 StreamData.VideoHD
             };
             await youtubeClient.Videos.DownloadAsync(infos, new ConversionRequestBuilder(downloadPath).Build());
-
         }
 
         /// <summary>
-        /// Downloads audio from given path.
+        /// Downloads audio from given path and converts it to mp3.
         /// </summary>
         public async Task DownloadAudioAsync()
         {
+            if (!File.Exists(FfmpegPath))
+                throw new FfmpegFileException("Ffmmpeg.exe not found.");
+
             var title = FixTitle(StreamData.Title);
             var downloadPath = @$"{UserDirectory}\{title}.mp3";
             //await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{UserDirectory}\{title}audio.{StreamData.AudioHD.Container}");

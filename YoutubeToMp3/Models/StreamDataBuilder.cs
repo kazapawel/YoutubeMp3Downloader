@@ -22,6 +22,9 @@ namespace YoutubeToMp3
             // Streams
             var StreamManifest = await client.Videos.Streams.GetManifestAsync(url);
 
+            // Gets the 1080p video 
+            var videoHD = StreamManifest.GetVideoOnlyStreams().FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));      
+
             // StreamData to return
             var info = new StreamData
             {
@@ -31,7 +34,7 @@ namespace YoutubeToMp3
                 UploadDate = Videos?.UploadDate,
                 Thumbnail = Videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url,
                 AudioHD = StreamManifest.GetAudioOnlyStreams().GetWithHighestBitrate(),
-                VideoHD = StreamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality(),
+                VideoHD = videoHD ?? StreamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality(),
                 MuxedHD = StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality(),
             };
 
