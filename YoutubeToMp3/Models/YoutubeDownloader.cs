@@ -24,7 +24,7 @@ namespace YoutubeToMp3
         public string UserDirectory { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         /// <summary>
-        /// 
+        /// Path to ffpmeg.exe.
         /// </summary>
         public string FfmpegPath => Path.Combine(Directory.GetCurrentDirectory(), "ffmpeg.exe");
 
@@ -68,7 +68,6 @@ namespace YoutubeToMp3
 
             var title = FixTitle(StreamData.Title);
             var downloadPath = @$"{UserDirectory}\{title}.mp3";
-            //await youtubeClient.Videos.Streams.DownloadAsync(StreamData.AudioHD, @$"{UserDirectory}\{title}audio.{StreamData.AudioHD.Container}");
             var infos = new IStreamInfo[]
             {
                 StreamData.AudioHD

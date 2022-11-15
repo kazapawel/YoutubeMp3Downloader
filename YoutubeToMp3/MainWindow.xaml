@@ -12,7 +12,8 @@
         MinWidth="652"
         MaxWidth="652"
         Style="{StaticResource MainWindowModernStyle}"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="pack://application:,,,/Images/yticon.png">
 
     <Window.DataContext>
         <local:ApplicationViewModel/>

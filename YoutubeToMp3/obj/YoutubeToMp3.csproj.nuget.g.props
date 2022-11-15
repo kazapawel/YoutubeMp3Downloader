@@ -13,7 +13,4 @@
     <SourceRoot Include="C:\Users\user\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgFontAwesome_WPF Condition=" '$(PkgFontAwesome_WPF)' == '' ">C:\Users\user\.nuget\packages\fontawesome.wpf\4.7.0.9</PkgFontAwesome_WPF>
-  </PropertyGroup>
 </Project>

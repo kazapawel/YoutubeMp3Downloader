@@ -53,7 +53,7 @@ namespace YoutubeToMp3.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/YoutubeToMp3;component/controls/newcontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/YoutubeToMp3;V1.0.0.0;component/controls/newcontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\NewControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

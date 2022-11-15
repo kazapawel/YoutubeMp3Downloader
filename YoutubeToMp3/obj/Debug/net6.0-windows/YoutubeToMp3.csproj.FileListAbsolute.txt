@@ -26,8 +26,6 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-wi
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\YoutubeToMp3.genruntimeconfig.cache
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\ref\YoutubeToMp3.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\App.baml
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\VideoInfoControl.g.cs
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\VideoInfoControl.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\MainControl.g.cs
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\MainControl.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Styles\Colors.baml
@@ -35,7 +33,4 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-wi
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Styles\TextboxStyles.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Styles\WindowStyles.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Styles\ButtonStyles.baml
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Debug\net6.0-windows\FontAwesome.WPF.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Styles\ImageStyles.baml
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\NewControl.g.cs
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\Controls\NewControl.baml
