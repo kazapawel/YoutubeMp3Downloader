@@ -5,7 +5,7 @@ Ensure that the FFmpeg binary is located in your application's probe directory.
 
 
 Libraries used:
-* [YoutbeExplode](https://github.com/Tyrrrz/YoutubeExplode).
+* [YoutbeExplode](https://github.com/Tyrrrz/YoutubeExplode)
 
 External resources:
 * [FFmpeg](https://ffmpeg.org/)
