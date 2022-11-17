@@ -28,14 +28,14 @@ namespace YoutubeToMp3
                 _viewModel.IsReady = false;
                 _viewModel.StatusMessage = new InfoMessage("Downloading audio...");
 
-                // Crates download data and downloader
+                // Creates download data and downloader
                 var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamDataViewModel.Model);
                 var youtubeDownloader = new YoutubeDownloader(downloadData);
 
                 // Downloads audio
                 await youtubeDownloader.DownloadAudioAsync();
 
-                // Chagnes state of a view model
+                // Changes state of a view model
                 _viewModel.StatusMessage = new SuccessMessage("Success!");
                 _viewModel.IsReady = true;
             }

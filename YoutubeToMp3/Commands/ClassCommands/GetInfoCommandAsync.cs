@@ -42,7 +42,7 @@ namespace YoutubeToMp3
             try
             {
                 // Gets the stream data async
-                var data = await new StreamDataBuilder().GetStreamData(_viewModel.Url);
+                var data = await StreamDataBuilder.GetStreamData(_viewModel.Url);
 
                 // Resfreshes viewmodel properties
                 _viewModel.StreamDataViewModel = new StreamDataViewModel(data);

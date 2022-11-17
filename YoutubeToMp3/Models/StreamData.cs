@@ -10,9 +10,9 @@ namespace YoutubeToMp3
         public TimeSpan? Duration { get; set; }
         public DateTimeOffset? UploadDate { get; set;}
         public string Thumbnail { get; set; }
-        public string VideoSize => MuxedHD.Size.ToString();
-        public string AudioSize => AudioHD.Size.ToString();
-        public IStreamInfo VideoHD { get; set; }
+        public string VideoQuality => VideoHD.VideoQuality.ToString();
+        public string AudioBitrate => AudioHD.Bitrate.ToString();
+        public IVideoStreamInfo VideoHD { get; set; }
         public IStreamInfo AudioHD { get; set; }
         public IStreamInfo MuxedHD { get; set; }
     }

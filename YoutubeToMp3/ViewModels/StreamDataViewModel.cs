@@ -2,26 +2,6 @@
 {
     public class StreamDataViewModel : BaseViewModel
     {
-        //public StreamData StreamData
-        //{
-        //    get => streamData;
-        //    set
-        //    {
-        //        if (streamData != value)
-        //        {
-        //            streamData = value;
-        //            OnPropertyChanged(nameof(StreamData));
-        //            OnPropertyChanged(nameof(Title));
-        //            OnPropertyChanged(nameof(Author));
-        //            OnPropertyChanged(nameof(Duration));
-        //            OnPropertyChanged(nameof(UploadDate));
-        //            OnPropertyChanged(nameof(Thumbnail));
-        //            OnPropertyChanged(nameof(VideoSize));
-        //            OnPropertyChanged(nameof(AudioSize));
-        //        }
-        //    }
-        //}
-
         #region PRIVATE FIELDS
 
         private readonly StreamData _streamData;
@@ -33,10 +13,10 @@
         public string Title => _streamData?.Title;
         public string Duration => _streamData?.Duration.ToString();
         public string Author => _streamData?.Author;
-        public string UploadDate => _streamData?.UploadDate.ToString();
+        public string UploadDate => _streamData?.UploadDate.Value.Date.ToShortDateString();
         public string Thumbnail => _streamData != null ? _streamData?.Thumbnail : "pack://application:,,,/Images/youtube_modern_100.png";
-        public string VideoSize => _streamData != null ? _streamData.VideoSize : string.Empty;
-        public string AudioSize => _streamData != null ? _streamData.AudioSize : string.Empty;
+        public string VideoQuality => _streamData != null ? _streamData.VideoQuality : string.Empty;
+        public string AudioBitrate => _streamData != null ? _streamData.AudioBitrate : string.Empty;
         public StreamData Model => _streamData;
 
         #endregion

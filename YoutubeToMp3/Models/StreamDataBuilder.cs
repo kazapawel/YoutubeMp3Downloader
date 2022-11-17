@@ -5,14 +5,14 @@ using YoutubeExplode.Videos.Streams;
 
 namespace YoutubeToMp3
 {
-    public class StreamDataBuilder
+    public static class StreamDataBuilder
     {
         /// <summary>
         /// Returns new StreamData object.
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public async Task<StreamData> GetStreamData(string url)
+        public static async Task<StreamData> GetStreamData(string url)
         {
             var client = new YoutubeClient();
 

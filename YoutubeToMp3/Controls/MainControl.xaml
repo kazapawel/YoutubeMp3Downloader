@@ -192,25 +192,25 @@
                             Margin="5"
                             >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Video Size: "
+                               Text="Video: "
                                Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.VideoSize}"
+                               Text="{Binding StreamDataViewModel.VideoQuality}"
                                />
                 </StackPanel>
 
-                <!-- SIZE Audio -->
+                <!-- BITRATE Audio -->
                 <StackPanel Grid.Row="5"
                             Orientation="Horizontal"
                             Margin="5"
                             >
                     <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Audio Size: "
+                               Text="Audio: "
                                Margin="0"
                                />
                     <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.AudioSize}"
+                               Text="{Binding StreamDataViewModel.AudioBitrate}"
                                />
                 </StackPanel>
 
