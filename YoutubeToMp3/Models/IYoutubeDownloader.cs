@@ -4,7 +4,7 @@ namespace YoutubeToMp3
 {
     public interface IYoutubeDownloader
     {
-        StreamData StreamData { get; set; }
+        DownloadData DownloadData { get; set; }
         Task DownloadVideoAsync();
         Task DownloadAudioAsync();
     }

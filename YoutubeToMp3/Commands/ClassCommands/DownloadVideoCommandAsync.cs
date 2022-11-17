@@ -8,7 +8,7 @@ namespace YoutubeToMp3
         private readonly MainViewModel _viewModel;
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor.
         /// </summary>
         public DownloadVideoCommandAsync(MainViewModel vm)
         {
@@ -17,7 +17,7 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// 
+        /// Downloads video async.
         /// </summary>
         /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
@@ -27,10 +27,18 @@ namespace YoutubeToMp3
 
             try
             {
+                // Changes state of a view model
                 _viewModel.IsReady = false;
                 _viewModel.StatusMessage = new InfoMessage("Downloading video...");
-                var youtubeDownloader = new YoutubeDownloader(_viewModel.StreamDataViewModel.Model);
+
+                // Crates download data and downloader
+                var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamDataViewModel.Model);
+                var youtubeDownloader = new YoutubeDownloader(downloadData);
+
+                // Downloads video
                 await youtubeDownloader.DownloadVideoAsync();
+
+                // Chagnes state of a view model
                 _viewModel.StatusMessage = new SuccessMessage("Success!");
                 _viewModel.IsReady = true;
             }
@@ -40,6 +48,11 @@ namespace YoutubeToMp3
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnIsReadyChanged(object sender, EventArgs e)
         {
             CanExec = _viewModel.IsReady;
