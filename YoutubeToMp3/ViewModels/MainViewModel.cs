@@ -97,9 +97,5 @@ namespace YoutubeToMp3
         public ICommand PasteClipboardCommand => new PasteClipboardCommand(this);
 
         #endregion
-
-        #region CONSTRUCTOR
-
-        #endregion
     }
 }
