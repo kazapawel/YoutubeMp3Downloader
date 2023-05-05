@@ -101,7 +101,7 @@
                     Width="225"
                     Height="170">
 
-                <Image Source="{Binding StreamDataViewModel.Thumbnail}"
+                <Image Source="{Binding StreamDataViewModel.Thumbnail, TargetNullValue={StaticResource DefaultThumbnail}}"
                        Style="{StaticResource ThumbnailStyle}"
                        />
             </Border>

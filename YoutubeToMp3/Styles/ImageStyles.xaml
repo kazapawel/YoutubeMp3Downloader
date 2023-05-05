@@ -4,11 +4,7 @@
     <Style TargetType="{x:Type Image}" x:Key="ThumbnailStyle">
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding Thumbnail}" Value="pack://application:,,,/Images/youtube_modern_100.png">
-                <Setter Property="Width" Value="150"/>
-                <Setter Property="Height" Value="150"/>
-            </DataTrigger>
-        </Style.Triggers>
     </Style>
+
+    <BitmapImage x:Key="DefaultThumbnail" UriSource="pack://application:,,,/Images/youtube_modern_100.png"/>
 </ResourceDictionary>
