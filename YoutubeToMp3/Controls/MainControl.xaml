@@ -67,15 +67,16 @@
                      x:Name="urlTextBox"
                      Style="{StaticResource EnterUrlTextBoxStyle}"
                      Text="{Binding Url, Mode=TwoWay}"
-                     TextChanged="urlTextBox_TextChanged"
+                     TextChanged="UrlTextBoxTextChanged"
                      />
 
             <!-- PASTE button -->
             <Button Grid.Column="3"
                     Style="{StaticResource ButtonPaste}"
                     Tag="pack://application:,,,/Images/paste_modern_color.png"
-                    Command="{Binding PasteClipboardCommand}"
+                    Click="PasteButtonClick"
                     />
+            <!--Command="{Binding PasteClipboardCommand}"-->
 
         </Grid>
         <!--#endregion-->

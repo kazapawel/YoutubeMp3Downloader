@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace YoutubeToMp3
 {
@@ -26,7 +15,6 @@ namespace YoutubeToMp3
             set { SetValue(TextChangedCommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TextChangedCommand.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextChangedCommandProperty =
             DependencyProperty.Register("TextChangedCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
 
@@ -37,25 +25,27 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// 
+        /// Invokes TextChangedCommand.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void urlTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void UrlTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            var value = e.Changes.ToList();
-
             // Textbox value as variable
             var text = this.urlTextBox.Text;
 
             // Sends textbox value as command parameter
-            //if (!string.IsNullOrEmpty(text))
-                TextChangedCommand?.Execute(text);
-
-            // this does not work (why?)
-            //FocusManager.SetFocusedElement(this.Parent, null);
+            TextChangedCommand?.Execute(text);
         }
 
-
+        /// <summary>
+        /// Pastes text from clipboard to url textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PasteButtonClick(object sender, RoutedEventArgs e)
+        {
+            urlTextBox.Text = Clipboard.GetText();
+        }
     }
 }

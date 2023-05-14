@@ -37,7 +37,6 @@ namespace YoutubeToMp3
                 VideoHD = videoHD ?? StreamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality(),
                 MuxedHD = StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality(),
             };
-
             return info;
         }
     }

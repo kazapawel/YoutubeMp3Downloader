@@ -66,6 +66,7 @@ namespace YoutubeToMp3
 
         /// <summary>
         /// Returns true if application is ready to download a stream.
+        /// Raises IsReadyChanged event.
         /// </summary>
         public bool IsReady
         {
@@ -90,11 +91,10 @@ namespace YoutubeToMp3
 
         #region COMMANDS
 
-        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
-        public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this);
         public ICommand GetInfoCommandAsync => new GetInfoCommandAsync(this);
+        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
+        public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this); 
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
-        public ICommand PasteClipboardCommand => new PasteClipboardCommand(this);
 
         #endregion
 
