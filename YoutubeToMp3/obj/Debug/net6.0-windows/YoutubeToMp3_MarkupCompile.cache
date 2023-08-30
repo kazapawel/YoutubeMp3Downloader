@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Debug\net6.0-windows\
+C:\Users\user\source\repos\YoutubeMp3Downloader\YoutubeToMp3\obj\Debug\net6.0-windows\
 YoutubeToMp3
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\App.xaml
+C:\Users\user\source\repos\YoutubeMp3Downloader\YoutubeToMp3\App.xaml
 825012929
 
 30-637020023
-198448705086
+198374041136
 Controls\MainControl.xaml;MainWindow.xaml;Styles\ButtonStyles.xaml;Styles\Colors.xaml;Styles\ImageStyles.xaml;Styles\TextblockStyles.xaml;Styles\TextboxStyles.xaml;Styles\WindowStyles.xaml;
 
 False

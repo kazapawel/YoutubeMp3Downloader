@@ -27,22 +27,15 @@ namespace YoutubeToMp3
         /// <summary>
         /// Invokes TextChangedCommand.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void UrlTextBoxTextChanged(object sender, TextChangedEventArgs e)
         {
-            // Textbox value as variable
-            var text = this.urlTextBox.Text;
-
-            // Sends textbox value as command parameter
-            TextChangedCommand?.Execute(text);
+            var textFromTextbox = this.urlTextBox.Text;
+            TextChangedCommand?.Execute(textFromTextbox);
         }
 
         /// <summary>
         /// Pastes text from clipboard to url textbox.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void PasteButtonClick(object sender, RoutedEventArgs e)
         {
             urlTextBox.Text = Clipboard.GetText();

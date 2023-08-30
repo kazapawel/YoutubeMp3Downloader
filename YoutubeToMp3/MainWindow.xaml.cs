@@ -35,7 +35,7 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Close window event handler
+        /// Closes main window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,13 +45,15 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Minimize window event handler
+        /// Minimize or gets normal size of main window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = this.WindowState == WindowState.Minimized ? WindowState.Normal : WindowState.Minimized;
+            this.WindowState = this.WindowState == WindowState.Minimized 
+                ? WindowState.Normal 
+                : WindowState.Minimized;
         }
     }
 }

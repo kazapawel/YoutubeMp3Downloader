@@ -65,10 +65,10 @@
             <!-- URL textbox -->
             <TextBox Grid.Column="1"
                      x:Name="urlTextBox"
-                     Style="{StaticResource EnterUrlTextBoxStyle}"
                      Text="{Binding Url, Mode=TwoWay}"
                      TextChanged="UrlTextBoxTextChanged"
                      />
+                     <!--Style="{StaticResource EnterUrlTextBoxStyle}"-->
 
             <!-- PASTE button -->
             <Button Grid.Column="3"

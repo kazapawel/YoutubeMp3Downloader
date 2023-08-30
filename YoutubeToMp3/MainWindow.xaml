@@ -1,24 +1,21 @@
 ﻿<Window x:Class="YoutubeToMp3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YoutubeToMp3"
-        xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
         Title="MainWindow" 
-        MinHeight="370"
-        MaxHeight="370"
-        MinWidth="652"
-        MaxWidth="652"
-        Style="{StaticResource MainWindowModernStyle}"
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/yticon.png">
-
+    <!--MinHeight="370"
+        MaxHeight="370"
+        MinWidth="652"
+        MaxWidth="652"-->
     <Window.DataContext>
         <local:ApplicationViewModel/>
     </Window.DataContext>
-    
+
     <Grid>
 
         <!--#region MAIN GRID DEFINITIONS -->
@@ -34,28 +31,28 @@
         <!--#endregion-->
 
         <!--#region  TITLE BAR -->
-        <!-- TITLE BAR -->
+        <!-- TITLE BAR --><!--
         <Grid Grid.Row="0" 
              >
 
             <Grid.ColumnDefinitions>
 
-                <!-- Image -->
+                --><!-- Image --><!--
                 <ColumnDefinition Width="auto"/>
 
-                <!-- Header -->
+                --><!-- Header --><!--
                 <ColumnDefinition Width="*"/>
 
-                <!-- Minimize button -->
+                --><!-- Minimize button --><!--
                 <ColumnDefinition Width="auto"/>
 
-                <!-- Close button -->
+                --><!-- Close button --><!--
                 <ColumnDefinition Width="auto"/>
 
             </Grid.ColumnDefinitions>
 
 
-            <!-- Minimize button-->
+            --><!-- Minimize button--><!--
             <Button Grid.Column="2"
                     Style="{StaticResource ButtonImageStyle}"
                     Background="{StaticResource BackgroundDarkSimpleMainBrush}"
@@ -72,7 +69,7 @@
 
         </Grid>
 
-        <!--#endregion-->
+        --><!--#endregion-->
 
         <!--#region MAIN CONTROL -->
         <local:MainControl Grid.Row="1"

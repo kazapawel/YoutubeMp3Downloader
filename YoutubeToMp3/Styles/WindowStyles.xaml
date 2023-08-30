@@ -4,42 +4,19 @@
     <!-- Main window ModernStyle -->
     <Style TargetType="{x:Type Window}" x:Key="MainWindowModernStyle">
         <!--<Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="AllowsTransparency" Value="True"/>-->
+        <Setter Property="AllowsTransparency" Value="True"/>
         <Setter Property="Background" Value="{StaticResource BgDarkBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource FgOrangeBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource ForegroundSimpleBorderBrush}"/>
         <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>-->
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome UseAeroCaptionButtons="True"
-                              GlassFrameThickness="0"
+                              GlassFrameThickness="50"
                               CornerRadius="20"
-                              CaptionHeight="40"
-                              ResizeBorderThickness="9"
-                              RenderOptions.EdgeMode="Unspecified"           
-                              />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!-- Main window LightStyle -->
-    <Style TargetType="{x:Type Window}" x:Key="MainWindowLightStyle">
-        <!--<Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="AllowsTransparency" Value="True"/>-->
-        <Setter Property="Background" Value="{StaticResource LSBackgroundMainBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource LSForegroundBrush}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource ForegroundSimpleBorderBrush}"/>
-        <Setter Property="RenderOptions.EdgeMode" Value="Aliased"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="WindowChrome.WindowChrome">
-            <Setter.Value>
-                <WindowChrome UseAeroCaptionButtons="True"
-                              GlassFrameThickness="0"
-                              CornerRadius="20"
-                              CaptionHeight="40"
+                              CaptionHeight="50"
                               ResizeBorderThickness="9"
                               RenderOptions.EdgeMode="Unspecified"           
                               />

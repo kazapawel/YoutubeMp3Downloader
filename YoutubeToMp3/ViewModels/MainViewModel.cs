@@ -97,9 +97,5 @@ namespace YoutubeToMp3
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
 
         #endregion
-
-        #region CONSTRUCTOR
-
-        #endregion
     }
 }
