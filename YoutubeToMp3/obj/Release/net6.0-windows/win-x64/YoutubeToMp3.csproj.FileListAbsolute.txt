@@ -5,7 +5,6 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\YoutubeToMp3.pdb
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\AngleSharp.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\CliWrap.dll
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\FontAwesome.WPF.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\YoutubeExplode.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\YoutubeExplode.Converter.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\Microsoft.CSharp.dll
@@ -275,7 +274,6 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\hostfxr.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\hostpolicy.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\mscordaccore.dll
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\mscordaccore_amd64_amd64_6.0.322.12309.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\mscordbi.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\mscorrc.dll
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\msquic.dll
@@ -514,8 +512,6 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Styles\TextboxStyles.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Styles\WindowStyles.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\MainControl.g.cs
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\NewControl.g.cs
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\VideoInfoControl.g.cs
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\MainWindow.g.cs
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\App.g.cs
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\GeneratedInternalTypeHelper.g.cs
@@ -523,8 +519,6 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\YoutubeToMp3_MarkupCompile.lref
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\App.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\MainControl.baml
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\NewControl.baml
-C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\Controls\VideoInfoControl.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\MainWindow.baml
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\YoutubeToMp3.g.resources
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\YoutubeToMp3.GeneratedMSBuildEditorConfig.editorconfig
@@ -537,3 +531,5 @@ C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\YoutubeToMp3.pdb
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\YoutubeToMp3.genruntimeconfig.cache
 C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\obj\Release\net6.0-windows\win-x64\ref\YoutubeToMp3.dll
+C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\System.Diagnostics.EventLog.Messages.dll
+C:\Users\user\source\repos\YoutubeDownloaderWpf\YoutubeToMp3\bin\Release\net6.0-windows\win-x64\mscordaccore_amd64_amd64_6.0.1122.52304.dll
