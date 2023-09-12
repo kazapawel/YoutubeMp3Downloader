@@ -29,9 +29,6 @@
     <None Remove="Images\yticon.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="YoutubeExplode.Converter" Version="6.3.2" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\YoutubeDownloadService\YoutubeDownloadService.csproj" />
   </ItemGroup>
   <ItemGroup>

@@ -53,7 +53,7 @@
           }
         }
       },
-      "YoutubeExplode/6.3.2": {
+      "YoutubeExplode/6.3.4": {
         "type": "package",
         "dependencies": {
           "AngleSharp": "1.0.4"
@@ -69,11 +69,11 @@
           }
         }
       },
-      "YoutubeExplode.Converter/6.3.2": {
+      "YoutubeExplode.Converter/6.3.4": {
         "type": "package",
         "dependencies": {
           "CliWrap": "3.6.4",
-          "YoutubeExplode": "6.3.2"
+          "YoutubeExplode": "6.3.4"
         },
         "compile": {
           "lib/net5.0/YoutubeExplode.Converter.dll": {
@@ -89,6 +89,10 @@
       "YoutubeDownloadService/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "YoutubeExplode": "6.3.4",
+          "YoutubeExplode.Converter": "6.3.4"
+        },
         "compile": {
           "bin/placeholder/YoutubeDownloadService.dll": {}
         },
@@ -179,10 +183,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "YoutubeExplode/6.3.2": {
-      "sha512": "HV2e4mls8vmOA6tQAkzNFc2vEqCwVxlfMB2deMGTnfSgatHwXXCXXMah++H2RSSDDljUCqyR8z4QJVVpMRKG8w==",
+    "YoutubeExplode/6.3.4": {
+      "sha512": "vxb4QAOkfvhRRkUHkm4L/ZGXEUxfQecvdr/4CCfHpibUab/r6QFQTvO5zrQFSk+rEJjOlrgl+CBf1aRyUhBTcg==",
       "type": "package",
-      "path": "youtubeexplode/6.3.2",
+      "path": "youtubeexplode/6.3.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -197,14 +201,14 @@
         "lib/netstandard2.0/YoutubeExplode.xml",
         "lib/netstandard2.1/YoutubeExplode.dll",
         "lib/netstandard2.1/YoutubeExplode.xml",
-        "youtubeexplode.6.3.2.nupkg.sha512",
+        "youtubeexplode.6.3.4.nupkg.sha512",
         "youtubeexplode.nuspec"
       ]
     },
-    "YoutubeExplode.Converter/6.3.2": {
-      "sha512": "k+9hnbjwjhdqrE4BPcKOHx4dqYXOnwPewJiffvkFn4nnAbYQYjoQ20HJBXzWfUgbN1hmDkDTKBwvlOW4fRp1pQ==",
+    "YoutubeExplode.Converter/6.3.4": {
+      "sha512": "1mG92mLDBbFvyCS6Wqg3e5xMYZ1d/0SjSqRRNhUJHbmvo8LOX4yNnOEqgh0iUcV88HHEx46KpyRpizwc3G1t+A==",
       "type": "package",
-      "path": "youtubeexplode.converter/6.3.2",
+      "path": "youtubeexplode.converter/6.3.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -219,7 +223,7 @@
         "lib/netstandard2.0/YoutubeExplode.Converter.xml",
         "lib/netstandard2.1/YoutubeExplode.Converter.dll",
         "lib/netstandard2.1/YoutubeExplode.Converter.xml",
-        "youtubeexplode.converter.6.3.2.nupkg.sha512",
+        "youtubeexplode.converter.6.3.4.nupkg.sha512",
         "youtubeexplode.converter.nuspec"
       ]
     },
@@ -231,8 +235,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
-      "YoutubeDownloadService >= 1.0.0",
-      "YoutubeExplode.Converter >= 6.3.2"
+      "YoutubeDownloadService >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -282,12 +285,6 @@
     "frameworks": {
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
-        "dependencies": {
-          "YoutubeExplode.Converter": {
-            "target": "Package",
-            "version": "[6.3.2, )"
-          }
-        },
         "imports": [
           "net461",
           "net462",

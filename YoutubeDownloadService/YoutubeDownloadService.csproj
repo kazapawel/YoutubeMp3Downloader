@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="YoutubeExplode" Version="6.3.4" />
+    <PackageReference Include="YoutubeExplode.Converter" Version="6.3.4" />
+  </ItemGroup>
+
 </Project>

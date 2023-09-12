@@ -19,7 +19,7 @@ namespace YoutubeToMp3
         /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
-            if (_viewModel.StreamDataViewModel is null)
+            if (_viewModel.StreamInfoViewModel is null)
                 return;
 
             try
@@ -29,15 +29,15 @@ namespace YoutubeToMp3
                 _viewModel.StatusMessage = new InfoMessage("Downloading audio...");
 
                 // Creates download data and downloader
-                var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamDataViewModel.Model);
-                var youtubeDownloader = new YoutubeDownloader(downloadData);
+                //var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamInfoViewModel.Model);
+                //var youtubeDownloader = new YoutubeDownloader(downloadData);
 
-                // Downloads audio
-                await youtubeDownloader.DownloadAudioAsync();
+                //// Downloads audio
+                //await youtubeDownloader.DownloadAudioAsync();
 
-                // Changes state of a view model
-                _viewModel.StatusMessage = new SuccessMessage("Success!");
-                _viewModel.IsReady = true;
+                //// Changes state of a view model
+                //_viewModel.StatusMessage = new SuccessMessage("Success!");
+                //_viewModel.IsReady = true;
             }
             catch (Exception ex)
             {

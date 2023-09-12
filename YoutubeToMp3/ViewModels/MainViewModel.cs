@@ -7,7 +7,7 @@ namespace YoutubeToMp3
     {
         #region PRIVATE FIELDS
 
-        private StreamDataViewModel streamDataViewModel;
+        private StreamInfoViewModel streamInfoViewModel;
         private string url;
         private string downloadPath;
         private string ffmpegPath;
@@ -21,15 +21,15 @@ namespace YoutubeToMp3
         /// <summary>
         /// Viewmodel representing stream data.
         /// </summary>
-        public StreamDataViewModel StreamDataViewModel
+        public StreamInfoViewModel StreamInfoViewModel
         {
-            get => streamDataViewModel;
+            get => streamInfoViewModel;
             set
             {
-                if (streamDataViewModel != value)
+                if (streamInfoViewModel != value)
                 {
-                    streamDataViewModel = value;
-                    OnPropertyChanged(nameof(StreamDataViewModel));
+                    streamInfoViewModel = value;
+                    OnPropertyChanged(nameof(StreamInfoViewModel));
                 }
             }
         }

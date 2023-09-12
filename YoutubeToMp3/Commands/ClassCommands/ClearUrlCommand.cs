@@ -20,7 +20,7 @@
         public override void Execute(object parameter)
         {
             _viewModel.Url = null;
-            _viewModel.StreamDataViewModel = null;
+            _viewModel.StreamInfoViewModel = null;
             _viewModel.StatusMessage = null;
             _viewModel.IsReady = false;
         }

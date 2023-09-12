@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using YoutubeDownloadService;
 
 namespace YoutubeToMp3
 {
@@ -17,31 +18,30 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Gets stream data.
+        /// Gets stream info.
         /// </summary>
         /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
-            var url = parameter.ToString();
-
             // if textbox was cleared clears viewmodel's properties
             // TO DO: create text cleared event and handle it in view class
-            if(string.IsNullOrEmpty(url))
+            if(string.IsNullOrEmpty(parameter.ToString()))
             {
-                _viewModel.StreamDataViewModel = null;
+                _viewModel.StreamInfoViewModel = null;
                 _viewModel.StatusMessage = null;
                 return;
             }
 
             // starts getting info
             _viewModel.StatusMessage = new InfoMessage("Getting info...");
+
             try
             {
-                // Gets the stream data async
-                var data = await StreamDataBuilder.GetStreamData(_viewModel.Url);
+                // Gets the stream info async
+                var streamInfo = await YoutubeService.GetStreamInfo(_viewModel.Url);
 
                 // Resfreshes viewmodel properties
-                _viewModel.StreamDataViewModel = new StreamDataViewModel(data);
+                _viewModel.StreamInfoViewModel = new StreamInfoViewModel(streamInfo);
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        
             }

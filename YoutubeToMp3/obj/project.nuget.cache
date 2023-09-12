@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "N480UtLVtPBULUC5NwNRFgRP/kJtWdxjF5//3eo4g5UMR6CpcpUuwJcX4rs8KJAStx45a5NFaeKAtEWXl4E5FA==",
+  "dgSpecHash": "pJKrMx2emRbABwvxoqRcFLtT0ZgYiAAtrLpHd8bYxsMJZMvKT4gxhFACeiNHhO0ppILd8qpDD2qnAtIX3cIxig==",
   "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\anglesharp\\1.0.4\\anglesharp.1.0.4.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\cliwrap\\3.6.4\\cliwrap.3.6.4.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode\\6.3.2\\youtubeexplode.6.3.2.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode.converter\\6.3.2\\youtubeexplode.converter.6.3.2.nupkg.sha512"
+    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode\\6.3.4\\youtubeexplode.6.3.4.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode.converter\\6.3.4\\youtubeexplode.converter.6.3.4.nupkg.sha512"
   ],
   "logs": []
 }

@@ -151,7 +151,7 @@
             <Border Grid.Column="0"
                     Background="Black">
 
-                <Image Source="{Binding StreamDataViewModel.Thumbnail, FallbackValue={StaticResource DefaultThumbnail}}"
+                <Image Source="{Binding StreamInfoViewModel.Thumbnail, FallbackValue={StaticResource DefaultThumbnail}}"
                        />
             </Border>
 
@@ -179,7 +179,7 @@
                             Orientation="Horizontal"
                             Margin="5">
                     <TextBlock Text=""/>
-                    <TextBlock Text="{Binding StreamDataViewModel.Title}"/>
+                    <TextBlock Text="{Binding StreamInfoViewModel.Title}"/>
                 </StackPanel>
 
                 <!-- AUTHOR -->
@@ -188,7 +188,7 @@
                             Margin="5"
                             >
                     <TextBlock Text="Author: "/>
-                    <TextBlock Text="{Binding StreamDataViewModel.Author}"/>
+                    <TextBlock Text="{Binding StreamInfoViewModel.Author}"/>
                 </StackPanel>
 
                 <!-- DURATION -->
@@ -197,7 +197,7 @@
                             Margin="5"                            
                             >
                     <TextBlock Text="Duration: "/>
-                    <TextBlock Text="{Binding StreamDataViewModel.Duration}"/>
+                    <TextBlock Text="{Binding StreamInfoViewModel.Duration}"/>
                 </StackPanel>
 
                 <!-- UPLOAD DATE -->
@@ -206,7 +206,7 @@
                             Margin="5"
                             >
                     <TextBlock Text="Uploaded: "/>
-                    <TextBlock Text="{Binding StreamDataViewModel.UploadDate}"/>
+                    <TextBlock Text="{Binding StreamInfoViewModel.UploadDate}"/>
                 </StackPanel>
 
 
