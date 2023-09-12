@@ -22,23 +22,19 @@ namespace YoutubeToMp3
         /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
-            // 
-            var text = parameter.ToString();
+            var url = parameter.ToString();
 
             // if textbox was cleared clears viewmodel's properties
-            if(string.IsNullOrEmpty(text))
+            // TO DO: create text cleared event and handle it in view class
+            if(string.IsNullOrEmpty(url))
             {
-                _viewModel.Url = null;
                 _viewModel.StreamDataViewModel = null;
                 _viewModel.StatusMessage = null;
                 return;
             }
 
-            // else updates properties
-            _viewModel.Url = text;
-            _viewModel.StatusMessage = new InfoMessage("Getting info...");
-
             // starts getting info
+            _viewModel.StatusMessage = new InfoMessage("Getting info...");
             try
             {
                 // Gets the stream data async

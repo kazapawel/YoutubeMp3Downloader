@@ -1,12 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Fonts\Adventor\texgyreadventor-italic.otf" />
     <None Remove="Fonts\Adventor\texgyreadventor-regular.otf" />
@@ -30,11 +28,12 @@
     <None Remove="Images\youtube_modern_100.png" />
     <None Remove="Images\yticon.png" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="YoutubeExplode.Converter" Version="6.3.2" />
   </ItemGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\YoutubeDownloadService\YoutubeDownloadService.csproj" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Fonts\Adventor\texgyreadventor-italic.otf" />
     <Resource Include="Fonts\Adventor\texgyreadventor-regular.otf" />
@@ -58,5 +57,4 @@
     <Resource Include="Images\youtube_modern_100.png" />
     <Resource Include="Images\yticon.png" />
   </ItemGroup>
-
 </Project>

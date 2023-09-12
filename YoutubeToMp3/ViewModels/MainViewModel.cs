@@ -9,6 +9,8 @@ namespace YoutubeToMp3
 
         private StreamDataViewModel streamDataViewModel;
         private string url;
+        private string downloadPath;
+        private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
 
@@ -44,6 +46,38 @@ namespace YoutubeToMp3
                 {
                     url = value;
                     OnPropertyChanged(nameof(Url));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Directory path for saving downloaded files.
+        /// </summary>
+        public string DownloadPath
+        {
+            get => downloadPath;
+            set
+            {
+                if(downloadPath != value)
+                {
+                    downloadPath = value;
+                    OnPropertyChanged(nameof(DownloadPath));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ffmpeg.exe location.
+        /// </summary>
+        public string FfmpegPath
+        {
+            get => ffmpegPath;
+            set
+            {
+                if (ffmpegPath != value)
+                {
+                    ffmpegPath = value;
+                    OnPropertyChanged(nameof(FfmpegPath));
                 }
             }
         }

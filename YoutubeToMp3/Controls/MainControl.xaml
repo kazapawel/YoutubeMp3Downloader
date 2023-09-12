@@ -13,22 +13,28 @@
         <!-- GRID definitions -->
         <Grid.RowDefinitions>
 
-            <!-- 0 URL icon/textblock/icon -->
+            <!-- 0 Url -->
             <RowDefinition Height="*"/>
 
-            <!-- 1 Thumbnail and info -->
+            <!-- 1 Path -->
             <RowDefinition Height="auto"/>
             
-            <!-- 2 Info -->
+            <!-- 2 FFmpeg-->
+            <RowDefinition Height="auto"/>
+            
+            <!-- 3 Thumbnail and info -->
+            <RowDefinition Height="auto"/>
+            
+            <!-- 4 Info -->
             <RowDefinition Height="*"/>
 
-            <!-- 3 Download video button -->
+            <!-- 5 Download video button -->
             <RowDefinition Height="auto"/>
 
-            <!-- 4 Download audio button -->
+            <!-- 6 Download audio button -->
             <RowDefinition Height="auto"/>
 
-            <!-- 5 STATUS message-->
+            <!-- 7 STATUS message-->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -38,52 +44,100 @@
               Margin="0">
             <Grid.ColumnDefinitions>
 
-                <!-- 0 Icon -->
+                <!-- 0 Label -->
                 <ColumnDefinition Width="auto"/>
 
                 <!-- 1 Textbox-->
                 <ColumnDefinition Width="*"/>
 
-                <!-- 2 X button -->
-                <ColumnDefinition Width="auto"/>
-
                 <!-- 3 Paste button -->
                 <ColumnDefinition Width="auto"/>
-                
+
             </Grid.ColumnDefinitions>
-
-            <!-- ICON www -->
-            <Image Grid.Column="0" 
-                   Source="pack://application:,,,/Images/modern_www.png"                               
-                   Width="34"
-                   Height="34" 
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Margin="10,-6,5,5"
-                   />
-
-            <!-- URL textbox -->
+            
+            <!-- Label -->
+            <TextBlock Text="Url: "/>
+            
+            <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="urlTextBox"
-                     Text="{Binding Url, Mode=TwoWay}"
+                     Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"
                      TextChanged="UrlTextBoxTextChanged"
                      />
-                     <!--Style="{StaticResource EnterUrlTextBoxStyle}"-->
 
-            <!-- PASTE button -->
-            <Button Grid.Column="3"
-                    Style="{StaticResource ButtonPaste}"
-                    Tag="pack://application:,,,/Images/paste_modern_color.png"
+            <!-- Paste button -->
+            <Button Grid.Column="2"
                     Click="PasteButtonClick"
+                    Content="Paste"
                     />
-            <!--Command="{Binding PasteClipboardCommand}"-->
 
         </Grid>
         <!--#endregion-->
+        <!--#region DOWNLOAD PATH SECTION -->
+        <Grid Grid.Row="1"
+              Margin="0">
+            <Grid.ColumnDefinitions>
 
+                <!-- 0 Label -->
+                <ColumnDefinition Width="auto"/>
+
+                <!-- 1 Textbox-->
+                <ColumnDefinition Width="*"/>
+
+                <!-- 3 Open dialog button -->
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+
+            <!-- Label -->
+            <TextBlock Text="Download folder: "/>
+
+            <!-- Url textbox -->
+            <TextBox Grid.Column="1"
+                     x:Name="downloadPathTextbox"
+                     />
+
+            <!-- Open dialog button -->
+            <Button Grid.Column="2"
+                    Content=" ... "
+                    />
+
+        </Grid>
+        <!--#endregion-->
+        <!--#region FFMPEG PATH -->
+        <Grid Grid.Row="2"
+              Margin="0">
+            <Grid.ColumnDefinitions>
+
+                <!-- 0 Label -->
+                <ColumnDefinition Width="auto"/>
+
+                <!-- 1 Textbox-->
+                <ColumnDefinition Width="*"/>
+
+                <!-- 3 Open dialog button -->
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+
+            <!-- Label -->
+            <TextBlock Text="Ffmpeg folder: "/>
+
+            <!-- Url textbox -->
+            <TextBox Grid.Column="1"
+                     x:Name="ffmpegPathTextbox"
+                     />
+
+            <!-- Open dialog button -->
+            <Button Grid.Column="2"
+                    Content=" ... "
+                    />
+
+        </Grid>
+        <!--#endregion-->
         <!--#region INFO -->
         <!-- INFO -->
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
 
                 <!--0 Thumbnail-->
@@ -95,15 +149,9 @@
 
             <!--THUMBNAIL-->
             <Border Grid.Column="0"
-                    BorderBrush="{StaticResource FgOrangeBrush}"
-                    BorderThickness="0"
-                    Background="Black"
-                    Margin="50,0,10,10"
-                    Width="225"
-                    Height="170">
+                    Background="Black">
 
                 <Image Source="{Binding StreamDataViewModel.Thumbnail, FallbackValue={StaticResource DefaultThumbnail}}"
-                       Style="{StaticResource ThumbnailStyle}"
                        />
             </Border>
 
@@ -124,25 +172,14 @@
                     <!--3 Upload date -->
                     <RowDefinition Height="auto"/>
 
-                    <!--4 Video Size -->
-                    <RowDefinition Height="auto"/>
-                    
-                    <!--5 Audio Size -->
-                    <RowDefinition Height="auto"/>
-
                 </Grid.RowDefinitions>
 
                 <!--TITLE-->
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal"
-                            Margin="5"
-                            >
-                    <TextBlock Style="{StaticResource BasicTextblock}"
-                               Text="Title: "
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.Title}"
-                               />
+                            Margin="5">
+                    <TextBlock Text=""/>
+                    <TextBlock Text="{Binding StreamDataViewModel.Title}"/>
                 </StackPanel>
 
                 <!-- AUTHOR -->
@@ -150,13 +187,8 @@
                             Orientation="Horizontal"
                             Margin="5"
                             >
-                    <TextBlock Text="Author: "
-                               Style="{StaticResource BasicTextblock}"
-                               
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}" 
-                               Text="{Binding StreamDataViewModel.Author}"
-                               />
+                    <TextBlock Text="Author: "/>
+                    <TextBlock Text="{Binding StreamDataViewModel.Author}"/>
                 </StackPanel>
 
                 <!-- DURATION -->
@@ -164,13 +196,8 @@
                             Orientation="Horizontal"
                             Margin="5"                            
                             >
-                    <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Duration: "
-                               
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}" 
-                               Text="{Binding StreamDataViewModel.Duration}"
-                               />
+                    <TextBlock Text="Duration: "/>
+                    <TextBlock Text="{Binding StreamDataViewModel.Duration}"/>
                 </StackPanel>
 
                 <!-- UPLOAD DATE -->
@@ -178,41 +205,8 @@
                             Orientation="Horizontal"
                             Margin="5"
                             >
-                    <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Uploaded: "
-                               Margin="0"
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.UploadDate}"
-                               />
-                </StackPanel>
-
-                <!-- SIZE Video -->
-                <StackPanel Grid.Row="4"
-                            Orientation="Horizontal"
-                            Margin="5"
-                            >
-                    <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Video: "
-                               Margin="0"
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.VideoQuality}"
-                               />
-                </StackPanel>
-
-                <!-- BITRATE Audio -->
-                <StackPanel Grid.Row="5"
-                            Orientation="Horizontal"
-                            Margin="5"
-                            >
-                    <TextBlock Style="{StaticResource BasicTextblock}" 
-                               Text="Audio: "
-                               Margin="0"
-                               />
-                    <TextBlock Style="{StaticResource WhiteTextblock}"
-                               Text="{Binding StreamDataViewModel.AudioBitrate}"
-                               />
+                    <TextBlock Text="Uploaded: "/>
+                    <TextBlock Text="{Binding StreamDataViewModel.UploadDate}"/>
                 </StackPanel>
 
 
@@ -223,7 +217,7 @@
         <!--#endregion-->
 
         <!--#region STATUS -->
-        <TextBlock Grid.Row="3"
+        <TextBlock Grid.Row="5"
                    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
                    Text="{Binding StatusMessage.Message}"
                    Style="{StaticResource StatusTextblock}"    
