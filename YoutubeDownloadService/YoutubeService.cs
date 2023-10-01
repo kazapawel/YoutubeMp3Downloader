@@ -9,7 +9,7 @@ namespace YoutubeDownloadService
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        public static async Task<StreamInfo> GetStreamInfo(string url)
+        public static async Task<StreamInfoDto> GetStreamInfo(string url)
         {
             var client = new YoutubeClient();
 
@@ -23,7 +23,7 @@ namespace YoutubeDownloadService
             var videoHD = StreamManifest.GetVideoOnlyStreams().FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));
 
             // StreamData to return
-            var info = new StreamInfo
+            var info = new StreamInfoDto
             {
                 Title = Videos?.Title,
                 Author = Videos?.Author.ToString(),

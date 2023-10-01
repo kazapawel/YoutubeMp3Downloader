@@ -11,16 +11,14 @@ namespace YoutubeToMp3
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <param name="vm"></param>
         public GetInfoCommandAsync(MainViewModel vm)
         {
             _viewModel = vm;
         }
 
         /// <summary>
-        /// Gets stream info.
+        /// Gets stream information.
         /// </summary>
-        /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
             // if textbox was cleared clears viewmodel's properties
@@ -37,11 +35,20 @@ namespace YoutubeToMp3
 
             try
             {
-                // Gets the stream info async
-                var streamInfo = await YoutubeService.GetStreamInfo(_viewModel.Url);
+                // gets stream information, null is handled in catch
+                var streamInfoDto = await YoutubeService.GetStreamInfo(_viewModel.Url);
 
-                // Resfreshes viewmodel properties
-                _viewModel.StreamInfoViewModel = new StreamInfoViewModel(streamInfo);
+                // sets viewmodel properties
+                _viewModel.StreamInfoViewModel = new StreamInfoViewModel
+                {
+                    Title = streamInfoDto.Title,
+                    Duration = streamInfoDto.Duration.ToString(),
+                    Author = streamInfoDto.Author,
+                    UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
+                    Thumbnail = streamInfoDto.Thumbnail
+                };
+
+                // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        
             }

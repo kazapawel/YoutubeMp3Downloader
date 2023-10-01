@@ -1,6 +1,6 @@
 ﻿namespace YoutubeDownloadService
 {
-    public class StreamInfo
+    public class StreamInfoDto
     {
         public string Title { get; set; }
         public string Author { get; set; }
