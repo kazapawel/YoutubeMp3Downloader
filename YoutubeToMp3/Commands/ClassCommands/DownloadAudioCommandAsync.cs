@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using YoutubeDownloadService;
+using YoutubeDownloadService.Commands;
 
 namespace YoutubeToMp3
 {
@@ -16,7 +18,6 @@ namespace YoutubeToMp3
         /// <summary>
         /// Downloads audio async.
         /// </summary>
-        /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
             if (_viewModel.StreamInfoViewModel is null)
@@ -24,20 +25,27 @@ namespace YoutubeToMp3
 
             try
             {
-                // Changes state of a view model
-                _viewModel.IsReady = false;
                 _viewModel.StatusMessage = new InfoMessage("Downloading audio...");
 
-                // Creates download data and downloader
-                //var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamInfoViewModel.Model);
-                //var youtubeDownloader = new YoutubeDownloader(downloadData);
+                // for disabling all download buttons
+                _viewModel.IsReady = false;
 
-                //// Downloads audio
-                //await youtubeDownloader.DownloadAudioAsync();
+                // maps request to command
+                var command = new DownloadAudioCommand
+                {
+                    Url = _viewModel.Url,
+                    DownloadPath = _viewModel.DownloadPath,
+                    FfmpegPath = _viewModel.FfmpegPath,
+                    Format = string.Empty // for now
+                };
 
-                //// Changes state of a view model
-                //_viewModel.StatusMessage = new SuccessMessage("Success!");
-                //_viewModel.IsReady = true;
+                // downloads audio
+                await YoutubeService.DownloadAudioAsync(command);
+
+                // for enabling all download buttons
+                _viewModel.IsReady = true;
+
+                _viewModel.StatusMessage = new SuccessMessage("Success!");
             }
             catch (Exception ex)
             {
@@ -45,6 +53,9 @@ namespace YoutubeToMp3
             }
         }
 
+        /// <summary>
+        /// Sets can execute based on viewmodel IsReady flag.
+        /// </summary>
         public void OnIsReadyChanged(object sender, EventArgs e)
         {
             CanExec = _viewModel.IsReady;

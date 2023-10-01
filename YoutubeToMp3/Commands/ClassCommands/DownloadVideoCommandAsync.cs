@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using YoutubeDownloadService;
-using YoutubeDownloadService.Requests;
-using YoutubeExplode.Exceptions;
+using YoutubeDownloadService.Commands;
 
 namespace YoutubeToMp3
 {
@@ -22,7 +21,6 @@ namespace YoutubeToMp3
         /// <summary>
         /// Downloads video async.
         /// </summary>
-        /// <returns></returns>
         protected override async Task ExecuteAsync(object parameter)
         {
             if (_viewModel.StreamInfoViewModel is null)
@@ -30,11 +28,12 @@ namespace YoutubeToMp3
 
             try
             {
-                // Changes state of a view model maybe canexec = false;
-                _viewModel.IsReady = false;
                 _viewModel.StatusMessage = new InfoMessage("Downloading video...");
 
-                // Maps properties to command
+                // for disabling all download buttons
+                _viewModel.IsReady = false;
+
+                // maps properties to command
                 var command = new DownloadVideoCommand
                 {
                     Url = _viewModel.Url,
@@ -43,15 +42,13 @@ namespace YoutubeToMp3
                     Quality = string.Empty, // for now
                 };
 
-                //var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamInfoViewModel.Model);
-                //var youtubeDownloader = new YoutubeDownloader(downloadData);
-
-                // Downloads video
+                // downloads video
                 await YoutubeService.DownloadVideoAsync(command);
-                
-                // Changes state of a view model
-                _viewModel.StatusMessage = new SuccessMessage("Success!");
+
+                // for enabling all download buttons
                 _viewModel.IsReady = true;
+
+                _viewModel.StatusMessage = new SuccessMessage("Success!");
             }
             catch (Exception ex)
             {
@@ -60,10 +57,8 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// 
+        /// Sets can execute based on viewmodel IsReady flag.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void OnIsReadyChanged(object sender, EventArgs e)
         {
             CanExec = _viewModel.IsReady;

@@ -1,10 +1,10 @@
 ﻿namespace YoutubeDownloadService.Commands
 {
-    public class DownloadVideoCommand
+    public class DownloadAudioCommand
     {
         public string Url { get; set; }
         public string DownloadPath { get; set; }
         public string FfmpegPath { get; set; }
-        public string Quality { get; set; }
+        public string Format { get; set; }
     }
 }
