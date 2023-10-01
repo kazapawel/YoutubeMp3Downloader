@@ -95,6 +95,7 @@
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="downloadPathTextbox"
+                     Text="{Binding DownloadPath, Mode=TwoWay}"
                      />
 
             <!-- Open dialog button -->
@@ -126,6 +127,7 @@
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="ffmpegPathTextbox"
+                     Text="{Binding FfmpegPath, Mode=TwoWay}"
                      />
 
             <!-- Open dialog button -->

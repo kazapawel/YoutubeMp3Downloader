@@ -131,5 +131,11 @@ namespace YoutubeToMp3
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
 
         #endregion
+
+        public MainViewModel()
+        {
+            DownloadPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            FfmpegPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/Ffmpeg.exe";
+        }
     }
 }

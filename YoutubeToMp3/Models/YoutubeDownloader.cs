@@ -27,8 +27,8 @@ namespace YoutubeToMp3
         /// </summary>
         public async Task DownloadVideoAsync()
         {
-            if (!File.Exists(DownloadData.FfmpegPath))
-                throw new FFmpegNotFoundException();
+            //if (!File.Exists(DownloadData.FfmpegPath))
+            //    throw new FFmpegNotFoundException();
 
             var downloadPath = @$"{DownloadData.DownloadPath}\{DownloadData.FixedTitle}.mp4";
             var infos = new IStreamInfo[]
@@ -44,8 +44,8 @@ namespace YoutubeToMp3
         /// </summary>
         public async Task DownloadAudioAsync()
         {
-            if (!File.Exists(DownloadData.FfmpegPath))
-                throw new FFmpegNotFoundException();
+            //if (!File.Exists(DownloadData.FfmpegPath))
+            //    throw new FFmpegNotFoundException();
             var downloadPath = @$"{DownloadData.DownloadPath}\{DownloadData.FixedTitle}.mp3";
             var infos = new IStreamInfo[]
             {

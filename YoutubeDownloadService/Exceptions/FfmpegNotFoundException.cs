@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace YoutubeToMp3
+﻿namespace YoutubeDownloadService.Exceptions
 {
     public class FFmpegNotFoundException : Exception
     {

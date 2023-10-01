@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using YoutubeDownloadService;
+using YoutubeDownloadService.Requests;
+using YoutubeExplode.Exceptions;
 
 namespace YoutubeToMp3
 {
@@ -27,20 +30,28 @@ namespace YoutubeToMp3
 
             try
             {
-                // Changes state of a view model
+                // Changes state of a view model maybe canexec = false;
                 _viewModel.IsReady = false;
                 _viewModel.StatusMessage = new InfoMessage("Downloading video...");
 
-                // Creates download data and downloader
+                // Maps properties to command
+                var command = new DownloadVideoCommand
+                {
+                    Url = _viewModel.Url,
+                    DownloadPath = _viewModel.DownloadPath,
+                    FfmpegPath = _viewModel.FfmpegPath,
+                    Quality = string.Empty, // for now
+                };
+
                 //var downloadData = DownloadDataBuilder.GetDownloadData(_viewModel.StreamInfoViewModel.Model);
                 //var youtubeDownloader = new YoutubeDownloader(downloadData);
 
-                //// Downloads video
-                //await youtubeDownloader.DownloadVideoAsync();
+                // Downloads video
+                await YoutubeService.DownloadVideoAsync(command);
                 
-                //// Changes state of a view model
-                //_viewModel.StatusMessage = new SuccessMessage("Success!");
-                //_viewModel.IsReady = true;
+                // Changes state of a view model
+                _viewModel.StatusMessage = new SuccessMessage("Success!");
+                _viewModel.IsReady = true;
             }
             catch (Exception ex)
             {

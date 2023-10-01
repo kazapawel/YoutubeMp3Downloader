@@ -11,8 +11,4 @@
     <PackageReference Include="YoutubeExplode.Converter" Version="6.3.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NewFolder\" />
-  </ItemGroup>
-
 </Project>
