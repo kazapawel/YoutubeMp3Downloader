@@ -101,6 +101,7 @@
             <!-- Open dialog button -->
             <Button Grid.Column="2"
                     Content=" ... "
+                    Click="BrowseDownloadDirectoryButton_Click"
                     />
 
         </Grid>
@@ -133,6 +134,7 @@
             <!-- Open dialog button -->
             <Button Grid.Column="2"
                     Content=" ... "
+                    Click="BrowseFfpmegButton_Click"
                     />
 
         </Grid>

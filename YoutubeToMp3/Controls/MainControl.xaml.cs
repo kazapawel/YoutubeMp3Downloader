@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Ookii.Dialogs.Wpf;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -24,7 +27,6 @@ namespace YoutubeToMp3
 
         public static readonly DependencyProperty TextChangedCommandProperty =
             DependencyProperty.Register("TextChangedCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
-
 
         public MainControl()
         {
@@ -71,6 +73,46 @@ namespace YoutubeToMp3
         private void PasteButtonClick(object sender, RoutedEventArgs e)
         {
             urlTextBox.Text = Clipboard.GetText();
+        }
+
+
+        /// <summary>
+        /// Opens file dialog for selectin ffmpeg.exe.
+        /// </summary>
+        private void BrowseFfpmegButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                // disables selection of multiple files
+                Multiselect = false,
+
+                // sets filter for files that can be chosen
+                Filter = "application |*.exe"
+            };
+
+            // if user selects files and presses OK
+            if (dialog.ShowDialog() == true)
+            {
+                // invokes command
+                var path = (dialog.FileName);
+                //SetFfmpegPathCommand.Execute(path);
+
+                // sets textbox value
+                ffmpegPathTextbox.Text = path;
+            }
+        }
+
+        /// <summary>
+        /// Opens 
+        /// </summary>
+        private void BrowseDownloadDirectoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new VistaFolderBrowserDialog();
+            if(dialog.ShowDialog()==true)
+            {
+                var path = dialog.SelectedPath;
+                downloadPathTextbox.Text = path;
+            }
         }
     }
 }
