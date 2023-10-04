@@ -75,6 +75,7 @@
         <local:MainControl Grid.Row="1"
                            DataContext="{Binding MainViewModel}"
                            TextChangedCommand="{Binding GetInfoCommandAsync}"
+                           LoadDownloadSettingsCommand="{Binding LoadDownloadSettingsCommand}"
                            />
 
         <!--#endregion-->

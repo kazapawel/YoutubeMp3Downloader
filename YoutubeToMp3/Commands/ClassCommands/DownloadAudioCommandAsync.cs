@@ -34,7 +34,7 @@ namespace YoutubeToMp3
                 var command = new DownloadAudioCommand
                 {
                     Url = _viewModel.Url,
-                    DownloadPath = _viewModel.DownloadPath,
+                    DownloadPath = _viewModel.DownloadDirectory,
                     FfmpegPath = _viewModel.FfmpegPath,
                     Format = string.Empty // for now
                 };

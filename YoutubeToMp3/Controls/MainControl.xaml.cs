@@ -1,11 +1,13 @@
 ﻿using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
 using System;
+using System.Configuration;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using YoutubeToMp3.UserSettings;
 
 namespace YoutubeToMp3
 {
@@ -14,6 +16,8 @@ namespace YoutubeToMp3
     /// </summary>
     public partial class MainControl : UserControl
     {
+        Configuration _appConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         /// <summary>
         /// Timer for delaying textchanged event.
         /// </summary>
@@ -28,9 +32,29 @@ namespace YoutubeToMp3
         public static readonly DependencyProperty TextChangedCommandProperty =
             DependencyProperty.Register("TextChangedCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
 
+        public ICommand LoadDownloadSettingsCommand
+        {
+            get { return (ICommand)GetValue(LoadDownloadSettingsCommandProperty); }
+            set { SetValue(LoadDownloadSettingsCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty LoadDownloadSettingsCommandProperty =
+            DependencyProperty.Register("LoadDownloadSettingsCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
+
         public MainControl()
         {
             InitializeComponent();
+        }
+
+        private DownloadSettings LoadSettings()
+        {
+            if (_appConfig.Sections["download_settings"] is null)
+            {
+                _appConfig.Sections.Add("download_settings", new DownloadSettings());
+            }
+
+            var downloadSettings = _appConfig.GetSection("download_settings");
+            return (DownloadSettings)downloadSettings;
         }
 
         /// <summary>
@@ -75,7 +99,6 @@ namespace YoutubeToMp3
             urlTextBox.Text = Clipboard.GetText();
         }
 
-
         /// <summary>
         /// Opens file dialog for selectin ffmpeg.exe.
         /// </summary>
@@ -113,6 +136,17 @@ namespace YoutubeToMp3
                 var path = dialog.SelectedPath;
                 downloadPathTextbox.Text = path;
             }
+        }
+
+        /// <summary>
+        /// Gets settigns from app config and sends them through the command.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var settings = LoadSettings();
+            LoadDownloadSettingsCommand.Execute(settings);
         }
     }
 }

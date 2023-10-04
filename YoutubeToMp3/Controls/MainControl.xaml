@@ -6,8 +6,9 @@
              xmlns:local="clr-namespace:YoutubeToMp3"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             >
-    
+             FontSize="14"
+             Padding="5"
+             Loaded="UserControl_Loaded">
     <Grid>
 
         <!-- GRID definitions -->
@@ -56,7 +57,8 @@
             </Grid.ColumnDefinitions>
             
             <!-- Label -->
-            <TextBlock Text="Url: "/>
+            <TextBlock Text="Url: "
+                       FontSize="14"/>
             
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
@@ -95,7 +97,7 @@
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="downloadPathTextbox"
-                     Text="{Binding DownloadPath, Mode=TwoWay}"
+                     Text="{Binding DownloadDirectory, Mode=TwoWay}"
                      />
 
             <!-- Open dialog button -->
@@ -182,7 +184,7 @@
                 <StackPanel Grid.Row="0"
                             Orientation="Horizontal"
                             Margin="5">
-                    <TextBlock Text=""/>
+                    <TextBlock Text="Title: "/>
                     <TextBlock Text="{Binding StreamInfoViewModel.Title}"/>
                 </StackPanel>
 

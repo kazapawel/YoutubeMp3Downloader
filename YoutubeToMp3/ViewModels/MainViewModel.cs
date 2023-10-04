@@ -9,7 +9,7 @@ namespace YoutubeToMp3
 
         private StreamInfoViewModel streamInfoViewModel;
         private string url;
-        private string downloadPath;
+        private string downloadDirectory;
         private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
@@ -53,15 +53,15 @@ namespace YoutubeToMp3
         /// <summary>
         /// Directory path for saving downloaded files.
         /// </summary>
-        public string DownloadPath
+        public string DownloadDirectory
         {
-            get => downloadPath;
+            get => downloadDirectory;
             set
             {
-                if(downloadPath != value)
+                if(downloadDirectory != value)
                 {
-                    downloadPath = value;
-                    OnPropertyChanged(nameof(DownloadPath));
+                    downloadDirectory = value;
+                    OnPropertyChanged(nameof(DownloadDirectory));
                 }
             }
         }
@@ -130,11 +130,13 @@ namespace YoutubeToMp3
         public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this); 
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
 
+        public ICommand LoadDownloadSettingsCommand => new LoadDownloadSettingsCommand(this);
+
         #endregion
 
         public MainViewModel()
         {
-            DownloadPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            DownloadDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             FfmpegPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/Ffmpeg.exe";
         }
     }
