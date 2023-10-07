@@ -10,6 +10,7 @@ namespace YoutubeToMp3
         public MainWindow()
         {
             InitializeComponent();
+            this.Closing += this.MainControl.OnWindowClosing;
         }
 
         /// <summary>
@@ -32,6 +33,11 @@ namespace YoutubeToMp3
             this.WindowState = this.WindowState == WindowState.Minimized 
                 ? WindowState.Normal 
                 : WindowState.Minimized;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

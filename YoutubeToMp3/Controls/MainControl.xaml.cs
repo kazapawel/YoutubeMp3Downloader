@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Ookii.Dialogs.Wpf;
 using System;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Windows;
@@ -46,15 +47,27 @@ namespace YoutubeToMp3
             InitializeComponent();
         }
 
-        private DownloadSettings LoadSettings()
+        private void LoadSettings()
         {
             if (_appConfig.Sections["download_settings"] is null)
             {
                 _appConfig.Sections.Add("download_settings", new DownloadSettings());
             }
 
-            var downloadSettings = _appConfig.GetSection("download_settings");
-            return (DownloadSettings)downloadSettings;
+            var downloadSettings = _appConfig.GetSection("download_settings") as DownloadSettings;
+            
+            var downladDirectory = downloadSettings.DownloadDirectory;
+            var ffpmegPath = downloadSettings.FfmpegPath;
+
+            downloadPathTextbox.Text = downladDirectory;
+            ffmpegPathTextbox.Text = ffpmegPath;
+        }
+
+        private void SaveSettings()
+        {
+            var downloadSettings = _appConfig.GetSection("download_settings") as DownloadSettings;
+            downloadSettings.DownloadDirectory = downloadPathTextbox.Text;
+            _appConfig.Save();
         }
 
         /// <summary>
@@ -145,8 +158,12 @@ namespace YoutubeToMp3
         /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var settings = LoadSettings();
-            LoadDownloadSettingsCommand.Execute(settings);
+            LoadSettings();
+        }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            SaveSettings();
         }
     }
 }

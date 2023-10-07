@@ -13,6 +13,8 @@ namespace YoutubeToMp3
         private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
+       // private readonly UserSettingsService _userSettingsService;
+
 
         #endregion
 

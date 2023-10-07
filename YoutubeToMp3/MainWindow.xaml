@@ -11,7 +11,8 @@
     MinHeight="370"
         MaxHeight="370"
         MinWidth="652"
-        MaxWidth="652">
+        MaxWidth="652"
+        Closing="Window_Closing">
     <Window.DataContext>
         <local:ApplicationViewModel/>
     </Window.DataContext>
@@ -73,6 +74,7 @@
 
         <!--#region MAIN CONTROL -->
         <local:MainControl Grid.Row="1"
+                           x:Name="MainControl"
                            DataContext="{Binding MainViewModel}"
                            TextChangedCommand="{Binding GetInfoCommandAsync}"
                            LoadDownloadSettingsCommand="{Binding LoadDownloadSettingsCommand}"
