@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using YoutubeToMp3.UserSettings;
 
 namespace YoutubeToMp3
 {
@@ -13,7 +14,7 @@ namespace YoutubeToMp3
         private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
-       // private readonly UserSettingsService _userSettingsService;
+        private readonly UserSettingsService _userSettingsService;
 
 
         #endregion
@@ -131,15 +132,15 @@ namespace YoutubeToMp3
         public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
         public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this); 
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
-
         public ICommand LoadDownloadSettingsCommand => new LoadDownloadSettingsCommand(this);
+        public ICommand SaveDownloadSettingsCommand => new SaveDownloadSettingsCommand(this);
 
         #endregion
 
         public MainViewModel()
         {
-            DownloadDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            FfmpegPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/Ffmpeg.exe";
+            //DownloadDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //FfmpegPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/Ffmpeg.exe";
         }
     }
 }

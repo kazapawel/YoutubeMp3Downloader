@@ -17,12 +17,10 @@ namespace YoutubeToMp3
     /// </summary>
     public partial class MainControl : UserControl
     {
-        Configuration _appConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
         /// <summary>
         /// Timer for delaying textchanged event.
         /// </summary>
-        DispatcherTimer _timer;
+        DispatcherTimer? _timer;
 
         public ICommand TextChangedCommand
         {
@@ -33,41 +31,27 @@ namespace YoutubeToMp3
         public static readonly DependencyProperty TextChangedCommandProperty =
             DependencyProperty.Register("TextChangedCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
 
-        public ICommand LoadDownloadSettingsCommand
+        public ICommand LoadedCommand
         {
-            get { return (ICommand)GetValue(LoadDownloadSettingsCommandProperty); }
-            set { SetValue(LoadDownloadSettingsCommandProperty, value); }
+            get { return (ICommand)GetValue(LoadedCommandProperty); }
+            set { SetValue(LoadedCommandProperty, value); }
         }
 
-        public static readonly DependencyProperty LoadDownloadSettingsCommandProperty =
-            DependencyProperty.Register("LoadDownloadSettingsCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
+        public static readonly DependencyProperty LoadedCommandProperty =
+            DependencyProperty.Register("LoadedCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
+
+        public ICommand ClosingCommand
+        {
+            get { return (ICommand)GetValue(ClosingCommandProperty); }
+            set { SetValue(ClosingCommandProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClosingCommandProperty =
+            DependencyProperty.Register("ClosingCommand", typeof(ICommand), typeof(MainControl), new PropertyMetadata(null));
 
         public MainControl()
         {
             InitializeComponent();
-        }
-
-        private void LoadSettings()
-        {
-            if (_appConfig.Sections["download_settings"] is null)
-            {
-                _appConfig.Sections.Add("download_settings", new DownloadSettings());
-            }
-
-            var downloadSettings = _appConfig.GetSection("download_settings") as DownloadSettings;
-            
-            var downladDirectory = downloadSettings.DownloadDirectory;
-            var ffpmegPath = downloadSettings.FfmpegPath;
-
-            downloadPathTextbox.Text = downladDirectory;
-            ffmpegPathTextbox.Text = ffpmegPath;
-        }
-
-        private void SaveSettings()
-        {
-            var downloadSettings = _appConfig.GetSection("download_settings") as DownloadSettings;
-            downloadSettings.DownloadDirectory = downloadPathTextbox.Text;
-            _appConfig.Save();
         }
 
         /// <summary>
@@ -147,23 +131,24 @@ namespace YoutubeToMp3
             if(dialog.ShowDialog()==true)
             {
                 var path = dialog.SelectedPath;
-                downloadPathTextbox.Text = path;
+                downloadDirectoryTextbox.Text = path;
             }
         }
 
         /// <summary>
-        /// Gets settigns from app config and sends them through the command.
+        /// Executes loaded command.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadSettings();
+            LoadedCommand?.Execute(sender);
         }
 
+        /// <summary>
+        /// Executes closed command.
+        /// </summary>
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
-            SaveSettings();
+            ClosingCommand?.Execute(sender);
         }
     }
 }

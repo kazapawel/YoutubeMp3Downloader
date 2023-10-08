@@ -77,7 +77,8 @@
                            x:Name="MainControl"
                            DataContext="{Binding MainViewModel}"
                            TextChangedCommand="{Binding GetInfoCommandAsync}"
-                           LoadDownloadSettingsCommand="{Binding LoadDownloadSettingsCommand}"
+                           LoadedCommand="{Binding LoadDownloadSettingsCommand}"
+                           ClosingCommand="{Binding SaveDownloadSettingsCommand}"
                            />
 
         <!--#endregion-->

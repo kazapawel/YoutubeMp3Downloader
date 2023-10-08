@@ -2,12 +2,12 @@
 
 namespace YoutubeToMp3
 {
-    public class LoadDownloadSettingsCommand : CommandBase
+    public class SaveDownloadSettingsCommand : CommandBase
     {
         private MainViewModel _viewModel;
         private UserSettingsService _userSettingsService;
 
-        public LoadDownloadSettingsCommand(MainViewModel viewModel)
+        public SaveDownloadSettingsCommand(MainViewModel viewModel)
         {
             _viewModel = viewModel;
             _userSettingsService = new UserSettingsService();
@@ -15,8 +15,9 @@ namespace YoutubeToMp3
 
         public override void Execute(object parameter)
         {
-            _viewModel.DownloadDirectory = _userSettingsService.DownloadDirectory;
-            _viewModel.FfmpegPath = _userSettingsService.FfmpegPath;
+            _userSettingsService.DownloadDirectory = _viewModel.DownloadDirectory;
+            _userSettingsService.FfmpegPath = _viewModel.FfmpegPath;
+            _userSettingsService.SaveSettings();
         }
     }
 }

@@ -75,7 +75,7 @@
 
         </Grid>
         <!--#endregion-->
-        <!--#region DOWNLOAD PATH SECTION -->
+        <!--#region DOWNLOAD DIRECTORY SECTION -->
         <Grid Grid.Row="1"
               Margin="0">
             <Grid.ColumnDefinitions>
@@ -94,10 +94,10 @@
             <!-- Label -->
             <TextBlock Text="Download folder: "/>
 
-            <!-- Url textbox -->
+            <!-- Download directory textbox -->
             <TextBox Grid.Column="1"
-                     x:Name="downloadPathTextbox"
-                     Text="{Binding DownloadDirectory, Mode=TwoWay}"
+                     x:Name="downloadDirectoryTextbox"
+                     Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      />
 
             <!-- Open dialog button -->
@@ -130,7 +130,7 @@
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="ffmpegPathTextbox"
-                     Text="{Binding FfmpegPath, Mode=TwoWay}"
+                     Text="{Binding FfmpegPath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                      />
 
             <!-- Open dialog button -->
