@@ -28,14 +28,17 @@
             
             <!-- 4 Info -->
             <RowDefinition Height="*"/>
-
-            <!-- 5 Download video button -->
+            
+            <!-- 5 List of videos -->
             <RowDefinition Height="auto"/>
 
-            <!-- 6 Download audio button -->
+            <!-- 6 Download video button -->
             <RowDefinition Height="auto"/>
 
-            <!-- 7 STATUS message-->
+            <!-- 7 Download audio button -->
+            <RowDefinition Height="auto"/>
+
+            <!-- 8 STATUS message-->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -222,8 +225,32 @@
         </Grid>
         <!--#endregion-->
 
+        <!--#region List -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox Grid.Column="0"
+                ItemsSource="{Binding StremInfoViewModel.VideoStreams}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <RadioButton Content="{TemplateBinding Content}"
+                                     IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+
+        </Grid>
+        <!--#endregion-->
         <!--#region STATUS -->
-        <TextBlock Grid.Row="5"
+        <TextBlock Grid.Row="6"
                    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
                    Text="{Binding StatusMessage.Message}"
                    Style="{StaticResource StatusTextblock}"    
@@ -235,7 +262,7 @@
         <!--#endregion-->
 
         <!--#region DOWNLOAD BUTTONS -->
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

@@ -22,7 +22,7 @@ namespace YoutubeToMp3
         protected override async Task ExecuteAsync(object parameter)
         {
             // if textbox was cleared clears viewmodel's properties
-            // TO DO: create text cleared event and handle it in view class
+            // TO DO: create text cleared event and handle it in view class and viewmodel
             if(string.IsNullOrEmpty(parameter.ToString()))
             {
                 _viewModel.StreamInfoViewModel = null;
@@ -45,7 +45,8 @@ namespace YoutubeToMp3
                     Duration = streamInfoDto.Duration.ToString(),
                     Author = streamInfoDto.Author,
                     UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
-                    Thumbnail = streamInfoDto.Thumbnail
+                    Thumbnail = streamInfoDto.Thumbnail,
+                    Videos = streamInfoDto.VideoStreams,
                 };
 
                 // sets flag and message indicating that video is ready to download

@@ -27,6 +27,19 @@ namespace YoutubeDownloadService
                 .GetVideoOnlyStreams()
                 .FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));
 
+            // video only streams
+            var videoStreams = streamManifest
+                .GetVideoOnlyStreams()
+                .OrderByDescending(video => video.VideoQuality.MaxHeight)
+                .Select(video => new VideoStreamDto
+                {
+                    Name = video.ToString(),
+                    Size = video.Size.ToString(),
+                    Bitrate = video.Bitrate.ToString(),
+                    VideoCodec = video.VideoCodec,
+                    VideoResolution = video.VideoResolution.ToString(),
+                });
+
             // StreamData to return
             var info = new StreamInfoDto
             {
@@ -35,7 +48,8 @@ namespace YoutubeDownloadService
                 Duration = videos?.Duration,
                 UploadDate = videos?.UploadDate,
                 Thumbnail = videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url,
-                //MuxedHD = StreamManifest.GetMuxedStreams().GetWithHighestVideoQuality(),
+                VideoStreams = videoStreams,
+
             };
             return info;
         }
