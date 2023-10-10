@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using YoutubeDownloadService;
 
@@ -38,6 +39,13 @@ namespace YoutubeToMp3
                 // gets stream information, null is handled in catch
                 var streamInfoDto = await YoutubeService.GetStreamInfo(_viewModel.Url);
 
+                // observable collection for view model
+                var videos = new ObservableCollection<VideoStreamDto>();
+                foreach(var video in streamInfoDto.VideoStreams)
+                {
+                    videos.Add(video);
+                }
+
                 // sets viewmodel properties
                 _viewModel.StreamInfoViewModel = new StreamInfoViewModel
                 {
@@ -46,9 +54,9 @@ namespace YoutubeToMp3
                     Author = streamInfoDto.Author,
                     UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
                     Thumbnail = streamInfoDto.Thumbnail,
-                    Videos = streamInfoDto.VideoStreams,
+                    Videos = videos,
                 };
-
+                _viewModel.StreamInfoViewModel.OnPropertyChanged("Videos");
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        

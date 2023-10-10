@@ -9,7 +9,6 @@
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/yticon.png"
     MinHeight="370"
-        MaxHeight="370"
         MinWidth="652"
         MaxWidth="652"
         Closing="Window_Closing">

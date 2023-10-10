@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using YoutubeDownloadService;
 
 namespace YoutubeToMp3
@@ -13,7 +14,9 @@ namespace YoutubeToMp3
         public string Author { get; set; }
         public string UploadDate { get; set; }
         public string Thumbnail { get; set; }
-        public IEnumerable<VideoStreamDto> Videos { get; set; }
+        public ObservableCollection<VideoStreamDto>? Videos { get; set; }
+        public VideoStreamDto SelectedVideo { get; set; }
+
         #endregion
     }
 }
