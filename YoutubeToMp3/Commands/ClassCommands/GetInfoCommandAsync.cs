@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using YoutubeDownloadService;
+using YoutubeToMp3.ViewModels;
 
 namespace YoutubeToMp3
 {
@@ -12,9 +14,9 @@ namespace YoutubeToMp3
         /// <summary>
         /// Default constructor.
         /// </summary>
-        public GetInfoCommandAsync(MainViewModel vm)
+        public GetInfoCommandAsync(MainViewModel viewModel)
         {
-            _viewModel = vm;
+            _viewModel = viewModel;
         }
 
         /// <summary>
@@ -24,7 +26,7 @@ namespace YoutubeToMp3
         {
             // if textbox was cleared clears viewmodel's properties
             // TO DO: create text cleared event and handle it in view class and viewmodel
-            if(string.IsNullOrEmpty(parameter.ToString()))
+            if (string.IsNullOrEmpty(parameter.ToString()))
             {
                 _viewModel.StreamInfoViewModel = null;
                 _viewModel.StatusMessage = null;
@@ -40,11 +42,18 @@ namespace YoutubeToMp3
                 var streamInfoDto = await YoutubeService.GetStreamInfo(_viewModel.Url);
 
                 // observable collection for view model
-                var videos = new ObservableCollection<VideoStreamDto>();
-                foreach(var video in streamInfoDto.VideoStreams)
-                {
-                    videos.Add(video);
-                }
+                var videos = new ObservableCollection<StreamItemViewModel>(
+                    streamInfoDto.VideoStreams.Select(dto => new StreamItemViewModel
+                    {
+                        VideoName = dto.Name,
+                        VideoSize = dto.Size,
+                        VideoBitrate = dto.Bitrate,
+                        VideoCodec = dto.VideoCodec,
+                        VideoResolution = dto.VideoResolution,
+                        AudioContainer = streamInfoDto.AudioHd.Container,
+                        AudioBitrate = streamInfoDto.AudioHd.Bitrate,
+                        AudioSize = streamInfoDto.AudioHd.Size,
+                    }));
 
                 // sets viewmodel properties
                 _viewModel.StreamInfoViewModel = new StreamInfoViewModel
@@ -54,7 +63,6 @@ namespace YoutubeToMp3
                     Author = streamInfoDto.Author,
                     UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
                     Thumbnail = streamInfoDto.Thumbnail,
-                    AudioHd = streamInfoDto.AudioHd,
                     Videos = videos,
                 };
 
@@ -63,7 +71,7 @@ namespace YoutubeToMp3
 
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
-                _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        
+                _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");
             }
             catch (Exception ex)
             {

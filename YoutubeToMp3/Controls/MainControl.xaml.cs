@@ -76,15 +76,16 @@ namespace YoutubeToMp3
         /// <summary>
         /// Invokes TextChanged command and stops the timer.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void InvokeTextChangedCommand(object sender, EventArgs e)
         {
             var timer = sender as DispatcherTimer;
+
             if (timer == null)
                 return;
+            
             var textFromTextbox = this.urlTextBox.Text;
             TextChangedCommand?.Execute(textFromTextbox);
+            
             timer.Stop();
         }
 
@@ -128,6 +129,7 @@ namespace YoutubeToMp3
         private void BrowseDownloadDirectoryButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new VistaFolderBrowserDialog();
+
             if(dialog.ShowDialog()==true)
             {
                 var path = dialog.SelectedPath;

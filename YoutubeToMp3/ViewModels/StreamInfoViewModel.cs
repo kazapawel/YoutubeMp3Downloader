@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using YoutubeDownloadService;
+﻿using System.Collections.ObjectModel;
+using YoutubeToMp3.ViewModels;
 
 namespace YoutubeToMp3
 {
@@ -14,9 +12,8 @@ namespace YoutubeToMp3
         public string Author { get; set; }
         public string UploadDate { get; set; }
         public string Thumbnail { get; set; }
-        public AudioStreamDto AudioHd { get; set; }
-        public ObservableCollection<VideoStreamDto>? Videos { get; set; }
-        public VideoStreamDto SelectedVideo { get; set; }
+        public ObservableCollection<StreamItemViewModel>? Videos { get; set; }
+        public StreamItemViewModel SelectedVideo { get; set; }
 
         #endregion
     }

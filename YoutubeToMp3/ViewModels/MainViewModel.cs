@@ -137,9 +137,9 @@ namespace YoutubeToMp3
 
         #endregion
 
-        public MainViewModel()
+        public MainViewModel(UserSettingsService userSettingsService)
         {
-            _userSettingsService = new UserSettingsService();
+            _userSettingsService = userSettingsService;
         }
     }
 }

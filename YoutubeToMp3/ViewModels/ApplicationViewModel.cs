@@ -1,4 +1,6 @@
-﻿namespace YoutubeToMp3
+﻿using YoutubeToMp3.UserSettings;
+
+namespace YoutubeToMp3
 {
     public class ApplicationViewModel
     {
@@ -6,7 +8,7 @@
 
         public ApplicationViewModel()
         {
-            MainViewModel = new MainViewModel();
+            MainViewModel = new MainViewModel(new UserSettingsService());
         }
     }
 }

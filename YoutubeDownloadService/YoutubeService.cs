@@ -16,18 +16,18 @@ namespace YoutubeDownloadService
         {
             var client = new YoutubeClient();
 
-            // Metadata
+            // metadata
             var videos = await client.Videos.GetAsync(url);
 
-            // Streams
+            // streams
             var streamManifest = await client.Videos.Streams.GetManifestAsync(url);
 
-            // Gets the 1080p video 
+            // 1080p video 
             var videoHD = streamManifest
                 .GetVideoOnlyStreams()
                 .FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));
 
-            // video only streams
+            // video dtos
             var videoStreams = streamManifest
                 .GetVideoOnlyStreams()
                 .OrderByDescending(video => video.VideoQuality.MaxHeight)
@@ -40,15 +40,18 @@ namespace YoutubeDownloadService
                     VideoResolution = video.VideoResolution.ToString(),
                 });
 
-            // audio only
+            // best audio
             var audioHd = streamManifest
                 .GetAudioOnlyStreams()
                 .GetWithHighestBitrate();
 
-            var audios = streamManifest
-                .GetAudioOnlyStreams().ToArray();
+            var audioDto = new AudioStreamDto
+            {
+                Container = audioHd.Container.ToString(),
+                Bitrate = audioHd.Bitrate.ToString(),
+                Size = audioHd.Size.ToString(),
+            };
 
-            // StreamData to return
             var info = new StreamInfoDto
             {
                 Title = videos?.Title,
@@ -57,8 +60,9 @@ namespace YoutubeDownloadService
                 UploadDate = videos?.UploadDate,
                 Thumbnail = videos?.Thumbnails.OrderBy(x => x.Resolution.Area).FirstOrDefault().Url,
                 VideoStreams = videoStreams,
-
+                AudioHd = audioDto,
             };
+
             return info;
         }
 
