@@ -2,6 +2,7 @@
 {
     public class StreamItemViewModel
     {
+        public string Id { get; set; }
         public string VideoName { get; set; }
         public string VideoSize { get; set; }
         public string VideoBitrate { get; set; }

@@ -36,6 +36,7 @@ namespace YoutubeToMp3
                 // maps properties to command
                 var command = new DownloadVideoCommand
                 {
+                    IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
                     Url = _viewModel.Url,
                     DownloadPath = _viewModel.DownloadDirectory,
                     FfmpegPath = _viewModel.FfmpegPath,

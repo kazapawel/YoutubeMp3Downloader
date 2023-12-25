@@ -45,6 +45,7 @@ namespace YoutubeToMp3
                 var videos = new ObservableCollection<StreamItemViewModel>(
                     streamInfoDto.VideoStreams.Select(dto => new StreamItemViewModel
                     {
+                        Id = dto.IdUrl,
                         VideoName = dto.Name,
                         VideoSize = dto.Size,
                         VideoBitrate = dto.Bitrate,

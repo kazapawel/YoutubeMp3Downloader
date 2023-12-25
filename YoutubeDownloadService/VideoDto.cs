@@ -2,8 +2,9 @@
 
 namespace YoutubeDownloadService
 {
-    public class VideoStreamDto
+    public class VideoDto
     {
+        public string IdUrl { get; set; } 
         public string Name { get; set; }
         public string Size { get; set; }
         public string Bitrate { get; set; }

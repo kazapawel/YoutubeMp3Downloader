@@ -1,6 +1,6 @@
 ﻿namespace YoutubeDownloadService
 {
-    public class AudioStreamDto
+    public class AudioDto
     {
         public string Container { get; set; }
         public string Bitrate { get; set; }

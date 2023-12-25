@@ -7,7 +7,7 @@
         public TimeSpan? Duration { get; set; }
         public DateTimeOffset? UploadDate { get; set; }
         public string Thumbnail { get; set; }
-        public AudioStreamDto AudioHd { get; set; }
-        public IEnumerable<VideoStreamDto> VideoStreams { get; set; }
+        public AudioDto AudioHd { get; set; }
+        public IEnumerable<VideoDto> VideoStreams { get; set; }
     }
 }

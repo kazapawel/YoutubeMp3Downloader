@@ -1,6 +1,6 @@
 ﻿using AngleSharp.Dom;
-using YoutubeDownloadService.Exceptions;
 using YoutubeDownloadService.Commands;
+using YoutubeDownloadService.Exceptions;
 using YoutubeExplode;
 using YoutubeExplode.Converter;
 using YoutubeExplode.Videos.Streams;
@@ -9,6 +9,11 @@ namespace YoutubeDownloadService
 {
     public class YoutubeService
     {
+        /// <summary>
+        /// Cached stream manifest to identify videos.
+        /// </summary>
+        private static Dictionary<string, StreamManifest> _manifests = new Dictionary<string, StreamManifest>();
+
         /// <summary>
         /// Gets information related to youtube stream from given url.
         /// </summary>
@@ -19,20 +24,25 @@ namespace YoutubeDownloadService
             // metadata
             var videos = await client.Videos.GetAsync(url);
 
-            // streams
-            var streamManifest = await client.Videos.Streams.GetManifestAsync(url);
-
-            // 1080p video 
-            var videoHD = streamManifest
-                .GetVideoOnlyStreams()
-                .FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));
+            // manifest
+            StreamManifest streamManifest;
+            if(_manifests.ContainsKey(url))
+            {
+                streamManifest = _manifests[url];
+            }
+            else
+            {
+                streamManifest = await client.Videos.Streams.GetManifestAsync(url);
+                _manifests.Add(url, streamManifest);
+            }
 
             // video dtos
             var videoStreams = streamManifest
                 .GetVideoOnlyStreams()
                 .OrderByDescending(video => video.VideoQuality.MaxHeight)
-                .Select(video => new VideoStreamDto
+                .Select(video => new VideoDto
                 {
+                    IdUrl = video.Url,
                     Name = video.ToString(),
                     Size = video.Size.ToString(),
                     Bitrate = video.Bitrate.ToString(),
@@ -45,7 +55,7 @@ namespace YoutubeDownloadService
                 .GetAudioOnlyStreams()
                 .GetWithHighestBitrate();
 
-            var audioDto = new AudioStreamDto
+            var audioDto = new AudioDto
             {
                 Container = audioHd.Container.ToString(),
                 Bitrate = audioHd.Bitrate.ToString(),
@@ -83,30 +93,46 @@ namespace YoutubeDownloadService
                 throw new DownloadPathNotSetException();
             }
 
+            if (string.IsNullOrEmpty(command.IdUrl))
+            {
+                throw new VideoUrlNullException();
+            }
+
             var client = new YoutubeClient();
             var videos = await client.Videos.GetAsync(command.Url);
             var fixedTitle = FixTitle(videos.Title);
             var downloadPath = @$"{command.DownloadPath}\{fixedTitle}.mp4";
 
-            // streams
-            var streamManifest = await client.Videos.Streams.GetManifestAsync(command.Url);
+            // manifest
+            StreamManifest streamManifest;
+            if (_manifests.ContainsKey(command.Url))
+            {
+                streamManifest = _manifests[command.Url];
+            }
+            else
+            {
+                streamManifest = await client.Videos.Streams.GetManifestAsync(command.Url);
+                _manifests.Add(command.Url, streamManifest);
+            }
 
             // audio with the best quality
             var audioHD = streamManifest.GetAudioOnlyStreams().GetWithHighestBitrate();
+            var test = streamManifest
+                .GetVideoOnlyStreams();
 
-            // 1080p video 
-            var videoHD = streamManifest
+            var urls = streamManifest
                 .GetVideoOnlyStreams()
-                .FirstOrDefault(x => x.VideoQuality.Label.Contains("1080"));
+                .Select(x => x.Url);
 
-            // if there is no 1080p video gets the video with best available quality
-            var videoToDownload = videoHD
-                ?? streamManifest.GetVideoOnlyStreams().GetWithHighestVideoQuality();
+            // gets stream by id
+            var video = streamManifest
+                .GetVideoOnlyStreams()
+                .FirstOrDefault(x => x.Url == command.IdUrl);
 
             var infos = new IStreamInfo[]
             {
                 audioHD,
-                videoToDownload,
+                video,
             };
 
             await client.Videos
@@ -116,7 +142,7 @@ namespace YoutubeDownloadService
         }
 
         /// <summary>
-        /// 
+        /// Downloads audio with best quality and saves it as mp3 file.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
