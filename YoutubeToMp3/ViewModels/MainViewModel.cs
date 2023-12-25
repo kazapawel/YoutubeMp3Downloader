@@ -132,15 +132,14 @@ namespace YoutubeToMp3
         public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
         public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this); 
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
-        public ICommand LoadDownloadSettingsCommand => new LoadDownloadSettingsCommand(this);
-        public ICommand SaveDownloadSettingsCommand => new SaveDownloadSettingsCommand(this);
+        public ICommand LoadDownloadSettingsCommand => new LoadDownloadSettingsCommand(this, _userSettingsService);
+        public ICommand SaveDownloadSettingsCommand => new SaveDownloadSettingsCommand(this, _userSettingsService);
 
         #endregion
 
         public MainViewModel()
         {
-            //DownloadDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //FfmpegPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}/Ffmpeg.exe";
+            _userSettingsService = new UserSettingsService();
         }
     }
 }

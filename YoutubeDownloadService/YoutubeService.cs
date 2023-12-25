@@ -40,6 +40,14 @@ namespace YoutubeDownloadService
                     VideoResolution = video.VideoResolution.ToString(),
                 });
 
+            // audio only
+            var audioHd = streamManifest
+                .GetAudioOnlyStreams()
+                .GetWithHighestBitrate();
+
+            var audios = streamManifest
+                .GetAudioOnlyStreams().ToArray();
+
             // StreamData to return
             var info = new StreamInfoDto
             {

@@ -1,6 +1,4 @@
-﻿using YoutubeToMp3.UserSettings;
-
-namespace YoutubeToMp3
+﻿namespace YoutubeToMp3
 {
     public class ApplicationViewModel
     {

@@ -7,10 +7,10 @@ namespace YoutubeToMp3
         private MainViewModel _viewModel;
         private UserSettingsService _userSettingsService;
 
-        public SaveDownloadSettingsCommand(MainViewModel viewModel)
+        public SaveDownloadSettingsCommand(MainViewModel viewModel, UserSettingsService userSettingsService)
         {
             _viewModel = viewModel;
-            _userSettingsService = new UserSettingsService();
+            _userSettingsService = userSettingsService;
         }
 
         public override void Execute(object parameter)

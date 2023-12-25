@@ -54,9 +54,13 @@ namespace YoutubeToMp3
                     Author = streamInfoDto.Author,
                     UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
                     Thumbnail = streamInfoDto.Thumbnail,
+                    AudioHd = streamInfoDto.AudioHd,
                     Videos = videos,
                 };
+
+                // notify the view
                 _viewModel.StreamInfoViewModel.OnPropertyChanged("Videos");
+
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
                 _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");        
