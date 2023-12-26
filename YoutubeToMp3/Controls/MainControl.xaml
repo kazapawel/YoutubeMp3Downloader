@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YoutubeToMp3"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             
              FontSize="14"
              Padding="5"
              Loaded="UserControl_Loaded">
@@ -19,16 +19,16 @@
 
             <!-- 1 Path -->
             <RowDefinition Height="auto"/>
-            
+
             <!-- 2 FFmpeg-->
             <RowDefinition Height="auto"/>
-            
+
             <!-- 3 Thumbnail and info -->
             <RowDefinition Height="auto"/>
-            
+
             <!-- 4 Info -->
             <RowDefinition Height="*"/>
-            
+
             <!-- 5 Listbox of videos -->
             <RowDefinition Height="auto"/>
 
@@ -58,11 +58,11 @@
                 <ColumnDefinition Width="auto"/>
 
             </Grid.ColumnDefinitions>
-            
+
             <!-- Label -->
             <TextBlock Text="Url: "
                        FontSize="14"/>
-            
+
             <!-- Url textbox -->
             <TextBox Grid.Column="1"
                      x:Name="urlTextBox"
@@ -232,46 +232,82 @@
             </Grid.ColumnDefinitions>
 
             <ListBox Grid.Column="0"
+                     Grid.IsSharedSizeScope="True"
                      x:Name="VideoListbox"
+                     Height="400"
+                     MinWidth="100"
                      ItemsSource="{Binding StreamInfoViewModel.Videos}"
-                     SelectedItem="{Binding StreamInfoViewModel.SelectedVideo}">
+                     SelectedItem="{Binding StreamInfoViewModel.SelectedVideo}"
+                     ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="checkbox"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="videoName"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="videoCodec"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="videoBitrate"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="videoResolution"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="videoSize"/>
+
+                                <ColumnDefinition Width="*" SharedSizeGroup="audioContainer"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="audioBitrate"/>
+                                <ColumnDefinition Width="*" SharedSizeGroup="audioSize"/>
                             </Grid.ColumnDefinitions>
-                            
+
                             <!-- bind checkbox to selected item -->
                             <CheckBox Grid.Column="0"
-                                      IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}"/>
+                                      IsChecked="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=IsSelected}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="1"
+                                      />
+
                             <TextBlock Grid.Column="1"
-                                       Margin="1"
+                                       Margin="5,0,0,0"
                                        Text="{Binding VideoName}"
+                                       HorizontalAlignment="Left"
                                        />
+
                             <TextBlock Grid.Column="2"
-                                       Margin="10,1"
+                                       Margin="10, 1"
                                        Text="{Binding VideoCodec}"
+                                       HorizontalAlignment="Left"
                                        />
+
                             <TextBlock Grid.Column="3"
                                        Margin="10,1"
                                        Text="{Binding VideoBitrate}"
+                                       HorizontalAlignment="Right"
                                        />
+
                             <TextBlock Grid.Column="4"
                                        Margin="10,1"
                                        Text="{Binding VideoResolution}"
+                                       HorizontalAlignment="Right"
                                        />
                             <TextBlock Grid.Column="5"
                                        Margin="5,1,1,1"
-                                       Text="{Binding VideoSize}"/>
+                                       Text="{Binding VideoSize}"
+                                       HorizontalAlignment="Right"
+                                       />
+
+                            <TextBlock Grid.Column="6"
+                                       Margin="5,1,1,1"
+                                       Text="{Binding AudioContainer}"
+                                       HorizontalAlignment="Right"
+                                       />
+
+                            <TextBlock Grid.Column="7"
+                                       Margin="5,1,1,1"
+                                       Text="{Binding AudioBitrate}"
+                                       HorizontalAlignment="Right"
+                                       />
+                            <TextBlock Grid.Column="8"
+                                       Margin="5,1,1,1"
+                                       Text="{Binding AudioSize}"
+                                       HorizontalAlignment="Right"
+                                       />
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -287,8 +323,8 @@
                    Margin="51,0,0,5"
                    TextTrimming="CharacterEllipsis"
                    />
-        
-        
+
+
         <!--#endregion-->
 
         <!--#region DOWNLOAD BUTTONS -->

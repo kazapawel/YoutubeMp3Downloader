@@ -8,9 +8,9 @@
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/yticon.png"
-    MinHeight="370"
-        MinWidth="652"
-        MaxWidth="652"
+        MinHeight="370"
+        MinWidth="800"
+
         Closing="Window_Closing">
     <Window.DataContext>
         <local:ApplicationViewModel/>
