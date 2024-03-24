@@ -24,14 +24,14 @@
                             BorderThickness="{TemplateBinding BorderThickness}" 
                             SnapsToDevicePixels="True">
                         <Grid>
-                            
+
                             <!-- Main-->
                             <ScrollViewer x:Name="PART_ContentHost" 
                                             Focusable="false"
                                             HorizontalScrollBarVisibility="Hidden" 
                                             VerticalScrollBarVisibility="Hidden"
                                           />
-                            
+
                             <!-- Placeholder -->
                             <TextBlock x:Name="placeholder"
                                        IsHitTestVisible="False"
@@ -71,17 +71,15 @@
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="Opacity" TargetName="border" Value="0.9"/>
                             <!--<Setter Property="Opacity" TargetName="PART_ContentHost" Value="1"/>-->
-                            
+
                         </Trigger>
                         <Trigger Property="IsKeyboardFocused" Value="true">
                             <Setter Property="Opacity" TargetName="border" Value="1"/>
-                            
+
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
-
 </ResourceDictionary>
