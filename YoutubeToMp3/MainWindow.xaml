@@ -8,8 +8,6 @@
         Title="MainWindow" 
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/yticon.png"
-        MinHeight="370"
-        MinWidth="800"
 
         Closing="Window_Closing">
     <Window.DataContext>
@@ -22,7 +20,10 @@
         <Grid.RowDefinitions>
 
             <!-- Title bar-->
-            <RowDefinition Height="40"/>
+            <!--<RowDefinition Height="40"/>-->
+            
+            <!-- Image -->
+            <RowDefinition Height="auto"/>
 
             <!-- Main control -->
             <RowDefinition Height="auto"/>
@@ -70,9 +71,13 @@
         </Grid>
 
         --><!--#endregion-->
+        
+        <!--#region IMAGE -->
+        <!--#endregion-->
 
         <!--#region MAIN CONTROL -->
         <local:MainControl Grid.Row="1"
+                           Margin="5"
                            x:Name="MainControl"
                            DataContext="{Binding MainViewModel}"
                            TextChangedCommand="{Binding GetInfoCommandAsync}"

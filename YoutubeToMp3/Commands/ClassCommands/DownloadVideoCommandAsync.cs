@@ -32,7 +32,7 @@ namespace YoutubeToMp3
 
                 // for disabling all download buttons
                 _viewModel.IsReady = false;
-
+                // selected video null check
                 // maps properties to command
                 var command = new DownloadVideoCommand
                 {
