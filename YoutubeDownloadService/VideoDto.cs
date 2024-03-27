@@ -1,11 +1,11 @@
-﻿using System.Drawing;
-
-namespace YoutubeDownloadService
+﻿namespace YoutubeDownloadService
 {
     public class VideoDto
     {
         public string IdUrl { get; set; } 
         public string Name { get; set; }
+        public string Quality { get; set; }
+        public string Container { get; set; }
         public string Size { get; set; }
         public string Bitrate { get; set; }
         public string VideoCodec { get; set; }

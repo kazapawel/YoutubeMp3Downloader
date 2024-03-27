@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using YoutubeDownloadService;
 using YoutubeToMp3.ViewModels;
 
@@ -47,6 +48,8 @@ namespace YoutubeToMp3
                     {
                         Id = dto.IdUrl,
                         VideoName = dto.Name,
+                        VideoQuality = dto.Quality,
+                        VideoContainer = dto.Container,
                         VideoSize = dto.Size,
                         VideoBitrate = dto.Bitrate,
                         VideoCodec = dto.VideoCodec,

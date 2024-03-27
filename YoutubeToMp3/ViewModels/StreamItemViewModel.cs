@@ -4,6 +4,8 @@
     {
         public string Id { get; set; }
         public string VideoName { get; set; }
+        public string VideoQuality { get; set; }
+        public string VideoContainer { get; set; }
         public string VideoSize { get; set; }
         public string VideoBitrate { get; set; }
         public string VideoCodec { get; set; }

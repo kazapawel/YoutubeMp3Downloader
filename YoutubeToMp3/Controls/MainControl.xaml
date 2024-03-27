@@ -333,7 +333,7 @@
                     <ColumnDefinition Width="*"/>
 
                     <!-- Button -->
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- DROPDOWN -->
@@ -348,9 +348,13 @@
                         <DataTemplate>
                             <TextBlock>
                                 <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} | {1}">
-                                        <Binding Path="VideoName" />
+                                    <MultiBinding StringFormat="{}{0} {1} | {2} | {3} | {4} | {5}">
+                                        <Binding Path="VideoQuality" />
+                                        <Binding Path="VideoContainer" />
                                         <Binding Path="VideoResolution" />
+                                        <Binding Path="VideoSize"/>
+                                        <Binding Path="VideoBitrate"/>
+                                        <Binding Path="VideoCodec"/>
                                     </MultiBinding>
                                 </TextBlock.Text>
                             </TextBlock>

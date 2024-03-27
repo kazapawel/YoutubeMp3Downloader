@@ -44,6 +44,8 @@ namespace YoutubeDownloadService
                 {
                     IdUrl = video.Url,
                     Name = video.ToString(),
+                    Quality = video.VideoQuality.ToString(),
+                    Container = video.Container.ToString(),
                     Size = video.Size.ToString(),
                     Bitrate = video.Bitrate.ToString(),
                     VideoCodec = video.VideoCodec,
