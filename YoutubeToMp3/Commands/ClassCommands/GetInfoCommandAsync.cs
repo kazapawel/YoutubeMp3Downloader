@@ -65,6 +65,7 @@ namespace YoutubeToMp3
                     UploadDate = streamInfoDto.UploadDate.Value.Date.ToShortDateString(),
                     Thumbnail = streamInfoDto.Thumbnail,
                     Videos = videos,
+                    SelectedVideo = videos != null && videos.Any() ? videos[0] : null,
                 };
 
                 // notify the view

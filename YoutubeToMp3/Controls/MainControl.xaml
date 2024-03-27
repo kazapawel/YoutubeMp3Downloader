@@ -330,18 +330,20 @@
                 <Grid.ColumnDefinitions>
 
                     <!-- Combobox -->
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
 
                     <!-- Button -->
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- DROPDOWN -->
                 <ComboBox
                     Grid.Column="0"
                     Name="outputCombobox"
                     Padding="4"
                     ItemsSource="{Binding StreamInfoViewModel.Videos}"
-                    SelectedItem="{Binding StreamInfoViewModel.SelectedVideo}">
+                    SelectedItem="{Binding StreamInfoViewModel.SelectedVideo}"
+                    IsSynchronizedWithCurrentItem="True">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock>
@@ -354,17 +356,39 @@
                             </TextBlock>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
+                    <ComboBox.Style>
+                        <Style TargetType="{x:Type ComboBox}">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
 
                 </ComboBox>
 
+                <!-- DOWNLOAD BUTTON -->
                 <Button
                     Grid.Column="1"
                     Content="Download"
                     Width="100"
-                    HorizontalAlignment="Right"/>
-                
+                    HorizontalAlignment="Right">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
             </Grid>
-            
+
 
             <!--DOWNLOAD VIDEO button 
             <Button Grid.Column="0"
