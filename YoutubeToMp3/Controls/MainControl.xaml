@@ -91,8 +91,7 @@
                     Text="{Binding StreamInfoViewModel.Title}"
                     Margin="10,5,5,5"
                     FontWeight="Bold"
-                    
-                    />
+                    TextTrimming="CharacterEllipsis"/>
 
                 <!-- AUTHOR -->
                 <TextBlock
@@ -334,6 +333,10 @@
 
                     <!-- Button -->
                     <ColumnDefinition Width="auto"/>
+                    
+                    <!-- Button -->
+                    <ColumnDefinition Width="auto"/>
+                    
                 </Grid.ColumnDefinitions>
 
                 <!-- DROPDOWN -->
@@ -373,12 +376,33 @@
 
                 </ComboBox>
 
-                <!-- DOWNLOAD BUTTON -->
+                <!-- MP3 DOWNLOAD BUTTON -->
                 <Button
                     Grid.Column="1"
-                    Content="Download"
+                    Content="Audio mp3"
                     Width="100"
-                    HorizontalAlignment="Right">
+                    HorizontalAlignment="Right"
+                    Margin="5,0,5,0"
+                    Command="{Binding DownloadAudioCommandAsync}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                
+                <!-- DOWNLOAD BUTTON -->
+                <Button
+                    Grid.Column="2"
+                    Content="Video"
+                    Width="100"
+                    HorizontalAlignment="Right"
+                    Command="{Binding DownloadVideoCommandAsync}">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="IsEnabled" Value="True"/>

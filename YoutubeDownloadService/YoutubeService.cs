@@ -85,14 +85,14 @@ namespace YoutubeDownloadService
         /// <exception cref="DownloadPathNotSetException"></exception>
         public static async Task DownloadVideoAsync(DownloadVideoCommand command)
         {
-            if (!File.Exists(command.FfmpegPath))
-            {
-                throw new FFmpegNotFoundException();
-            }
-
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
             {
                 throw new DownloadPathNotSetException();
+            }
+
+            if (!File.Exists(command.FfmpegPath))
+            {
+                throw new FFmpegNotFoundException();
             }
 
             if (string.IsNullOrEmpty(command.IdUrl))
@@ -150,14 +150,14 @@ namespace YoutubeDownloadService
         /// <exception cref="DownloadPathNotSetException"></exception>
         public static async Task DownloadAudioAsync(DownloadAudioCommand command)
         {
-            if (!File.Exists(command.FfmpegPath))
-            {
-                throw new FFmpegNotFoundException();
-            }
-
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
             {
                 throw new DownloadPathNotSetException();
+            }
+
+            if (!File.Exists(command.FfmpegPath))
+            {
+                throw new FFmpegNotFoundException();
             }
 
             var client = new YoutubeClient();
