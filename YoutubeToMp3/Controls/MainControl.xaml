@@ -145,34 +145,14 @@
                 FontWeight="Bold"/>
 
             <!-- Url textbox -->
-            <Grid Grid.Row="1">
-                <TextBox 
-                    Grid.Row="1"
-                    x:Name="urlTextBox"
-                    Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"
-                    TextChanged="UrlTextBoxTextChanged"
-                    Padding="4"
-                    Margin="0,0,4,0"/>
-                <TextBlock 
-                    IsHitTestVisible="False"
-                    Text="Enter youtube url" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Left" 
-                    Margin="4,0,4,0"
-                    Padding="4"
-                    Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=urlTextBox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
+            <TextBox 
+                Grid.Row="1"
+                x:Name="urlTextBox"
+                Tag="Enter youtube url"
+                Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"
+                TextChanged="UrlTextBoxTextChanged"
+                Style="{StaticResource TextboxWithClear}"/>
+            
             <!-- Paste button -->
             <Button 
                 Grid.Row="1"
@@ -205,33 +185,14 @@
                 FontWeight="Bold"/>
 
             <!-- Download directory textbox -->
-            <Grid Grid.Row="1">
-                <TextBox 
-                        x:Name="downloadDirectoryTextbox"
-                        Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                        Padding="4"
-                        Margin="0,0,4,0"/>
-                <TextBlock 
-                    IsHitTestVisible="False"
-                    Text="Select download directory" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Left"
-                    Margin="4,0,4,0"
+            <TextBox
+                    Grid.Row="1"
+                    x:Name="downloadDirectoryTextbox"
+                    Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Padding="4"
-                    Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-
-            </Grid>
+                    Margin="0,0,4,0"
+                    Tag="Select download directory"
+                    Style="{StaticResource TextboxWithClear}"/>
 
             <!-- Open dialog button -->
             <Button 
@@ -264,34 +225,15 @@
                 FontWeight="Bold"/>
 
             <!-- path textbox -->
-            <Grid Grid.Row="1">
-                <TextBox 
+                <TextBox
                     Grid.Row="1"
                     x:Name="ffmpegPathTextbox"
                     Text="{Binding FfmpegPath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                     Padding="4"
-                    Margin="0,0,4,0"/>
+                    Margin="0,0,4,0"
+                    Tag="Select ffmpeg.exe path"
+                    Style="{StaticResource TextboxWithClear}"/>
 
-                <TextBlock 
-                    IsHitTestVisible="False"
-                    Text="Select ffmpeg.exe path" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Left" 
-                    Margin="4,0,4,0"
-                    Padding="4"
-                    Foreground="DarkGray">
-                    <TextBlock.Style>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
             <!-- Open dialog button -->
             <Button 
                 Grid.Row="1"
@@ -333,10 +275,10 @@
 
                     <!-- Button -->
                     <ColumnDefinition Width="auto"/>
-                    
+
                     <!-- Button -->
                     <ColumnDefinition Width="auto"/>
-                    
+
                 </Grid.ColumnDefinitions>
 
                 <!-- DROPDOWN -->
@@ -401,7 +343,7 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                
+
                 <!-- DOWNLOAD BUTTON -->
                 <Button
                     Grid.Column="2"
