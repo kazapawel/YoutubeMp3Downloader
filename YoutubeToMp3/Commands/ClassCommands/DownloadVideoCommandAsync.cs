@@ -60,7 +60,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Sets can execute based on viewmodel IsReady flag.
         /// </summary>
-        public void OnIsReadyChanged(object sender, EventArgs e)
+        private void OnIsReadyChanged(object? sender, EventArgs e)
         {
             CanExec = _viewModel.IsReady;
         }

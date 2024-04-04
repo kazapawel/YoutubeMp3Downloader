@@ -391,6 +391,12 @@
                                 <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
                             </Style.Triggers>
                         </Style>
                     </Button.Style>
@@ -408,6 +414,9 @@
                             <Setter Property="IsEnabled" Value="True"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
                                     <Setter Property="IsEnabled" Value="False"/>
                                 </DataTrigger>
                             </Style.Triggers>
