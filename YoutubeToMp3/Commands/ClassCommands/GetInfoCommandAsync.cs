@@ -83,14 +83,7 @@ namespace YoutubeToMp3
 
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
-                var message =  new SuccessMessage("Data loaded. Ready for download.");
-
-                if (string.IsNullOrWhiteSpace(_viewModel.FfmpegPath))
-                {
-                    message.AppendSecondaryInfo("Ffmpeg path is not selected. Only muxed streams available");
-                }
-
-                _viewModel.StatusMessage = message;
+                _viewModel.StatusMessage =  new SuccessMessage("Data loaded. Ready for download.");
             }
             catch (Exception ex)
             {

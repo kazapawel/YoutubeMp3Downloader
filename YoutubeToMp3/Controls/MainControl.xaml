@@ -100,17 +100,24 @@
 
                 <!-- DURATION -->
                 <TextBlock 
-                        Grid.Row="2"
-                        Text="{Binding StreamInfoViewModel.Duration}"
-                        Margin="10,0,5,5"/>
+                    Grid.Row="2"
+                    Text="{Binding StreamInfoViewModel.Duration}"
+                    Margin="10,0,5,5"/>
 
                 <!-- UPLOAD DATE -->
                 <TextBlock
-                        Grid.Row="3"
-                        Text="{Binding StreamInfoViewModel.UploadDate}"
-                        Margin="10,0,5,5"/>
+                    Grid.Row="3"
+                    Text="{Binding StreamInfoViewModel.UploadDate}"
+                    Margin="10,0,5,5"/>
 
-                
+                <!-- STATUS -->
+                <TextBlock
+                    Grid.Row="4"
+                    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
+                    Text="{Binding StatusMessage.Message}"   
+                    Margin="10,0,5,5"
+                    TextTrimming="CharacterEllipsis"/>
+
 
             </Grid>
             <!--#endregion-->
@@ -145,7 +152,7 @@
                 Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"
                 TextChanged="UrlTextBoxTextChanged"
                 Style="{StaticResource TextboxWithClear}"/>
-            
+
             <!-- Paste button -->
             <Button 
                 Grid.Row="1"
@@ -218,7 +225,7 @@
                 FontWeight="Bold"/>
 
             <!-- path textbox -->
-                <TextBox
+            <TextBox
                     Grid.Row="1"
                     x:Name="ffmpegPathTextbox"
                     Text="{Binding FfmpegPath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
@@ -311,7 +318,7 @@
 
                 </ComboBox>
 
-                
+
 
             </Grid>
 
@@ -348,24 +355,32 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <CheckBox 
+                Grid.Column="1"
+                Margin="5,15,5,5"
+                VerticalAlignment="Center">Audio only
+            </CheckBox>
 
-            <!-- STATUS -->
-            <TextBlock 
-    Grid.Row="4"
-    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
-    Text="{Binding StatusMessage.Message}"
-    TextTrimming="CharacterEllipsis"/>
-            
-            <!-- MP3 DOWNLOAD BUTTON -->
+            <CheckBox 
+    Grid.Column="2"
+    Margin="5,15,5,5"
+                VerticalAlignment="Center">Audio mp3
+            </CheckBox>
+
+
+            <!-- MP3 DOWNLOAD BUTTON --><!--
             <Button
-    Grid.Column="1"
-    Content="Audio mp3"
-    Width="100"
-    HorizontalAlignment="Right"
-    Margin="5,0,5,0"
-    Command="{Binding DownloadAudioCommandAsync}">
+                Grid.Column="2"
+                Content="Audio mp3"
+                Width="100"
+                Height="30"
+                HorizontalAlignment="Right"
+                Margin="5,5,0,5"
+                Command="{Binding DownloadAudioCommandAsync}">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="IsEnabled" Value="True"/>
@@ -382,15 +397,18 @@
                         </Style.Triggers>
                     </Style>
                 </Button.Style>
-            </Button>
+            </Button>-->
 
             <!-- DOWNLOAD BUTTON -->
             <Button
-    Grid.Column="2"
-    Content="Video"
+                Grid.Column="3"
+    Content="Download"
     Width="100"
+                Height="30"
     HorizontalAlignment="Right"
-    Command="{Binding DownloadVideoCommandAsync}">
+                VerticalAlignment="Center"
+    Command="{Binding DownloadVideoCommandAsync}"
+                Margin="5,15,0,5">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="IsEnabled" Value="True"/>
