@@ -24,20 +24,19 @@
             <!-- 3 FFmpeg-->
             <RowDefinition Height="auto"/>
 
-
             <!-- 4 Info -->
             <RowDefinition Height="*"/>
 
             <!-- 5 Listbox of videos -->
             <RowDefinition Height="auto"/>
 
-            <!-- 6 Download video button -->
+            <!-- 6 Separator -->
             <RowDefinition Height="auto"/>
 
-            <!-- 7 Download audio button -->
+            <!-- 7 Status message and buttons  -->
             <RowDefinition Height="auto"/>
 
-            <!-- 8 STATUS message-->
+            <!-- 8 empty -->
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
@@ -111,13 +110,7 @@
                         Text="{Binding StreamInfoViewModel.UploadDate}"
                         Margin="10,0,5,5"/>
 
-                <!-- STATUS -->
-                <TextBlock 
-                    Grid.Row="4"
-                    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
-                    Text="{Binding StatusMessage.Message}"
-                    Margin="10,10,5,0"
-                    TextTrimming="CharacterEllipsis"/>
+                
 
             </Grid>
             <!--#endregion-->
@@ -318,53 +311,7 @@
 
                 </ComboBox>
 
-                <!-- MP3 DOWNLOAD BUTTON -->
-                <Button
-                    Grid.Column="1"
-                    Content="Audio mp3"
-                    Width="100"
-                    HorizontalAlignment="Right"
-                    Margin="5,0,5,0"
-                    Command="{Binding DownloadAudioCommandAsync}">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="IsEnabled" Value="True"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-
-                <!-- DOWNLOAD BUTTON -->
-                <Button
-                    Grid.Column="2"
-                    Content="Video"
-                    Width="100"
-                    HorizontalAlignment="Right"
-                    Command="{Binding DownloadVideoCommandAsync}">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="IsEnabled" Value="True"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
-                                    <Setter Property="IsEnabled" Value="False"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
+                
 
             </Grid>
 
@@ -388,6 +335,80 @@
 
 
         <!--#endregion-->
+
+        <!--<Rectangle
+            Grid.Row="6"
+            HorizontalAlignment="Stretch" 
+            Fill="Black" 
+            Height="1"
+            Margin="0,10,0,0"/>-->
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <!-- STATUS -->
+            <TextBlock 
+    Grid.Row="4"
+    Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
+    Text="{Binding StatusMessage.Message}"
+    TextTrimming="CharacterEllipsis"/>
+            
+            <!-- MP3 DOWNLOAD BUTTON -->
+            <Button
+    Grid.Column="1"
+    Content="Audio mp3"
+    Width="100"
+    HorizontalAlignment="Right"
+    Margin="5,0,5,0"
+    Command="{Binding DownloadAudioCommandAsync}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- DOWNLOAD BUTTON -->
+            <Button
+    Grid.Column="2"
+    Content="Video"
+    Width="100"
+    HorizontalAlignment="Right"
+    Command="{Binding DownloadVideoCommandAsync}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+
+        </Grid>
+
 
     </Grid>
 </UserControl>

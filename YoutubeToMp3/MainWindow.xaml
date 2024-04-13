@@ -11,7 +11,7 @@
         MinWidth="650"
         MaxWidth="650"
         MinHeight="410"
-        MaxHeight="410"
+        MaxHeight="450"
         Closing="Window_Closing">
     <Window.DataContext>
         <local:ApplicationViewModel/>

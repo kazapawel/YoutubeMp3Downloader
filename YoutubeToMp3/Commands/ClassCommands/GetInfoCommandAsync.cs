@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YoutubeDownloadService;
+using YoutubeDownloadService.Commands;
 using YoutubeToMp3.ViewModels;
 
 namespace YoutubeToMp3
@@ -39,8 +40,14 @@ namespace YoutubeToMp3
 
             try
             {
+                var command = new GetStreamInfoCommand
+                {
+                    Url = _viewModel.Url,
+                    FfmpegPath = _viewModel.FfmpegPath,
+                };
+
                 // gets stream information, null is handled in catch
-                var streamInfoDto = await YoutubeService.GetStreamInfo(_viewModel.Url);
+                var streamInfoDto = await YoutubeService.GetStreamInfo(command);
 
                 // observable collection for view model
                 var videos = new ObservableCollection<StreamItemViewModel>(
@@ -76,7 +83,14 @@ namespace YoutubeToMp3
 
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
-                _viewModel.StatusMessage = new SuccessMessage("Data loaded. Ready for download.");
+                var message =  new SuccessMessage("Data loaded. Ready for download.");
+
+                if (string.IsNullOrWhiteSpace(_viewModel.FfmpegPath))
+                {
+                    message.AppendSecondaryInfo("Ffmpeg path is not selected. Only muxed streams available");
+                }
+
+                _viewModel.StatusMessage = message;
             }
             catch (Exception ex)
             {

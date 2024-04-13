@@ -1,5 +1,4 @@
-﻿using AngleSharp.Dom;
-using YoutubeDownloadService.Commands;
+﻿using YoutubeDownloadService.Commands;
 using YoutubeDownloadService.Exceptions;
 using YoutubeExplode;
 using YoutubeExplode.Converter;
@@ -14,26 +13,28 @@ namespace YoutubeDownloadService
         /// </summary>
         private static Dictionary<string, StreamManifest> _manifests = new Dictionary<string, StreamManifest>();
 
+
+
         /// <summary>
         /// Gets information related to youtube stream from given url.
         /// </summary>
-        public static async Task<StreamInfoDto> GetStreamInfo(string url)
+        public static async Task<StreamInfoDto> GetStreamInfo(GetStreamInfoCommand command)
         {
             var client = new YoutubeClient();
 
             // metadata
-            var videos = await client.Videos.GetAsync(url);
+            var videos = await client.Videos.GetAsync(command.Url);
 
             // manifest
             StreamManifest streamManifest;
-            if(_manifests.ContainsKey(url))
+            if(_manifests.ContainsKey(command.Url))
             {
-                streamManifest = _manifests[url];
+                streamManifest = _manifests[command.Url];
             }
             else
             {
-                streamManifest = await client.Videos.Streams.GetManifestAsync(url);
-                _manifests.Add(url, streamManifest);
+                streamManifest = await client.Videos.Streams.GetManifestAsync(command.Url);
+                _manifests.Add(command.Url, streamManifest);
             }
 
             // video dtos
