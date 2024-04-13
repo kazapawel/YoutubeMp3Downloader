@@ -32,21 +32,44 @@ namespace YoutubeToMp3
 
                 // for disabling all download buttons
                 _viewModel.IsReady = false;
-                
+
                 // selected video null check
 
-                // maps properties to command
-                var command = new DownloadVideoCommand
+                // AUDIO
+                if (_viewModel.DownloadAudioOnly)
                 {
-                    IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
-                    Url = _viewModel.Url,
-                    DownloadPath = _viewModel.DownloadDirectory,
-                    FfmpegPath = _viewModel.FfmpegPath,
-                    Quality = string.Empty, // for now
-                };
+                    var command = new DownloadAudioCommand
+                    {
+                        Url = _viewModel.Url,
+                        DownloadPath = _viewModel.DownloadDirectory,
+                        FfmpegPath = _viewModel.FfmpegPath,
+                        Format = string.Empty // for now
+                    };
 
-                // downloads video
-                await YoutubeService.DownloadVideoAsync(command);
+                    await YoutubeService.DownloadAudioAsync(command);
+                }
+
+                // MP3
+                else if (_viewModel.DownloadMp3)
+                {
+
+                }
+
+                // VIDEO
+                else
+                {
+                    var command = new DownloadVideoCommand
+                    {
+                        IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
+                        Url = _viewModel.Url,
+                        DownloadPath = _viewModel.DownloadDirectory,
+                        FfmpegPath = _viewModel.FfmpegPath,
+                        Quality = string.Empty, // for now
+                    };
+
+                    // downloads video
+                    await YoutubeService.DownloadVideoAsync(command);
+                }
 
                 // for enabling all download buttons
                 _viewModel.IsReady = true;
