@@ -28,11 +28,13 @@ namespace YoutubeToMp3
 
             try
             {
-                _viewModel.StatusMessage = new InfoMessage("Downloading video...");
+                _viewModel.StatusMessage = new InfoMessage("Downloading...");
 
                 // for disabling all download buttons
                 _viewModel.IsReady = false;
+                
                 // selected video null check
+
                 // maps properties to command
                 var command = new DownloadVideoCommand
                 {

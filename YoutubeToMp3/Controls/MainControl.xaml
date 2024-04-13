@@ -304,18 +304,51 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Audio only -->
+            <!-- Audio only checkbox -->
             <CheckBox 
                 Grid.Column="1"
                 Margin="5,15,5,5"
-                VerticalAlignment="Center">Audio only
+                VerticalAlignment="Center"
+                IsChecked="{Binding DownloadAudioOnly}"
+                Content="Audio only">
+                <CheckBox.Style>
+                    <Style TargetType="{x:Type CheckBox}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
             </CheckBox>
 
-            <!-- Audio mp3-->
+            <!-- Audio mp3 checkbox-->
             <CheckBox 
                 Grid.Column="2"
+                x:Name="downloadMp3Only"
                 Margin="5,15,5,5"
-                VerticalAlignment="Center">Audio mp3
+                VerticalAlignment="Center"
+                Content="Audio mp3">
+                <CheckBox.Style>
+                    <Style TargetType="{x:Type CheckBox}">
+                        <Setter Property="IsEnabled" Value="True"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
             </CheckBox>
 
             <!-- Download button -->

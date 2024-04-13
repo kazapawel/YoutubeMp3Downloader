@@ -14,6 +14,8 @@ namespace YoutubeToMp3
         private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
+        private bool downloadAudioOnly;
+        private bool downloadMp3;
         private readonly UserSettingsService _userSettingsService;
 
 
@@ -97,6 +99,32 @@ namespace YoutubeToMp3
                 {
                     statusMessage = value;
                     OnPropertyChanged(nameof(StatusMessage));
+                }
+            }
+        }
+
+        public bool DownloadAudioOnly
+        {
+            get => downloadAudioOnly;
+            set
+            {
+                if (downloadAudioOnly != value)
+                {
+                    downloadAudioOnly = value;
+                    OnPropertyChanged(nameof(DownloadAudioOnly));
+                }
+            }
+        }
+
+        public bool DownloadMp3
+        {
+            get => downloadMp3;
+            set
+            {
+                if (downloadMp3 != value)
+                {
+                    downloadMp3 = value;
+                    OnPropertyChanged(nameof(DownloadMp3));
                 }
             }
         }
