@@ -40,19 +40,15 @@
             <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
+        
         <!--#region INFO -->
-        <!-- INFO -->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-
-                <!--0 Thumbnail-->
                 <ColumnDefinition Width="auto"/>
-
-                <!--1 Info grid-->
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!--THUMBNAIL-->
+            <!-- Thumbnail -->
             <Border Grid.Column="0"
                     Background="Black"
                     Width="180"
@@ -61,30 +57,30 @@
                 <Image 
                     Source="{Binding StreamInfoViewModel.Thumbnail, FallbackValue={StaticResource DefaultThumbnail}}"/>
             </Border>
-
-            <!--#region INFO REGION -->
-            <!--INFO-->
+            
+            <!--#region TEXT INFO REGION-->
+            
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
-                    <!--0 Title -->
+                    <!-- 0 Title -->
                     <RowDefinition Height="auto"/>
 
-                    <!--1 Author -->
+                    <!-- 1 Author -->
                     <RowDefinition Height="auto"/>
 
-                    <!--2 Duration -->
+                    <!-- 2 Duration -->
                     <RowDefinition Height="auto"/>
 
-                    <!--3 Upload date -->
+                    <!-- 3 Upload date -->
                     <RowDefinition Height="auto"/>
 
-                    <!--4 Status -->
+                    <!-- 4 Status -->
                     <RowDefinition Height="auto"/>
 
                 </Grid.RowDefinitions>
 
-                <!--TITLE-->
+                <!-- TITLE -->
                 <TextBlock
                     Grid.Row="0"
                     Text="{Binding StreamInfoViewModel.Title}"
@@ -115,10 +111,8 @@
                     Grid.Row="4"
                     Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
                     Text="{Binding StatusMessage.Message}"   
-                    Margin="10,0,5,5"
+                    Margin="10,5,5,5"
                     TextTrimming="CharacterEllipsis"/>
-
-
             </Grid>
             <!--#endregion-->
 
@@ -127,13 +121,8 @@
         <!--#region URL SECTION -->
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
-
-                <!-- Label-->
                 <RowDefinition Height="auto"/>
-
-                <!-- Input and button -->
                 <RowDefinition Height="auto"/>
-
             </Grid.RowDefinitions>
 
             <!-- Label -->
@@ -167,13 +156,8 @@
         <!--#region DOWNLOAD DIRECTORY SECTION -->
         <Grid Grid.Row="2">
             <Grid.RowDefinitions>
-
-                <!-- Label-->
                 <RowDefinition Height="auto"/>
-
-                <!-- Input and button -->
                 <RowDefinition Height="auto"/>
-
             </Grid.RowDefinitions>
 
             <!-- Label -->
@@ -186,13 +170,13 @@
 
             <!-- Download directory textbox -->
             <TextBox
-                    Grid.Row="1"
-                    x:Name="downloadDirectoryTextbox"
-                    Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Padding="4"
-                    Margin="0,0,4,0"
-                    Tag="Select download directory"
-                    Style="{StaticResource TextboxWithClear}"/>
+                Grid.Row="1"
+                x:Name="downloadDirectoryTextbox"
+                Text="{Binding DownloadDirectory, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Padding="4"
+                Margin="0,0,4,0"
+                Tag="Select download directory"
+                Style="{StaticResource TextboxWithClear}"/>
 
             <!-- Open dialog button -->
             <Button 
@@ -207,13 +191,8 @@
         <!--#region FFMPEG PATH -->
         <Grid Grid.Row="3">
             <Grid.RowDefinitions>
-
-                <!-- Label-->
                 <RowDefinition Height="auto"/>
-
-                <!-- Input and button -->
                 <RowDefinition Height="auto"/>
-
             </Grid.RowDefinitions>
 
             <!-- Label -->
@@ -224,15 +203,15 @@
                 Margin="0,5,0,2" 
                 FontWeight="Bold"/>
 
-            <!-- path textbox -->
+            <!-- Path textbox -->
             <TextBox
-                    Grid.Row="1"
-                    x:Name="ffmpegPathTextbox"
-                    Text="{Binding FfmpegPath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                    Padding="4"
-                    Margin="0,0,4,0"
-                    Tag="Select ffmpeg.exe path"
-                    Style="{StaticResource TextboxWithClear}"/>
+                Grid.Row="1"
+                x:Name="ffmpegPathTextbox"
+                Text="{Binding FfmpegPath, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Padding="4"
+                Margin="0,0,4,0"
+                Tag="Select ffmpeg.exe path"
+                Style="{StaticResource TextboxWithClear}"/>
 
             <!-- Open dialog button -->
             <Button 
@@ -245,17 +224,11 @@
 
         </Grid>
         <!--#endregion-->
-        <!--#region DOWNLOAD DROPDOWN AND BUTTON -->
-
+        <!--#region OUTPUT DROPDOWN -->
         <Grid Grid.Row="5">
             <Grid.RowDefinitions>
-
-                <!-- Label-->
                 <RowDefinition Height="auto"/>
-
-                <!-- Dropdown and button -->
                 <RowDefinition Height="auto"/>
-
             </Grid.RowDefinitions>
 
             <!-- Label -->
@@ -281,7 +254,7 @@
 
                 </Grid.ColumnDefinitions>
 
-                <!-- DROPDOWN -->
+                <!-- Dropdown -->
                 <ComboBox
                     Grid.Column="0"
                     Name="outputCombobox"
@@ -317,97 +290,43 @@
                     </ComboBox.Style>
 
                 </ComboBox>
-
-
-
             </Grid>
-
-
-            <!--DOWNLOAD VIDEO button 
-            <Button Grid.Column="0"
-                    Style="{StaticResource ButtonDownload}"
-                    Tag="Download Video"
-                    Command="{Binding DownloadVideoCommandAsync}"
-                    />
-
-             DOWNLOAD AUDIO button 
-            <Button Grid.Column="1"
-                    Style="{StaticResource ButtonDownload}"
-                    Tag="Download Audio"
-                    Command="{Binding DownloadAudioCommandAsync}"
-                    />-->
         </Grid>
-
-
-
-
+        
         <!--#endregion-->
-
-        <!--<Rectangle
-            Grid.Row="6"
-            HorizontalAlignment="Stretch" 
-            Fill="Black" 
-            Height="1"
-            Margin="0,10,0,0"/>-->
-
+        <!--#region DOWNLOAD SECTION -->
+        
         <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Audio only -->
             <CheckBox 
                 Grid.Column="1"
                 Margin="5,15,5,5"
                 VerticalAlignment="Center">Audio only
             </CheckBox>
 
+            <!-- Audio mp3-->
             <CheckBox 
-    Grid.Column="2"
-    Margin="5,15,5,5"
+                Grid.Column="2"
+                Margin="5,15,5,5"
                 VerticalAlignment="Center">Audio mp3
             </CheckBox>
 
-
-            <!-- MP3 DOWNLOAD BUTTON --><!--
+            <!-- Download button -->
             <Button
-                Grid.Column="2"
-                Content="Audio mp3"
+                Grid.Column="3"
+                Content="Download"
                 Width="100"
                 Height="30"
                 HorizontalAlignment="Right"
-                Margin="5,5,0,5"
-                Command="{Binding DownloadAudioCommandAsync}">
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="IsEnabled" Value="True"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
-                                <Setter Property="IsEnabled" Value="False"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>-->
-
-            <!-- DOWNLOAD BUTTON -->
-            <Button
-                Grid.Column="3"
-    Content="Download"
-    Width="100"
-                Height="30"
-    HorizontalAlignment="Right"
                 VerticalAlignment="Center"
-    Command="{Binding DownloadVideoCommandAsync}"
+                Command="{Binding DownloadVideoCommandAsync}"
                 Margin="5,15,0,5">
                 <Button.Style>
                     <Style TargetType="{x:Type Button}">
@@ -423,10 +342,8 @@
                     </Style>
                 </Button.Style>
             </Button>
-
-
         </Grid>
-
-
+        <!--#endregion-->
+        
     </Grid>
 </UserControl>
