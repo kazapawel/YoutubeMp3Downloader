@@ -157,8 +157,7 @@ namespace YoutubeToMp3
         #region COMMANDS
 
         public ICommand GetInfoCommandAsync => new GetInfoCommandAsync(this);
-        public ICommand DownloadVideoCommandAsync => new DownloadVideoCommandAsync(this);
-        public ICommand DownloadAudioCommandAsync => new DownloadAudioCommandAsync(this); 
+        public ICommand DownloadVideoCommandAsync => new DownloadCommandAsync(this);
         public ICommand ClearUrlCommand => new ClearUrlCommand(this);
         public ICommand LoadDownloadSettingsCommand => new LoadDownloadSettingsCommand(this, _userSettingsService);
         public ICommand SaveDownloadSettingsCommand => new SaveDownloadSettingsCommand(this, _userSettingsService);

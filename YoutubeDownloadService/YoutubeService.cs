@@ -99,6 +99,39 @@ namespace YoutubeDownloadService
             return info;
         }
 
+        public static async Task DownloadMuxedStream(DownloadMuxedStreamCommand command)
+        {
+            if (string.IsNullOrWhiteSpace(command.DownloadPath)) 
+                throw new DownloadPathNotSetException();
+
+            if (string.IsNullOrEmpty(command.IdUrl))
+                throw new VideoUrlNullException();
+
+            // prepare
+            var client = new YoutubeClient();
+            var videos = await client.Videos.GetAsync(command.Url);
+            var fixedTitle = FixTitle(videos.Title);
+            var downloadPath = @$"{command.DownloadPath}\{fixedTitle}.mp4";
+
+            // manifest
+            StreamManifest streamManifest;
+            if (_manifests.TryGetValue(command.Url, out StreamManifest? value))
+            {
+                streamManifest = value;
+            }
+            else
+            {
+                streamManifest = await client.Videos.Streams.GetManifestAsync(command.Url);
+                _manifests.Add(command.Url, streamManifest);
+            }
+
+            var muxedStreamInfo = streamManifest
+                .GetMuxedStreams()
+                .FirstOrDefault(x => x.Url == command.IdUrl); // check for null
+
+            await client.Videos.Streams.DownloadAsync(muxedStreamInfo, downloadPath);
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -111,14 +144,14 @@ namespace YoutubeDownloadService
                 throw new DownloadPathNotSetException();
             }
 
-            if (!File.Exists(command.FfmpegPath))
-            {
-                throw new FFmpegNotFoundException();
-            }
-
             if (string.IsNullOrEmpty(command.IdUrl))
             {
                 throw new VideoUrlNullException();
+            }
+
+            if (!File.Exists(command.FfmpegPath))
+            {
+                throw new FFmpegNotFoundException();
             }
 
             var client = new YoutubeClient();
@@ -143,9 +176,9 @@ namespace YoutubeDownloadService
             var test = streamManifest
                 .GetVideoOnlyStreams();
 
-            var urls = streamManifest
-                .GetVideoOnlyStreams()
-                .Select(x => x.Url);
+            //var urls = streamManifest
+            //    .GetVideoOnlyStreams()
+            //    .Select(x => x.Url);
 
             // gets stream by id
             var video = streamManifest
