@@ -24,6 +24,7 @@
     <None Remove="Images\paste_modern.png" />
     <None Remove="Images\paste_modern_color.png" />
     <None Remove="Images\play_modern.png" />
+    <None Remove="Images\spinner.gif" />
     <None Remove="Images\youtube_modern.png" />
     <None Remove="Images\youtube_modern_100.png" />
     <None Remove="Images\yticon.png" />
@@ -53,6 +54,7 @@
     <Resource Include="Images\paste_modern.png" />
     <Resource Include="Images\paste_modern_color.png" />
     <Resource Include="Images\play_modern.png" />
+    <Resource Include="Images\spinner.gif" />
     <Resource Include="Images\youtube_modern.png" />
     <Resource Include="Images\youtube_modern_100.png" />
     <Resource Include="Images\yticon.png" />

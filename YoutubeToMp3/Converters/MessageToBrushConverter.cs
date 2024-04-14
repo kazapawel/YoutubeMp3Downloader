@@ -12,7 +12,7 @@ namespace YoutubeToMp3
             return value is SuccessMessage
                 ? (SolidColorBrush)new BrushConverter().ConvertFrom("#66BB6A")
                 : value is ErrorMessage ? (SolidColorBrush)new BrushConverter().ConvertFrom("#EF5350")
-                : new SolidColorBrush(Colors.Wheat);
+                : new SolidColorBrush(Colors.Black);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

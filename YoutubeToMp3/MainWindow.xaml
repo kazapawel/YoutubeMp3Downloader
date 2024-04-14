@@ -10,85 +10,26 @@
         Icon="pack://application:,,,/Images/yticon.png"
         MinWidth="650"
         MaxWidth="650"
-        MinHeight="410"
+        MinHeight="450"
         MaxHeight="450"
         Closing="Window_Closing">
+    
     <Window.DataContext>
         <local:ApplicationViewModel/>
     </Window.DataContext>
 
     <Grid>
-
-        <!--#region MAIN GRID DEFINITIONS -->
         <Grid.RowDefinitions>
-
-            <!-- Title bar-->
-            <!--<RowDefinition Height="40"/>-->
-            
-            <!-- Image -->
             <RowDefinition Height="auto"/>
-
-            <!-- Main control -->
-            <RowDefinition Height="auto"/>
-
         </Grid.RowDefinitions>
-        <!--#endregion-->
 
-        <!--#region  TITLE BAR -->
-        <!-- TITLE BAR --><!--
-        <Grid Grid.Row="0" 
-             >
-
-            <Grid.ColumnDefinitions>
-
-                --><!-- Image --><!--
-                <ColumnDefinition Width="auto"/>
-
-                --><!-- Header --><!--
-                <ColumnDefinition Width="*"/>
-
-                --><!-- Minimize button --><!--
-                <ColumnDefinition Width="auto"/>
-
-                --><!-- Close button --><!--
-                <ColumnDefinition Width="auto"/>
-
-            </Grid.ColumnDefinitions>
-
-
-            --><!-- Minimize button--><!--
-            <Button Grid.Column="2"
-                    Style="{StaticResource ButtonImageStyle}"
-                    Background="{StaticResource BackgroundDarkSimpleMainBrush}"
-                    Tag="pack://application:,,,/Images/minimize_modern.png"
-                    Click="MinimizeButton_Click"
-                    />
-
-            <Button Grid.Column="3"
-                    Background="Red"
-                    Style="{StaticResource ButtonImageStyle}"
-                    Tag="pack://application:,,,/Images/close_modern.png"
-                    Click="CloseButton_Click"
-                    />
-
-        </Grid>
-
-        --><!--#endregion-->
-        
-        <!--#region IMAGE -->
-        <!--#endregion-->
-
-        <!--#region MAIN CONTROL -->
-        <local:MainControl Grid.Row="1"
-                           Margin="5"
-                           x:Name="MainControl"
-                           DataContext="{Binding MainViewModel}"
-                           TextChangedCommand="{Binding GetInfoCommandAsync}"
-                           LoadedCommand="{Binding LoadDownloadSettingsCommand}"
-                           ClosingCommand="{Binding SaveDownloadSettingsCommand}"
-                           />
-
-        <!--#endregion-->
-
+        <local:MainControl 
+            Grid.Row="1"
+            Margin="5"
+            x:Name="MainControl"
+            DataContext="{Binding MainViewModel}"
+            TextChangedCommand="{Binding GetInfoCommandAsync}"
+            LoadedCommand="{Binding LoadDownloadSettingsCommand}"
+            ClosingCommand="{Binding SaveDownloadSettingsCommand}"/>
     </Grid>
 </Window>

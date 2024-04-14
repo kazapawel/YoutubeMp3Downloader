@@ -113,8 +113,27 @@
                     Text="{Binding StatusMessage.Message}"   
                     Margin="10,5,5,5"
                     TextTrimming="CharacterEllipsis"/>
+
             </Grid>
             <!--#endregion-->
+
+            <!-- Spinner -->
+            <!--<Image
+                Grid.Column="1"
+                Source="pack://application:,,,/Images/spinner.gif"
+                Width="30"
+                Height="30">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsReady}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>-->
 
         </Grid>
         <!--#endregion-->
@@ -250,6 +269,21 @@
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Opacity" Value="1"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsChecked, ElementName=audioOnlyCheckbox}" Value="True">
+                                            <Setter Property="Opacity" Value="0.4"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsChecked, ElementName=mp3Checkbox}" Value="True">
+                                            <Setter Property="Opacity" Value="0.4"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                            
+                            <!-- dropdown item text-->
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} {1} | {2} | {3} | {4} | {5} | Audio: {6}">
                                     <Binding Path="VideoQuality" />
@@ -269,6 +303,12 @@
                         <Setter Property="IsEnabled" Value="True"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}" Value="0">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=audioOnlyCheckbox}" Value="True">
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=mp3Checkbox}" Value="True">
                                 <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -292,6 +332,7 @@
             <!-- Audio only checkbox -->
             <CheckBox 
                 Grid.Column="1"
+                x:Name="audioOnlyCheckbox"
                 Margin="5,15,5,5"
                 VerticalAlignment="Center"
                 IsChecked="{Binding DownloadAudioOnly}"
@@ -302,9 +343,11 @@
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
                                 <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
                                 <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -314,7 +357,7 @@
             <!-- Audio mp3 checkbox-->
             <CheckBox 
                 Grid.Column="2"
-                x:Name="downloadMp3Only"
+                x:Name="mp3Checkbox"
                 Margin="5,15,5,5"
                 VerticalAlignment="Center"
                 IsChecked="{Binding DownloadMp3}"
@@ -325,12 +368,15 @@
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Items.Count, ElementName=outputCombobox}" Value="0">
                                 <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
                                 <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
                                 <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
