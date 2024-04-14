@@ -26,6 +26,9 @@ namespace YoutubeToMp3
             if (_viewModel.StreamInfoViewModel is null)
                 return;
 
+            if (_viewModel.StreamInfoViewModel.SelectedVideo is null)
+                _viewModel.StatusMessage = new InfoMessage("No output selected.");
+
             try
             {
                 _viewModel.StatusMessage = new InfoMessage("Downloading...");
@@ -33,41 +36,37 @@ namespace YoutubeToMp3
                 // for disabling all download buttons
                 _viewModel.IsReady = false;
 
-                // TO DO: selected video null check
-
-                // MUXED STREAM
-                if(string.IsNullOrWhiteSpace(_viewModel.FfmpegPath))
+                // command mapping
+                if (_viewModel.DownloadAudioOnly)
                 {
-                    var command = new DownloadMuxedStreamCommand
+                    // AUDIO HQ
+                    var command = new DownloadAudioCommand
                     {
-                        IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
                         Url = _viewModel.Url,
                         DownloadPath = _viewModel.DownloadDirectory,
+                        FfmpegPath = _viewModel.FfmpegPath,
                     };
 
-                    await YoutubeService.DownloadMuxedStream(command);
+                    await YoutubeService.DownloadAudioAsync(command);
                 }
+                else
+                {
+                    // MUXED STREAM
+                    if (string.IsNullOrWhiteSpace(_viewModel.FfmpegPath))
+                    {
+                        var command = new DownloadMuxedStreamCommand
+                        {
+                            IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
+                            Url = _viewModel.Url,
+                            DownloadPath = _viewModel.DownloadDirectory,
+                        };
 
-
-                //// AUDIO
-                //if (_viewModel.DownloadAudioOnly)
-                //{
-                //    var command = new DownloadAudioCommand
-                //    {
-                //        Url = _viewModel.Url,
-                //        DownloadPath = _viewModel.DownloadDirectory,
-                //        FfmpegPath = _viewModel.FfmpegPath,
-                //        Format = string.Empty // for now
-                //    };
-
-                //    await YoutubeService.DownloadAudioAsync(command);
-                //}
-
-                //// MP3
-                //else if (_viewModel.DownloadMp3)
-                //{
-
-                //}
+                        await YoutubeService.DownloadMuxedStream(command);
+                    }
+                    else
+                    {
+                    }
+                }
 
                 //// VIDEO
                 //else

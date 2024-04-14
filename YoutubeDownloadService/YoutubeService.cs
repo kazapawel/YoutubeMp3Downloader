@@ -111,7 +111,6 @@ namespace YoutubeDownloadService
             var client = new YoutubeClient();
             var videos = await client.Videos.GetAsync(command.Url);
             var fixedTitle = FixTitle(videos.Title);
-            var downloadPath = @$"{command.DownloadPath}\{fixedTitle}.mp4";
 
             // manifest
             StreamManifest streamManifest;
@@ -127,8 +126,9 @@ namespace YoutubeDownloadService
 
             var muxedStreamInfo = streamManifest
                 .GetMuxedStreams()
-                .FirstOrDefault(x => x.Url == command.IdUrl); // check for null
-
+                .FirstOrDefault(x => x.Url == command.IdUrl) ?? throw new ArgumentNullException("Stream not found");
+            
+            var downloadPath = @$"{command.DownloadPath}\{fixedTitle}.{muxedStreamInfo.Container}";
             await client.Videos.Streams.DownloadAsync(muxedStreamInfo, downloadPath);
         }
 
@@ -198,21 +198,48 @@ namespace YoutubeDownloadService
         }
 
         /// <summary>
-        /// Downloads audio with best quality and saves it as mp3 file.
+        /// Downloads audio with best quality.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
         public static async Task DownloadAudioAsync(DownloadAudioCommand command)
         {
+            if (string.IsNullOrEmpty(command.Url))
+                throw new VideoUrlNullException();
+
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
-            {
                 throw new DownloadPathNotSetException();
-            }
+
+            // prepare
+            var client = new YoutubeClient();
+            var videos = await client.Videos.GetAsync(command.Url);
+            var fixedTitle = FixTitle(videos.Title);
+
+            // streams
+            var streamManifest = await client.Videos.Streams.GetManifestAsync(command.Url);
+
+            // audio with the best quality
+            var audioHDInfo = streamManifest
+                .GetAudioOnlyStreams()
+                .GetWithHighestBitrate();
+
+            var downloadPath = @$"{command.DownloadPath}\{fixedTitle}.{audioHDInfo.Container}";
+            await client.Videos.Streams.DownloadAsync(audioHDInfo, downloadPath);
+        }
+        
+        
+        /// <summary>
+        /// Downloads audio with best quality and saves it as mp3 file.
+        /// </summary>
+        /// <exception cref="FFmpegNotFoundException"></exception>
+        /// <exception cref="DownloadPathNotSetException"></exception>
+        public static async Task DownloadAudiomp3Async(DownloadAudioCommand command)
+        {
+            if (string.IsNullOrWhiteSpace(command.DownloadPath))
+                throw new DownloadPathNotSetException();
 
             if (!File.Exists(command.FfmpegPath))
-            {
                 throw new FFmpegNotFoundException();
-            }
 
             var client = new YoutubeClient();
             var videos = await client.Videos.GetAsync(command.Url);
