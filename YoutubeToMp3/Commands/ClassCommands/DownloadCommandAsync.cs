@@ -24,10 +24,16 @@ namespace YoutubeToMp3
         protected override async Task ExecuteAsync(object parameter)
         {
             if (_viewModel.StreamInfoViewModel is null)
+            {
+                _viewModel.StatusMessage = new ErrorMessage("Something went wrong.");
                 return;
+            }
 
             if (_viewModel.StreamInfoViewModel.SelectedVideo is null)
+            {
                 _viewModel.StatusMessage = new InfoMessage("No output selected.");
+                return;
+            }
 
             try
             {
@@ -59,7 +65,7 @@ namespace YoutubeToMp3
                         DownloadPath = _viewModel.DownloadDirectory,
                     };
 
-                    await YoutubeService.DownloadAudioAsync(command);
+                    await YoutubeService.DownloadAudioHqAsync(command);
                 }
                 else
                 {
@@ -77,24 +83,19 @@ namespace YoutubeToMp3
                     }
                     else
                     {
+                        // VIDEO with AUDIO HQ
+                        var command = new DownloadVideoWithAudioCommand
+                        {
+                            IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
+                            Url = _viewModel.Url,
+                            DownloadPath = _viewModel.DownloadDirectory,
+                            FfmpegPath = _viewModel.FfmpegPath,
+                        };
+
+                        // downloads video
+                        await YoutubeService.DownloadVideoWithAduioHqAsync(command);
                     }
                 }
-
-                //// VIDEO
-                //else
-                //{
-                //    var command = new DownloadVideoCommand
-                //    {
-                //        IdUrl = _viewModel.StreamInfoViewModel.SelectedVideo.Id,
-                //        Url = _viewModel.Url,
-                //        DownloadPath = _viewModel.DownloadDirectory,
-                //        FfmpegPath = _viewModel.FfmpegPath,
-                //    };
-
-                //    // downloads video
-                //    await YoutubeService.DownloadVideoAsync(command);
-                //}
-
                 // for enabling all download buttons
                 _viewModel.IsReady = true;
 

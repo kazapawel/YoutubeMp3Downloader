@@ -137,7 +137,7 @@ namespace YoutubeDownloadService
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
-        public static async Task DownloadVideoAsync(DownloadVideoCommand command)
+        public static async Task DownloadVideoWithAduioHqAsync(DownloadVideoWithAudioCommand command)
         {
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
             {
@@ -176,14 +176,10 @@ namespace YoutubeDownloadService
             var test = streamManifest
                 .GetVideoOnlyStreams();
 
-            //var urls = streamManifest
-            //    .GetVideoOnlyStreams()
-            //    .Select(x => x.Url);
-
             // gets stream by id
             var video = streamManifest
                 .GetVideoOnlyStreams()
-                .FirstOrDefault(x => x.Url == command.IdUrl);
+                .FirstOrDefault(x => x.Url == command.IdUrl) ?? throw new ArgumentNullException("Stream not found");
 
             var infos = new IStreamInfo[]
             {
@@ -202,7 +198,7 @@ namespace YoutubeDownloadService
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
-        public static async Task DownloadAudioAsync(DownloadAudioCommand command)
+        public static async Task DownloadAudioHqAsync(DownloadAudioCommand command)
         {
             if (string.IsNullOrEmpty(command.Url))
                 throw new VideoUrlNullException();

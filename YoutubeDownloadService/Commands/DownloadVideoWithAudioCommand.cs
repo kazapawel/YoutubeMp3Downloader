@@ -1,6 +1,6 @@
 ﻿namespace YoutubeDownloadService.Commands
 {
-    public class DownloadVideoCommand
+    public class DownloadVideoWithAudioCommand
     {
         public string IdUrl { get; set; }
         public string Url { get; set; }
