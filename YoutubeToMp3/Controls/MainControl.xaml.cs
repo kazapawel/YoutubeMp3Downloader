@@ -4,6 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -94,7 +95,8 @@ namespace YoutubeToMp3
         /// </summary>
         private void PasteButtonClick(object sender, RoutedEventArgs e)
         {
-            urlTextBox.Text = Clipboard.GetText();
+            var contentWithoutLines = Regex.Replace(Clipboard.GetText(), @"\t|\n|\r", "");
+            urlTextBox.Text = contentWithoutLines;
         }
 
         /// <summary>
