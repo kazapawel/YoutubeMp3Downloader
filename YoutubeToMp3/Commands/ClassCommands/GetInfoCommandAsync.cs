@@ -61,9 +61,11 @@ namespace YoutubeToMp3
                         VideoBitrate = dto.Bitrate,
                         VideoCodec = dto.VideoCodec,
                         VideoResolution = dto.VideoResolution,
+                        AudioCodec = dto.AudioCodec,
                         AudioContainer = streamInfoDto.AudioHd.Container,
                         AudioBitrate = streamInfoDto.AudioHd.Bitrate,
                         AudioSize = streamInfoDto.AudioHd.Size,
+                        AudioInfo = dto.AudioCodec ?? streamInfoDto.AudioHd.Container + " " + streamInfoDto.AudioHd.Bitrate
                     }));
 
                 // sets viewmodel properties

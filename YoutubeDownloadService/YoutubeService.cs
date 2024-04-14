@@ -13,8 +13,6 @@ namespace YoutubeDownloadService
         /// </summary>
         private static Dictionary<string, StreamManifest> _manifests = new Dictionary<string, StreamManifest>();
 
-
-
         /// <summary>
         /// Gets information related to youtube stream from given url.
         /// </summary>
@@ -27,9 +25,9 @@ namespace YoutubeDownloadService
 
             // manifest
             StreamManifest streamManifest;
-            if(_manifests.ContainsKey(command.Url))
+            if (_manifests.TryGetValue(command.Url, out StreamManifest? value))
             {
-                streamManifest = _manifests[command.Url];
+                streamManifest = value;
             }
             else
             {
@@ -37,8 +35,29 @@ namespace YoutubeDownloadService
                 _manifests.Add(command.Url, streamManifest);
             }
 
-            // video dtos
-            var videoStreams = streamManifest
+            // video streams
+            IEnumerable<VideoDto> videoStreams;
+            if (string.IsNullOrWhiteSpace(command.FfmpegPath))
+            {
+                videoStreams = streamManifest
+                .GetMuxedStreams()
+                .OrderByDescending(video => video.VideoQuality.MaxHeight)
+                .Select(video => new VideoDto
+                {
+                    IdUrl = video.Url,
+                    Name = video.ToString(),
+                    Quality = video.VideoQuality.ToString(),
+                    Container = video.Container.ToString(),
+                    Size = video.Size.ToString(),
+                    Bitrate = video.Bitrate.ToString(),
+                    VideoCodec = video.VideoCodec,
+                    VideoResolution = video.VideoResolution.ToString(),
+                    AudioCodec = video.AudioCodec.ToString(),
+                });
+            }
+            else
+            {
+                videoStreams = streamManifest
                 .GetVideoOnlyStreams()
                 .OrderByDescending(video => video.VideoQuality.MaxHeight)
                 .Select(video => new VideoDto
@@ -52,6 +71,7 @@ namespace YoutubeDownloadService
                     VideoCodec = video.VideoCodec,
                     VideoResolution = video.VideoResolution.ToString(),
                 });
+            }
 
             // best audio
             var audioHd = streamManifest
