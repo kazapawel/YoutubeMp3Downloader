@@ -37,6 +37,19 @@ namespace YoutubeToMp3
                 _viewModel.IsReady = false;
 
                 // command mapping
+                if (_viewModel.DownloadMp3)
+                {
+                    // AUDIO MP3
+                    var command = new DownloadAudioMp3Command
+                    {
+                        Url = _viewModel.Url,
+                        DownloadPath = _viewModel.DownloadDirectory,
+                        FfmpegPath = _viewModel.FfmpegPath,
+                    };
+
+                    await YoutubeService.DownloadAudioMp3Async(command);
+                }
+
                 if (_viewModel.DownloadAudioOnly)
                 {
                     // AUDIO HQ
@@ -44,7 +57,6 @@ namespace YoutubeToMp3
                     {
                         Url = _viewModel.Url,
                         DownloadPath = _viewModel.DownloadDirectory,
-                        FfmpegPath = _viewModel.FfmpegPath,
                     };
 
                     await YoutubeService.DownloadAudioAsync(command);

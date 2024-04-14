@@ -317,6 +317,7 @@
                 x:Name="downloadMp3Only"
                 Margin="5,15,5,5"
                 VerticalAlignment="Center"
+                IsChecked="{Binding DownloadMp3}"
                 Content="Audio mp3">
                 <CheckBox.Style>
                     <Style TargetType="{x:Type CheckBox}">

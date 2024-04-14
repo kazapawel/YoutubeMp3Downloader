@@ -227,13 +227,12 @@ namespace YoutubeDownloadService
             await client.Videos.Streams.DownloadAsync(audioHDInfo, downloadPath);
         }
         
-        
         /// <summary>
         /// Downloads audio with best quality and saves it as mp3 file.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
-        public static async Task DownloadAudiomp3Async(DownloadAudioCommand command)
+        public static async Task DownloadAudioMp3Async(DownloadAudioMp3Command command)
         {
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
                 throw new DownloadPathNotSetException();
