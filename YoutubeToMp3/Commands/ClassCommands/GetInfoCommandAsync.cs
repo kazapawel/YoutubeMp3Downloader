@@ -37,6 +37,7 @@ namespace YoutubeToMp3
 
             // starts getting info
             _viewModel.StatusMessage = new InfoMessage("Getting info...");
+            _viewModel.IsLoading = true;
 
             try
             {
@@ -85,6 +86,7 @@ namespace YoutubeToMp3
 
                 // sets flag and message indicating that video is ready to download
                 _viewModel.IsReady = true;
+                _viewModel.IsLoading = false;
                 _viewModel.StatusMessage =  new SuccessMessage("Data loaded. Ready for download.");
             }
             catch (Exception ex)

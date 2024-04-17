@@ -41,6 +41,7 @@ namespace YoutubeToMp3
 
                 // for disabling all download buttons
                 _viewModel.IsReady = false;
+                _viewModel.IsLoading = true;
 
                 // command mapping
                 if (_viewModel.DownloadMp3)
@@ -98,6 +99,7 @@ namespace YoutubeToMp3
                 }
                 // for enabling all download buttons
                 _viewModel.IsReady = true;
+                _viewModel.IsLoading = false;
 
                 _viewModel.StatusMessage = new SuccessMessage("Success!");
             }

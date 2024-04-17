@@ -14,6 +14,7 @@ namespace YoutubeToMp3
         private string ffmpegPath;
         private UserMessage statusMessage;
         private bool isReady;
+        private bool isLoading;
         private bool downloadAudioOnly;
         private bool downloadMp3;
         private readonly UserSettingsService _userSettingsService;
@@ -143,6 +144,18 @@ namespace YoutubeToMp3
                     isReady = value;
                     OnPropertyChanged(nameof(IsReady));
                     IsReadyChanged?.Invoke(this, new EventArgs());
+                }
+            }
+        }
+        public bool IsLoading
+        {
+            get => isLoading;
+            set
+            {
+                if (isLoading != value)
+                {
+                    isLoading = value;
+                    OnPropertyChanged(nameof(IsLoading));
                 }
             }
         }
