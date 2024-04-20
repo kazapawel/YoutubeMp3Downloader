@@ -173,6 +173,11 @@ namespace YoutubeToMp3
             _userSettingsService = userSettingsService;
         }
 
+        public void ClearStreamInfo()
+        {
+            StreamInfoViewModel = null;
+        }
+
         public void SetAsReadyForDownload()
         {
             IsReadyForDownloadChanged?.Invoke(this, new EventArgs<bool>(true));

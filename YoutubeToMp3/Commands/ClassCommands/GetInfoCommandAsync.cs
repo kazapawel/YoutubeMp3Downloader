@@ -34,6 +34,8 @@ namespace YoutubeToMp3
                 return;
             }
 
+            _viewModel.ClearStreamInfo();
+
             _viewModel.StatusMessage = new InfoMessage("Getting info...");
             _viewModel.IsBusy = true;
 

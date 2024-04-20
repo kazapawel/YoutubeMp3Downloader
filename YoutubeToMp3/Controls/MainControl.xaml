@@ -141,6 +141,7 @@
                 Tag="Enter youtube url"
                 Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}"
                 TextChanged="UrlTextBoxTextChanged"
+                IsEnabled="{Binding IsNotBusy}"
                 Style="{StaticResource TextboxWithClear}"/>
 
             <!-- Paste button -->
