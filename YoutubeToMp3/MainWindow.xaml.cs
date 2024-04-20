@@ -34,10 +34,5 @@ namespace YoutubeToMp3
                 ? WindowState.Normal 
                 : WindowState.Minimized;
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
     }
 }

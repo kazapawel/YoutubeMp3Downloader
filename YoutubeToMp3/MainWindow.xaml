@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YoutubeToMp3"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="YoutubeDownloader" 
         WindowStartupLocation="CenterScreen"
         Icon="pack://application:,,,/Images/yticon.png"
         MinWidth="650"
         MaxWidth="650"
         MinHeight="450"
-        MaxHeight="450"
-        Closing="Window_Closing">
+        MaxHeight="450">
     
     <Window.DataContext>
         <local:ApplicationViewModel/>

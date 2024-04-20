@@ -27,17 +27,11 @@
             <!-- 4 Info -->
             <RowDefinition Height="*"/>
 
-            <!-- 5 Listbox of videos -->
+            <!-- 5 Output dropdown -->
             <RowDefinition Height="auto"/>
 
-            <!-- 6 Separator -->
+            <!-- 6 Status message and buttons  -->
             <RowDefinition Height="auto"/>
-
-            <!-- 7 Status message and buttons  -->
-            <RowDefinition Height="auto"/>
-
-            <!-- 8 empty -->
-            <RowDefinition Height="*"/>
 
         </Grid.RowDefinitions>
 
@@ -53,13 +47,11 @@
                     Background="Black"
                     Width="180"
                     Height="130">
-
                 <Image 
                     Source="{Binding StreamInfoViewModel.Thumbnail, FallbackValue={StaticResource DefaultThumbnail}}"/>
             </Border>
 
             <!--#region TEXT INFO REGION-->
-
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
 
@@ -112,35 +104,18 @@
                     Foreground="{Binding StatusMessage, Converter={StaticResource MessageToBrushConverter}}"
                     Text="{Binding StatusMessage.Message}"   
                     Margin="10,5,5,5"
+                    
                     TextTrimming="CharacterEllipsis"/>
 
             </Grid>
             <!--#endregion-->
 
+            <!-- Spinner -->
             <youtubetomp3:LoadingSpinner
                 Grid.Column="1"
                 Diameter="30"
                 Thickness="1"
-                IsLoading="{Binding IsLoading}"
-                />
-            
-            <!-- Spinner -->
-            <!--<Image
-                Grid.Column="1"
-                Source="pack://application:,,,/Images/spinner.gif"
-                Width="30"
-                Height="30">
-                <Image.Style>
-                    <Style TargetType="Image">
-                        <Setter Property="Visibility" Value="Visible"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsReady}" Value="True">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>-->
+                IsLoading="{Binding IsLoading}"/>
 
         </Grid>
         <!--#endregion-->
