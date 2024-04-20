@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using YoutubeToMp3.UserSettings;
+using YoutubeToMp3.ViewModels.Events;
 
 namespace YoutubeToMp3
 {
@@ -9,23 +10,21 @@ namespace YoutubeToMp3
         #region PRIVATE FIELDS
 
         private StreamInfoViewModel streamInfoViewModel;
-        private string url;
-        private string downloadDirectory;
-        private string ffmpegPath;
-        private UserMessage statusMessage;
-        private bool isReady;
-        private bool isLoading;
-        private bool downloadAudioOnly;
-        private bool downloadMp3;
+        private string _url;
+        private string _downloadDirectory;
+        private string _ffmpegPath;
+        private UserMessage _statusMessage;
+        private bool _isBusy;
+        private bool _downloadAudioOnly;
+        private bool _downloadMp3;
         private readonly UserSettingsService _userSettingsService;
-
 
         #endregion
 
         #region PUBLIC PROPERTIES
 
         /// <summary>
-        /// Viewmodel representing stream data.
+        /// Youtube stream info data.
         /// </summary>
         public StreamInfoViewModel StreamInfoViewModel
         {
@@ -41,16 +40,16 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Youtube url binded to textbox.
+        /// Youtube video url.
         /// </summary>
         public string Url
         {
-            get => url;
+            get => _url;
             set
             {
-                if (url != value)
+                if (_url != value)
                 {
-                    url = value;
+                    _url = value;
                     OnPropertyChanged(nameof(Url));
                 }
             }
@@ -61,12 +60,12 @@ namespace YoutubeToMp3
         /// </summary>
         public string DownloadDirectory
         {
-            get => downloadDirectory;
+            get => _downloadDirectory;
             set
             {
-                if(downloadDirectory != value)
+                if (_downloadDirectory != value)
                 {
-                    downloadDirectory = value;
+                    _downloadDirectory = value;
                     OnPropertyChanged(nameof(DownloadDirectory));
                 }
             }
@@ -77,85 +76,77 @@ namespace YoutubeToMp3
         /// </summary>
         public string FfmpegPath
         {
-            get => ffmpegPath;
+            get => _ffmpegPath;
             set
             {
-                if (ffmpegPath != value)
+                if (_ffmpegPath != value)
                 {
-                    ffmpegPath = value;
+                    _ffmpegPath = value;
                     OnPropertyChanged(nameof(FfmpegPath));
                 }
             }
         }
 
         /// <summary>
-        /// Information for the user about current action.
+        /// Information for the user.
         /// </summary>
         public UserMessage StatusMessage
         {
-            get => statusMessage;
+            get => _statusMessage;
             set
             {
-                if (statusMessage != value)
+                if (_statusMessage != value)
                 {
-                    statusMessage = value;
+                    _statusMessage = value;
                     OnPropertyChanged(nameof(StatusMessage));
                 }
             }
         }
 
+        /// <summary>
+        /// Flag for downloading audio only.
+        /// </summary>
         public bool DownloadAudioOnly
         {
-            get => downloadAudioOnly;
+            get => _downloadAudioOnly;
             set
             {
-                if (downloadAudioOnly != value)
+                if (_downloadAudioOnly != value)
                 {
-                    downloadAudioOnly = value;
+                    _downloadAudioOnly = value;
                     OnPropertyChanged(nameof(DownloadAudioOnly));
                 }
             }
         }
 
+        /// <summary>
+        /// Flag for downloading audio only in mp3 format.
+        /// </summary>
         public bool DownloadMp3
         {
-            get => downloadMp3;
+            get => _downloadMp3;
             set
             {
-                if (downloadMp3 != value)
+                if (_downloadMp3 != value)
                 {
-                    downloadMp3 = value;
+                    _downloadMp3 = value;
                     OnPropertyChanged(nameof(DownloadMp3));
                 }
             }
         }
 
         /// <summary>
-        /// Returns true if application is ready to download a stream.
-        /// Raises IsReadyChanged event.
+        /// Flag for application state.
         /// </summary>
-        public bool IsReady
+        public bool IsBusy
         {
-            get => isReady;
+            get => _isBusy;
             set
             {
-                if(isReady!=value)
+                if (_isBusy != value)
                 {
-                    isReady = value;
-                    OnPropertyChanged(nameof(IsReady));
-                    IsReadyChanged?.Invoke(this, new EventArgs());
-                }
-            }
-        }
-        public bool IsLoading
-        {
-            get => isLoading;
-            set
-            {
-                if (isLoading != value)
-                {
-                    isLoading = value;
-                    OnPropertyChanged(nameof(IsLoading));
+                    _isBusy = value;
+                    OnPropertyChanged(nameof(IsBusy));
                 }
             }
         }
@@ -163,7 +154,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Occurs when state of readiness has changed.
         /// </summary>
-        public event EventHandler IsReadyChanged;
+        public event EventHandler<EventArgs<bool>> IsReadyForDownloadChanged;
 
         #endregion
 
@@ -180,6 +171,16 @@ namespace YoutubeToMp3
         public MainViewModel(UserSettingsService userSettingsService)
         {
             _userSettingsService = userSettingsService;
+        }
+
+        public void SetAsReadyForDownload()
+        {
+            IsReadyForDownloadChanged?.Invoke(this, new EventArgs<bool>(true));
+        }
+
+        public void SetAsNotReadyForDownload()
+        {
+            IsReadyForDownloadChanged?.Invoke(this, new EventArgs<bool>(false));
         }
     }
 }

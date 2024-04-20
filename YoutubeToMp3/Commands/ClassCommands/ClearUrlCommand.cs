@@ -22,7 +22,7 @@
             _viewModel.Url = null;
             _viewModel.StreamInfoViewModel = null;
             _viewModel.StatusMessage = null;
-            _viewModel.IsReady = false;
+            //_viewModel.IsReadyForDownload = false;
         }
     }
 }

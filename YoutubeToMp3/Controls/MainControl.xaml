@@ -115,7 +115,7 @@
                 Grid.Column="1"
                 Diameter="30"
                 Thickness="1"
-                IsLoading="{Binding IsLoading}"/>
+                IsLoading="{Binding IsBusy}"/>
 
         </Grid>
         <!--#endregion-->

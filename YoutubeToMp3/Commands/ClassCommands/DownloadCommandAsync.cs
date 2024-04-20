@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using YoutubeDownloadService;
 using YoutubeDownloadService.Commands;
+using YoutubeToMp3.ViewModels.Events;
 
 namespace YoutubeToMp3
 {
@@ -15,7 +16,7 @@ namespace YoutubeToMp3
         public DownloadCommandAsync(MainViewModel vm)
         {
             _viewModel = vm;
-            _viewModel.IsReadyChanged += OnIsReadyChanged;
+            _viewModel.IsReadyForDownloadChanged += OnIsReadyChanged;
         }
 
         /// <summary>
@@ -38,10 +39,7 @@ namespace YoutubeToMp3
             try
             {
                 _viewModel.StatusMessage = new InfoMessage("Downloading...");
-
-                // for disabling all download buttons
-                _viewModel.IsReady = false;
-                _viewModel.IsLoading = true;
+                _viewModel.IsBusy = true;
 
                 // command mapping
                 if (_viewModel.DownloadMp3)
@@ -97,24 +95,26 @@ namespace YoutubeToMp3
                         await YoutubeService.DownloadVideoWithAduioHqAsync(command);
                     }
                 }
-                // for enabling all download buttons
-                _viewModel.IsReady = true;
-                _viewModel.IsLoading = false;
 
+                //_viewModel.SetAsReadyForDownload();
+                _viewModel.IsBusy = false;
                 _viewModel.StatusMessage = new SuccessMessage("Success!");
             }
             catch (Exception ex)
             {
                 _viewModel.StatusMessage = new ErrorMessage(ex.Message);
+                _viewModel.SetAsNotReadyForDownload();
             }
+
+            _viewModel.IsBusy = false;
         }
 
         /// <summary>
-        /// Sets can execute based on viewmodel IsReady flag.
+        /// Sets can execute.
         /// </summary>
-        private void OnIsReadyChanged(object? sender, EventArgs e)
+        private void OnIsReadyChanged(object? sender, EventArgs<bool> e)
         {
-            CanExec = _viewModel.IsReady;
+            CanExec = e.Value;
         }
     }
 }

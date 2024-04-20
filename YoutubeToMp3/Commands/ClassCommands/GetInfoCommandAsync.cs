@@ -35,7 +35,7 @@ namespace YoutubeToMp3
             }
 
             _viewModel.StatusMessage = new InfoMessage("Getting info...");
-            _viewModel.IsLoading = true;
+            _viewModel.IsBusy = true;
 
             try
             {
@@ -79,21 +79,20 @@ namespace YoutubeToMp3
                     SelectedVideo = videos != null && videos.Any() ? videos[0] : null,
                 };
 
-                // notify the view
-                _viewModel.StreamInfoViewModel.OnPropertyChanged("Videos");
-
-                // sets flags and message indicating that video is ready to download
-                _viewModel.IsReady = true;
-                _viewModel.IsLoading = false;
                 var messageText = string.IsNullOrWhiteSpace(_viewModel.FfmpegPath)
                     ? "Ready for download. No ffpmeg.exe - only muxed streams available."
                     : "Ready for download.";
-                _viewModel.StatusMessage =  new SuccessMessage(messageText);
+                _viewModel.StatusMessage = new SuccessMessage(messageText);
+                
+                _viewModel.SetAsReadyForDownload();
             }
             catch (Exception ex)
             {
                 _viewModel.StatusMessage = new ErrorMessage(ex.Message);
+                _viewModel.SetAsNotReadyForDownload();
             }
+
+            _viewModel.IsBusy = false;
         }
     }
 }
