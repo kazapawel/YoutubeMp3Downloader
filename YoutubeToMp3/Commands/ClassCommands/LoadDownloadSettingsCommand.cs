@@ -4,8 +4,8 @@ namespace YoutubeToMp3
 {
     public class LoadDownloadSettingsCommand : CommandBase
     {
-        private MainViewModel _viewModel;
-        private UserSettingsService _userSettingsService;
+        private readonly MainViewModel _viewModel;
+        private readonly UserSettingsService _userSettingsService;
 
         public LoadDownloadSettingsCommand(MainViewModel viewModel, UserSettingsService userSettingsService)
         {

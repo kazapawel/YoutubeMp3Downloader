@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using YoutubeDownloadService;
 using YoutubeDownloadService.Commands;
 using YoutubeToMp3.ViewModels;

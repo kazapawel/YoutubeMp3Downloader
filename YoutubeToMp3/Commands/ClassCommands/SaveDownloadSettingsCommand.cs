@@ -4,8 +4,8 @@ namespace YoutubeToMp3
 {
     public class SaveDownloadSettingsCommand : CommandBase
     {
-        private MainViewModel _viewModel;
-        private UserSettingsService _userSettingsService;
+        private readonly MainViewModel _viewModel;
+        private readonly UserSettingsService _userSettingsService;
 
         public SaveDownloadSettingsCommand(MainViewModel viewModel, UserSettingsService userSettingsService)
         {

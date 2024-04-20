@@ -7,22 +7,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
 
-                <!-- Colors -->
-                <ResourceDictionary Source="Styles/Colors.xaml"/>
-
-                <!-- Textblocks styles -->
-                <ResourceDictionary Source="Styles/TextblockStyles.xaml"/>
-
-                <!-- Button styles -->
-                <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
-
                 <!-- Textboxes styles -->
                 <ResourceDictionary Source="Styles/TextboxStyles.xaml"/>
-
-                <!-- Window styles -->
-                <ResourceDictionary Source="Styles/WindowStyles.xaml"/>
-
-                
 
                 <!-- Image styles -->
                 <ResourceDictionary Source="Styles/ImageStyles.xaml"/>
