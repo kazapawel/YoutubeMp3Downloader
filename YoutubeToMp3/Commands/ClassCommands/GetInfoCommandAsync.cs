@@ -25,16 +25,9 @@ namespace YoutubeToMp3
         /// </summary>
         protected override async Task ExecuteAsync(object parameter)
         {
-            // if textbox was cleared clears viewmodel's properties
-            // TO DO: create text cleared event and handle it in view class and viewmodel
-            if (string.IsNullOrEmpty(parameter.ToString()))
-            {
-                _viewModel.StreamInfoViewModel = null;
-                _viewModel.StatusMessage = null;
-                return;
-            }
-
             _viewModel.ClearStreamInfo();
+
+            if (string.IsNullOrEmpty(parameter.ToString())) return;
 
             _viewModel.StatusMessage = new InfoMessage("Getting info...");
             _viewModel.IsBusy = true;
@@ -85,7 +78,7 @@ namespace YoutubeToMp3
                     ? "Ready for download. No ffpmeg.exe - only muxed streams available."
                     : "Ready for download.";
                 _viewModel.StatusMessage = new SuccessMessage(messageText);
-                
+
                 _viewModel.SetAsReadyForDownload();
             }
             catch (Exception ex)

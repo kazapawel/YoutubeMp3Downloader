@@ -176,6 +176,7 @@ namespace YoutubeToMp3
         public void ClearStreamInfo()
         {
             StreamInfoViewModel = null;
+            StatusMessage = null;
         }
 
         public void SetAsReadyForDownload()
