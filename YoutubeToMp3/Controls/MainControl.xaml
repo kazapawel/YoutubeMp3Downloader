@@ -318,7 +318,7 @@
                 Margin="5,15,5,5"
                 VerticalAlignment="Center"
                 IsChecked="{Binding DownloadAudioOnly}"
-                Content="Audio only">
+                Content="Audio HQ only">
                 <CheckBox.Style>
                     <Style TargetType="{x:Type CheckBox}">
                         <Setter Property="IsEnabled" Value="True"/>
@@ -328,6 +328,10 @@
                                 <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Text, ElementName=downloadDirectoryTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=mp3Checkbox}" Value="True">
                                 <Setter Property="IsEnabled" Value="False"/>
                                 <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
@@ -357,6 +361,10 @@
                                 <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding Text, ElementName=ffmpegPathTextbox}" Value="">
+                                <Setter Property="IsEnabled" Value="False"/>
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=audioOnlyCheckbox}" Value="True">
                                 <Setter Property="IsEnabled" Value="False"/>
                                 <Setter Property="Opacity" Value="0.5"/>
                             </DataTrigger>
