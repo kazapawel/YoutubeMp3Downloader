@@ -91,7 +91,6 @@ namespace YoutubeToMp3
                             FfmpegPath = _viewModel.FfmpegPath,
                         };
 
-                        // downloads video
                         await YoutubeService.DownloadVideoWithAduioHqAsync(command);
                     }
                 }
@@ -103,7 +102,6 @@ namespace YoutubeToMp3
             catch (Exception ex)
             {
                 _viewModel.StatusMessage = new ErrorMessage(ex.Message);
-                _viewModel.SetAsNotReadyForDownload();
             }
 
             _viewModel.IsBusy = false;
