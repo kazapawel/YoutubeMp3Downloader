@@ -1,15 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "cPtNbMrP0+kyCghr3NWsHfPscSyLIPwzNoavtP2PoiVYgU5JD7MpdbVAco1iRPL6h5FOt1JZ+LjuVZzos7+YoA==",
+  "dgSpecHash": "+gW+shkX0jX4hdQo+PkYlu12PSXNFdo+BZFsgGzwaJip/Hu+f1Xr3Qp5gaU3KDkd8WShLDNWhf8d/g1bi5XHzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
+  "projectFilePath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\user\\.nuget\\packages\\anglesharp\\1.0.4\\anglesharp.1.0.4.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\cliwrap\\3.6.4\\cliwrap.3.6.4.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\ookii.dialogs.wpf\\5.0.1\\ookii.dialogs.wpf.5.0.1.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode\\6.3.4\\youtubeexplode.6.3.4.nupkg.sha512",
-    "C:\\Users\\user\\.nuget\\packages\\youtubeexplode.converter\\6.3.4\\youtubeexplode.converter.6.3.4.nupkg.sha512"
+    "C:\\Users\\Paweł\\.nuget\\packages\\anglesharp\\1.0.4\\anglesharp.1.0.4.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\cliwrap\\3.6.4\\cliwrap.3.6.4.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\ookii.dialogs.wpf\\5.0.1\\ookii.dialogs.wpf.5.0.1.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\system.text.encoding.codepages\\7.0.0\\system.text.encoding.codepages.7.0.0.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\youtubeexplode\\6.3.4\\youtubeexplode.6.3.4.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\youtubeexplode.converter\\6.3.4\\youtubeexplode.converter.6.3.4.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.18\\microsoft.aspnetcore.app.runtime.win-x64.7.0.18.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.18\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.18.nupkg.sha512",
+    "C:\\Users\\Paweł\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.18\\microsoft.netcore.app.runtime.win-x64.7.0.18.nupkg.sha512"
   ],
   "logs": []
 }

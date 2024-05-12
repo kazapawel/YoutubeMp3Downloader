@@ -58,7 +58,7 @@ namespace YoutubeToMp3
         /// <summary>
         /// Invokes TextChangedCommand after delay.
         /// </summary>
-        private void UrlTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        private void OnUrlChanged(object sender, TextChangedEventArgs e)
         {
             if (_timer == null)
             {
