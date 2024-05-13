@@ -1,6 +1,6 @@
 # Youtube downloader and converter
 C# WPF application build around [YoutubeExplode](https://github.com/Tyrrrz/YoutubeExplode).
-For mp3/higher quality streams download FFMpeg CLI is required (https://ffmpeg.org/)
+For mp3/higher quality streams FFMpeg CLI is required (https://ffmpeg.org/)
 
 
 Libraries used:
