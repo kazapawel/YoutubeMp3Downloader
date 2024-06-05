@@ -133,11 +133,11 @@ namespace YoutubeDownloadService
         }
 
         /// <summary>
-        /// 
+        /// Downloads video with highest quality audio.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
-        public static async Task DownloadVideoWithAduioHqAsync(DownloadVideoWithAudioCommand command)
+        public static async Task DownloadVideoWithAudioHqAsync(DownloadVideoWithAudioCommand command)
         {
             if (string.IsNullOrWhiteSpace(command.DownloadPath))
             {
@@ -173,8 +173,6 @@ namespace YoutubeDownloadService
 
             // audio with the best quality
             var audioHD = streamManifest.GetAudioOnlyStreams().GetWithHighestBitrate();
-            var test = streamManifest
-                .GetVideoOnlyStreams();
 
             // gets stream by id
             var video = streamManifest
@@ -194,7 +192,7 @@ namespace YoutubeDownloadService
         }
 
         /// <summary>
-        /// Downloads audio with best quality.
+        /// Downloads best quality audio.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>
@@ -224,7 +222,7 @@ namespace YoutubeDownloadService
         }
         
         /// <summary>
-        /// Downloads audio with best quality and saves it as mp3 file.
+        /// Downloads best quality audio and saves it as mp3 file.
         /// </summary>
         /// <exception cref="FFmpegNotFoundException"></exception>
         /// <exception cref="DownloadPathNotSetException"></exception>

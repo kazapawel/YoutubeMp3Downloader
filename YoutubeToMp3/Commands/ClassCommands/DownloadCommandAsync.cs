@@ -91,11 +91,10 @@ namespace YoutubeToMp3
                             FfmpegPath = _viewModel.FfmpegPath,
                         };
 
-                        await YoutubeService.DownloadVideoWithAduioHqAsync(command);
+                        await YoutubeService.DownloadVideoWithAudioHqAsync(command);
                     }
                 }
 
-                //_viewModel.SetAsReadyForDownload();
                 _viewModel.IsBusy = false;
                 _viewModel.StatusMessage = new SuccessMessage("Success!");
             }
