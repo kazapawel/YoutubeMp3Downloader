@@ -2,14 +2,11 @@
 using Ookii.Dialogs.Wpf;
 using System;
 using System.ComponentModel;
-using System.Configuration;
-using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using YoutubeToMp3.UserSettings;
 
 namespace YoutubeToMp3
 {
@@ -79,12 +76,10 @@ namespace YoutubeToMp3
         /// </summary>
         private void InvokeTextChangedCommand(object sender, EventArgs e)
         {
-            var timer = sender as DispatcherTimer;
-
-            if (timer == null)
+            if (sender is not DispatcherTimer timer)
                 return;
-            
-            var textFromTextbox = this.urlTextBox.Text;
+
+            var textFromTextbox = urlTextBox.Text;
             TextChangedCommand?.Execute(textFromTextbox);
             
             timer.Stop();
@@ -118,7 +113,6 @@ namespace YoutubeToMp3
             {
                 // invokes command
                 var path = (dialog.FileName);
-                //SetFfmpegPathCommand.Execute(path);
 
                 // sets textbox value
                 ffmpegPathTextbox.Text = path;
@@ -132,7 +126,7 @@ namespace YoutubeToMp3
         {
             var dialog = new VistaFolderBrowserDialog();
 
-            if(dialog.ShowDialog()==true)
+            if(dialog.ShowDialog() == true)
             {
                 var path = dialog.SelectedPath;
                 downloadDirectoryTextbox.Text = path;
@@ -148,7 +142,7 @@ namespace YoutubeToMp3
         }
 
         /// <summary>
-        /// Executes closed command.
+        ///     Executes closed command.
         /// </summary>
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
