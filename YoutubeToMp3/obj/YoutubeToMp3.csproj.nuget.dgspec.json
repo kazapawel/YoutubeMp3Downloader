@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj": {}
+    "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj": {
+    "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj",
+        "projectUniqueName": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj",
         "projectName": "YoutubeDownloadService",
-        "projectPath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj",
+        "projectPath": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj",
         "packagesPath": "C:\\Users\\Paweł\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\obj\\",
+        "outputPath": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Paweł\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,11 +48,11 @@
           "dependencies": {
             "YoutubeExplode": {
               "target": "Package",
-              "version": "[6.3.4, )"
+              "version": "[6.4.3, )"
             },
             "YoutubeExplode.Converter": {
               "target": "Package",
-              "version": "[6.3.4, )"
+              "version": "[6.4.3, )"
             }
           },
           "imports": [
@@ -65,23 +66,37 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj": {
+    "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
+        "projectUniqueName": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
         "projectName": "YoutubeToMp3",
-        "projectPath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
+        "projectPath": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\YoutubeToMp3.csproj",
         "packagesPath": "C:\\Users\\Paweł\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeToMp3\\obj\\",
+        "outputPath": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeToMp3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Paweł\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,14 +107,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0-windows7.0": {
             "targetAlias": "net7.0-windows",
             "projectReferences": {
-              "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj": {
-                "projectPath": "C:\\Users\\Paweł\\Source\\Repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj"
+              "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj": {
+                "projectPath": "C:\\Users\\Paweł\\source\\repos\\YoutubeMp3Downloader\\YoutubeDownloadService\\YoutubeDownloadService.csproj"
               }
             }
           }
@@ -137,16 +153,32 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.18, 7.0.18]"
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.18, 7.0.18]"
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.18, 7.0.18]"
+              "version": "[7.0.20, 7.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -157,7 +189,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
